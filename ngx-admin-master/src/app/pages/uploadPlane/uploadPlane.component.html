@@ -1,0 +1,25 @@
+
+<div class="box">
+    <h1>Upload Plane</h1>
+
+    <div class="search-input-wrapper mx-12 m-md-0"
+        fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+        <label for="search" class="mr-8">
+        Archivo a cargar:
+        <!--<mat-icon class="secondary-text">search</mat-icon>-->
+        </label>
+        <div floatPlaceholder="never" fxFlex="1 0 auto">
+            <input  class="btn btn-primary" type="file" id="fileUpload" (change)="onFileChange($event)" #fileInput
+            accept="application/vnd.ms-excel">
+        </div>
+    </div>
+
+    <div id="showPlane">
+    </div>
+
+    <button type="button" class="btn btn-primary">Upload Plane</button>
+   
+
+</div>
+
+
