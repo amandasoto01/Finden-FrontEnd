@@ -1,5 +1,5 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -14,7 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('app/pages/pages.module')
+    loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
