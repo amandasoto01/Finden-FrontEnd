@@ -8,6 +8,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { UploadPlaneComponent } from './uploadPlane/uploadPlane.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -17,10 +18,14 @@ import { UploadPlaneComponent } from './uploadPlane/uploadPlane.component';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     PagesComponent,
     UploadPlaneComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class PagesModule {
