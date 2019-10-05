@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './login.service';
+import { CreateUserService } from './createUser.service';
 import { LoginModel } from "../../entities/request/loginModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './createUser.component.html',
+  styleUrls: ['./createUser.component.css']
 })
-export class LoginComponent implements OnInit {
+export class CreateUserComponent implements OnInit {
 
   loginModel: LoginModel;
   loginForm: FormGroup;
 
-  constructor( private loginService: LoginService,
+  constructor( private createUserService: CreateUserService,
                private formBuilder: FormBuilder) { 
     this.loginModel = new LoginModel();
   }
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.loginModel.password = value.password;
     console.log("funcion ");
     console.log(this.loginModel);
-    this.loginService.login(this.loginModel).subscribe(data => {
+    this.createUserService.login(this.loginModel).subscribe(data => {
     localStorage.setItem('userEmail', this.loginModel.email); //Para guardar en la sesion 
     },err=>{
       alert("error en el servidor");
