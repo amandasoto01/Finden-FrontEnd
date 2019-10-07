@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CreateUserService {
+export class FindPortService {
 
   constructor(private http: HttpClient) {
   }
 
-  create ( user ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/create', user);
+  findPort ( port ): Observable<any> {
+       return this.http.post(environment.apiUrl + '/findport', port);
    }
 }

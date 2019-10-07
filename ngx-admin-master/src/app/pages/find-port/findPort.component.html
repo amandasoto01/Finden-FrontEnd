@@ -1,0 +1,14 @@
+<div>
+    <h1>Find Port</h1>
+    <form name="findPortForm" [formGroup]="findPortForm">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Enter a port number:</label>
+                <div class="col-sm-10">
+                    <input  matInput formControlName="port" class="form-control"  placeholder="#port">
+                </div>
+            </div>
+        </form>
+        <div class="form-group row">
+            <button (click)="findPort" class="btn btn-primary">Buscar</button>
+        </div>
+</div>

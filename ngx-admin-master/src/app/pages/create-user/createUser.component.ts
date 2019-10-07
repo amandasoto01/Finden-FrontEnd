@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateUserService } from './createUser.service';
-import { LoginModel } from "../../entities/request/loginModel";
+import { UserModel } from "../../entities/request/userModel"; 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,30 +11,36 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class CreateUserComponent implements OnInit {
 
-  loginModel: LoginModel;
-  loginForm: FormGroup;
+  userModel: UserModel;
+  createUserForm: FormGroup;
 
   constructor( private createUserService: CreateUserService,
                private formBuilder: FormBuilder) { 
-    this.loginModel = new LoginModel();
+    this.userModel = new UserModel();
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.createUserForm = this.formBuilder.group({
+        name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email] ],
-        password: ['', [Validators.required] ]
+        password: ['', [Validators.required] ],
+        type: ['', [Validators.required] ]
     });
   }
 
-  signIn(){
-    const value = this.loginForm.value;
+  createAccount(){
+    const value = this.createUserForm.value;
     console.log(value);
-    this.loginModel.email = value.email;
-    this.loginModel.password = value.password;
+    this.userModel.name = value.name;
+    this.userModel.email = value.email;
+    this.userModel.password = value.password;
+    this.userModel.type = value.type;
+
     console.log("funcion ");
-    console.log(this.loginModel);
-    this.createUserService.login(this.loginModel).subscribe(data => {
-    localStorage.setItem('userEmail', this.loginModel.email); //Para guardar en la sesion 
+    console.log(this.userModel);
+
+    this.createUserService.create(this.userModel).subscribe(data => {
+    localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion 
     },err=>{
       alert("error en el servidor");
     });

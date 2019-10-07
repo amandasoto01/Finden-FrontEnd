@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CreateUserService {
+export class ChangePasswordService {
 
   constructor(private http: HttpClient) {
   }
 
-  create ( user ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/create', user);
+  login ( user ): Observable<any> {
+       return this.http.post(environment.apiUrl + '/login', user);
    }
 }

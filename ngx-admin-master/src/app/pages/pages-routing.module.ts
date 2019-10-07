@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
 import { CreateUserComponent } from './create-user/createUser.component';
+import { FindPortComponent } from './find-port/findPort.component';
 
 const routes: Routes = [{
   path: '',
@@ -82,6 +83,10 @@ const routes: Routes = [{
     {
       path:'createuser',
       component: CreateUserComponent,
+    },
+    {
+      path: 'findport',
+      component: FindPortComponent,
     },
     {
       path: '**',

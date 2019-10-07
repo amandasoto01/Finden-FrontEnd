@@ -8,7 +8,9 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
+import { CreateUserComponent } from './create-user/createUser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FindPortComponent } from './find-port/findPort.component';
 
 @NgModule({
   imports: [
@@ -24,8 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PagesComponent,
     UploadPlaneComponent,
-    FormsModule,
-    ReactiveFormsModule,
+    CreateUserComponent,
+    FindPortComponent,
   ],
 })
 export class PagesModule {
