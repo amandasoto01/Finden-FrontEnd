@@ -244,4 +244,49 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Manage Accounts',
+    children: [
+      {
+        title: 'Create Account',
+        link:'/pages/createuser',
+      },
+      {
+        title: 'Delete Account',
+        link: '',
+      },
+      {
+        title: 'Modify Account',
+        link: '',
+      }
+    ]
+  },
+  {
+    title: 'Aprove plane',
+    link: '',
+  },
+  {
+    title: 'Plane history',
+    link: '',
+  },
+  {
+    title: 'Ports',
+    children:[
+      {
+        title: 'Add port',
+        link: '',
+      },
+      {
+        title: 'Find port',
+        link: 'pages/findport',
+      },
+    ]
+  },
+  {
+    title: 'Add Building',
+    link: '',
+  },{
+    title: 'Add wiringCenter',
+    link: '',
+  },
 ];

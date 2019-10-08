@@ -11,6 +11,17 @@ import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
 import { CreateUserComponent } from './create-user/createUser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FindPortComponent } from './find-port/findPort.component';
+import {
+  NbActionsModule,
+  NbButtonModule,
+  NbCardModule,
+  NbCheckboxModule,
+  NbDatepickerModule, NbIconModule,
+  NbInputModule,
+  NbRadioModule,
+  NbSelectModule,
+  NbUserModule,
+} from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -22,6 +33,16 @@ import { FindPortComponent } from './find-port/findPort.component';
     MiscellaneousModule,
     FormsModule,
     ReactiveFormsModule,
+    NbInputModule,
+    NbCardModule,
+    NbButtonModule,
+    NbActionsModule,
+    NbUserModule,
+    NbCheckboxModule,
+    NbRadioModule,
+    NbDatepickerModule,
+    NbSelectModule,
+    NbIconModule,
   ],
   declarations: [
     PagesComponent,

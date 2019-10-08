@@ -3,6 +3,7 @@ import { CreateUserService } from './createUser.service';
 import { UserModel } from "../../entities/request/userModel"; 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
+import { AvailableTypes } from "../../entities/internal/availableTypes";
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,25 @@ export class CreateUserComponent implements OnInit {
 
   userModel: UserModel;
   createUserForm: FormGroup;
+  availableTypes: AvailableTypes[] = [
+    {
+      value: '1',
+      label: 'DTI' 
+    },
+    {
+      value: '2',
+      label: 'Contratista' 
+    },
+    {
+      value: '3',
+      label: 'Mesa de Servicios' 
+    }
+  ];
 
   constructor( private createUserService: CreateUserService,
                private formBuilder: FormBuilder) { 
     this.userModel = new UserModel();
+
   }
 
   ngOnInit() {
