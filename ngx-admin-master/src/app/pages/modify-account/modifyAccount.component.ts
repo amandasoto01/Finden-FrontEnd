@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateUserService } from './createUser.service';
+import { ModifyAccountService } from './modifyAccount.service';
 import { UserModel } from "../../entities/request/userModel"; 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
@@ -7,10 +7,10 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './createUser.component.html',
-  styleUrls: ['./createUser.component.css']
+  templateUrl: './modifyAccount.component.html',
+  styleUrls: ['./modifyAccount.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class modifyAccountComponent implements OnInit {
 
   userModel: UserModel;
   createUserForm: FormGroup;
@@ -29,7 +29,7 @@ export class CreateUserComponent implements OnInit {
     }
   ];
 
-  constructor( private createUserService: CreateUserService,
+  constructor( private modifyAccountService: ModifyAccountService,
                private formBuilder: FormBuilder) { 
     this.userModel = new UserModel();
 
@@ -37,10 +37,11 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit() {
     this.createUserForm = this.formBuilder.group({
-        name: ['', [Validators.required]],
+        name: [''],
         email: ['', [Validators.required, Validators.email] ],
-        password: ['', [Validators.required] ],
-        type: ['', [Validators.required] ]
+        password: ['' ],
+        confirmPassword: [''],
+        type: ['']
     });
   }
 
@@ -55,12 +56,15 @@ export class CreateUserComponent implements OnInit {
     console.log("funcion ");
     console.log(this.userModel);
 
-    this.createUserService.create(this.userModel).subscribe(data => {
+    if(this.userModel.password != value.confirmPassword){
+        alert("Contrase;as distintas");
+       return; 
+    }
+
+    this.modifyAccountService.create(this.userModel).subscribe(data => {
     localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion 
-      alert(data);
     },err=>{
-      console.log(err);
-      alert(err.error.text);
+      alert("error en el servidor");
     });
   }
 
