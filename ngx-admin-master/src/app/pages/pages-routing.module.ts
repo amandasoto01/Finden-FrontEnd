@@ -8,6 +8,8 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
 import { CreateUserComponent } from './create-user/createUser.component';
 import { FindPortComponent } from './find-port/findPort.component';
+import { AddBuildingComponent } from './add-building/addBuilding.component';
+import { ManageAccountComponent } from './manage-account/manageAccount.component';
 
 const routes: Routes = [{
   path: '',
@@ -87,6 +89,14 @@ const routes: Routes = [{
     {
       path: 'findport',
       component: FindPortComponent,
+    },
+    {
+      path: 'addbuilding',
+      component: AddBuildingComponent,
+    },
+    {
+      path: 'manageAccount',
+      component: ManageAccountComponent,
     },
     {
       path: '**',
