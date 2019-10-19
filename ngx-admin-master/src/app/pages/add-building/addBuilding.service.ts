@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class addBuildingService {
+export class AddBuildingService {
 
    httpOptions = {
     headers: new HttpHeaders({})

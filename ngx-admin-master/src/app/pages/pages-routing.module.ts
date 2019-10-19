@@ -10,6 +10,7 @@ import { CreateUserComponent } from './create-user/createUser.component';
 import { FindPortComponent } from './find-port/findPort.component';
 import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
+import { AddPortComponent } from './add-port/addPort.component';
 
 const routes: Routes = [{
   path: '',
@@ -95,8 +96,12 @@ const routes: Routes = [{
       component: AddBuildingComponent,
     },
     {
-      path: 'manageAccount',
+      path: 'manageaccount',
       component: ManageAccountComponent,
+    },
+    {
+      path: 'addport',
+      component: AddPortComponent,
     },
     {
       path: '**',

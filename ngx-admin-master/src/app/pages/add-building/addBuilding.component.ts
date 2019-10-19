@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { addBuildingService } from './addBuilding.service';
+import { AddBuildingService } from './addBuilding.service';
 import { buildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
@@ -16,7 +16,7 @@ export class AddBuildingComponent implements OnInit {
   addBuildingForm: FormGroup;
 
 
-  constructor( private addBuildingService: addBuildingService,
+  constructor( private addBuildingService: AddBuildingService,
                private formBuilder: FormBuilder) {
     this.buildingModel = new buildingModel();
 

@@ -14,6 +14,7 @@ import { FindPortComponent } from './find-port/findPort.component';
 import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AddPortComponent } from './add-port/addPort.component';
 
 
 import {
@@ -57,6 +58,7 @@ import {
     FindPortComponent,
     AddBuildingComponent,
     ManageAccountComponent,
+    AddPortComponent,
   ],
 })
 export class PagesModule {
