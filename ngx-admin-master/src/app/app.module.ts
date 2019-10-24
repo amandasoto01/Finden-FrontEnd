@@ -22,6 +22,7 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './security/guard';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -47,6 +48,9 @@ import { LoginComponent } from './pages/login/login.component';
     ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    AuthGuard,
+  ]
 })
 export class AppModule {
 }

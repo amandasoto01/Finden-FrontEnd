@@ -12,6 +12,8 @@ import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { AddPortComponent } from './add-port/addPort.component';
 
+import { AuthGuard } from "../security/guard";
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -76,32 +78,56 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: '/auth/login',
       pathMatch: 'full',
     },
     {
       path:'uploadplane',
       component: UploadPlaneComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI', 'Contratista', 'Mesa de Servicios']
+      }
     },
     {
       path:'createuser',
       component: CreateUserComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI']
+      }
     },
     {
       path: 'findport',
       component: FindPortComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI', 'Mesa de Servicios']
+      }
     },
     {
       path: 'addbuilding',
       component: AddBuildingComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI', 'Contratista']
+      }
     },
     {
       path: 'manageaccount',
       component: ManageAccountComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI']
+      }
     },
     {
       path: 'addport',
       component: AddPortComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI']
+      }
     },
     {
       path: '**',
