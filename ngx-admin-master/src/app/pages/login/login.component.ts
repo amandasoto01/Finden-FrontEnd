@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { LoginModel } from "../../entities/request/loginModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor( private loginService: LoginService,
-               private formBuilder: FormBuilder) { 
+               private formBuilder: FormBuilder,
+               // The router to navigate inside the application
+               private router: Router) { 
     this.loginModel = new LoginModel();
   }
 
@@ -36,7 +39,9 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginModel).subscribe(data => {
     localStorage.setItem('email', this.loginModel.email); //Para guardar en la sesion 
-    localStorage.setItem('rol', data.rol)  
+    localStorage.setItem('rol', data.rol);
+    //Navigate to dashboard after login using router
+    this.router.navigate(['/pages/dashboard']);  
     },err=>{
       alert("error en el servidor");
     });
