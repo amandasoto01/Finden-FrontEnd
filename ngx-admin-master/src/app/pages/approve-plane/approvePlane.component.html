@@ -1,0 +1,37 @@
+<nb-card>
+    
+    <nb-card-header>
+        <h1>Approve Planes</h1>
+    </nb-card-header>
+  
+    <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+        
+
+        <form class="space" name="approvePlaneForm" [formGroup]="approvePlaneForm">
+            
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Name Plane:</label>
+                 <div class="col-sm-6">
+                     <input  type="text" matInput formControlName="namePlane" class="form-control" placeholder="plane to approve">
+                 </div>
+            </div>        
+            
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Description:</label>
+              <textarea class="col-sm-6" matInput formControlName="comments" _ngcontent-cca-c25="" fullwidth="" nbinput="" placeholder="Text Area" rows="5" shape="round" ng-reflect-shape="round" ng-reflect-full-width="" class="input-full-width size-medium shape-round"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                <button (click)="Reject()" class="btn btn-primary">Reject</button>
+                </div>
+                <div class="col-sm-6">
+                        <button (click)="Approve()" class="btn btn-primary">Approve</button>
+                </div>
+            </div>
+        </form>
+    </nb-card-body>
+  </nb-card>
+  

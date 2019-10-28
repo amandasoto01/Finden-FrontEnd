@@ -11,6 +11,7 @@ import { FindPortComponent } from './find-port/findPort.component';
 import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { AddPortComponent } from './add-port/addPort.component';
+import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
 
 import { AuthGuard } from "../security/guard";
 
@@ -126,6 +127,13 @@ const routes: Routes = [{
       component: AddPortComponent,
       canActivate: [AuthGuard],
       data: {
+        roles: ['DTI']
+      }
+    },{
+      path: 'approveplane',
+      component: ApprovePlaneComponent,
+      canActivate: [AuthGuard],
+      data:{
         roles: ['DTI']
       }
     },

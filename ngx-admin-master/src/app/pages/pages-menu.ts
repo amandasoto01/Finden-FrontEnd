@@ -253,11 +253,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Delete Account',
-        link: '',
+        link: '/pages/manageaccount',
       },
       {
         title: 'Modify Account',
-        link: '',
+        link: '/pages/modifyaccount',
       }
     ]
   },
@@ -274,7 +274,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children:[
       {
         title: 'Add port',
-        link: '',
+        link: 'pages/addport',
       },
       {
         title: 'Find port',
@@ -284,9 +284,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Add Building',
-    link: '',
+    link: 'pages/addbuilding',
   },{
     title: 'Add wiringCenter',
-    link: '',
-  },
+    link: 'pages/addwiringcenter',
+  }
 ];
