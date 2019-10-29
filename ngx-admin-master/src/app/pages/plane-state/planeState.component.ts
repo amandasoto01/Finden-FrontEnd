@@ -19,15 +19,7 @@ export class PlaneStateComponent  {
 
   settings = {
     hideSubHeader: true,
-    actions:{
-      columnTitle: 'Delete',
-      edit: false,
-      position: 'right',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
+  
     columns: {
       email: {
         title: 'Name',
