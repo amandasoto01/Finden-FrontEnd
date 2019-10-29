@@ -12,8 +12,11 @@ import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { AddPortComponent } from './add-port/addPort.component';
 import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
+import { PlaneStateComponent } from './plane-state/planeState.component';
+import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
 
 import { AuthGuard } from "../security/guard";
+
 
 const routes: Routes = [{
   path: '',
@@ -136,6 +139,21 @@ const routes: Routes = [{
       data:{
         roles: ['DTI']
       }
+    },{
+      path: 'planestate',
+      component: PlaneStateComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['Contratista']
+      }
+    },{
+      path: 'modifyaccount',
+      component: ModifyAccountComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['DTI']
+      }
+      
     },
     {
       path: '**',

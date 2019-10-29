@@ -257,13 +257,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Modify Account',
-        link: '/pages/modifyaccount',
+        link: '/pages/',
       }
     ]
   },
   {
     title: 'Aprove plane',
-    link: '',
+    link: '/pages/approveplane',
   },
   {
     title: 'Plane history',

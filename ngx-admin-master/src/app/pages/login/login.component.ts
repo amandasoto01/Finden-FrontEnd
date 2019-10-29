@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/pages/dashboard']);  
     },err=>{
       alert("error en el servidor");
+      this.router.navigate(['/pages/uploadplane']); 
     });
   }
 

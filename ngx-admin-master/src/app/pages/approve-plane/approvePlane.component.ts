@@ -10,7 +10,8 @@ import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 
-import { PlanesModel } from "../../entities/internal/planesTableModel";
+import { TablePlanesModel } from "../../entities/internal/planesTableModel";
+import { PlaneModel } from "../../entities/request/planeModel";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ import { PlanesModel } from "../../entities/internal/planesTableModel";
 })
 
 export class ApprovePlaneComponent  {
-  planeModel: PlanesModel;
+  tablePlaneModel: TablePlanesModel;
+  planeModel: PlaneModel;
 
   settings = {
     hideSubHeader: true,
@@ -78,18 +80,26 @@ export class ApprovePlaneComponent  {
         },err=>{
           console.log(err);
           alert(err.error.text);
-        
-        
     });
   }
 
 
-  approvePlane(){
-    
+  approve(){
     this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
+      const value = this.approvePlaneForm.value;
+      this.planeModel.name = value.namePlane;
+      this.planeModel.comments = value.comments;
+      this.planeModel.status = true;
+    });
+  }
 
+  reject(){
+    this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
+      const value = this.approvePlaneForm.value;
+      this.planeModel.name = value.namePlane;
+      this.planeModel.comments = value.comments;
+      this.planeModel.status = false;
     })
-      
   }
 
 

@@ -15,7 +15,9 @@ import { AddBuildingComponent } from './add-building/addBuilding.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AddPortComponent } from './add-port/addPort.component';
-import { ApprovePlaneComponent } from './approve-plane/approvePlane.component'
+import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
+import { PlaneStateComponent } from './plane-state/planeState.component';
+import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
 
 import {
   NbActionsModule,
@@ -60,6 +62,8 @@ import {
     ManageAccountComponent,
     AddPortComponent,
     ApprovePlaneComponent,
+    PlaneStateComponent,
+    ModifyAccountComponent,
   ],
 })
 export class PagesModule {

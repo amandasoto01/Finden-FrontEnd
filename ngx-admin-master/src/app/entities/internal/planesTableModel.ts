@@ -1,4 +1,4 @@
-export class PlanesModel {
+export class TablePlanesModel {
     name: string;
     description: string;
     version: any;

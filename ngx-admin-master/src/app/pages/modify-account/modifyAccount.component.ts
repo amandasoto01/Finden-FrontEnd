@@ -10,7 +10,7 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
   templateUrl: './modifyAccount.component.html',
   styleUrls: ['./modifyAccount.component.css']
 })
-export class modifyAccountComponent implements OnInit {
+export class ModifyAccountComponent implements OnInit {
 
   userModel: UserModel;
   createUserForm: FormGroup;
