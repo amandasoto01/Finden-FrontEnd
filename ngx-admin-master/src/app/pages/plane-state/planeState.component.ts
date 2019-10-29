@@ -83,4 +83,8 @@ export class PlaneStateComponent  {
           alert(err.error.text);
       });
     }
+
+    downloadPlane(event){
+      console.log(event.data);
+    }
 }

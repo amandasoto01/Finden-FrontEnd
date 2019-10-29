@@ -7,27 +7,30 @@
         
         <div class="form-group row inline-block">
             
-            <div class="col-sm-10">
+            <div class="col-sm-4">
               <button (click)="approvedPlanes()" class="btn btn-primary">Approved Planes</button>
             </div>
             
-            <div class="col-sm-10">
+            <div class="col-sm-4">
                 <button (click)="rejectedPlanes()" class="btn btn-primary">Rejected Planes</button>
             </div>
             
-            <div class="col-sm-10">
+            <div class="col-sm-4">
                 <button (click)="allPlanes()" class="btn btn-primary">All Planes</button>
             </div>
         </div>
 
 
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
+        (userRowSelect)="downloadPlane($event)">
         </ng2-smart-table>
-  
-        <div class="col-sm-10">
-            <button (click)="router.navigate(['/upploadPlane']);" class="btn btn-primary">All Planes</button>
-        </div> 
-  
+
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <button routerLink='/pages/uploadplane' class="btn btn-primary">Upload Plane</button>
+            </div> 
+        </div>
     </nb-card-body>
   </nb-card>
   

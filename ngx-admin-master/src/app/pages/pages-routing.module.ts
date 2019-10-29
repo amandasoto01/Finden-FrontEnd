@@ -144,7 +144,7 @@ const routes: Routes = [{
       component: PlaneStateComponent,
       canActivate: [AuthGuard],
       data:{
-        roles: ['Contratista']
+        roles: ['DTI', 'Contratista']
       }
     },{
       path: 'modifyaccount',
