@@ -6,18 +6,49 @@ import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { WiringCenterModel } from "../../entities/request/wiringCenterModel";
 import { buildingModel } from "../../entities/request/buildingModel";
+import { SmartTableData } from '../../@core/data/smart-table';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './addPort.component.html',
-  styleUrls: ['./addPort.component.css']
+  templateUrl: './addWiringCenter.component.html',
+  styleUrls: ['./addWiringCenter.component.css']
 })
-export class WiringCenterComponent implements OnInit {
+export class AddWiringCenterComponent implements OnInit {
 
   portModel: PortModel;
   addWiringCenterForm: FormGroup;
   wiringCenter: WiringCenterModel;
   buildings: buildingModel;
+
+  settings = {
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },
+    actions:{
+      delete: true,
+      edit: false,
+      position: 'right',
+    },
+    columns: {
+      switch: {
+        title: 'Switch',
+        type: 'string',
+      },
+      numberofports: {
+        title: 'Number of Ports',
+        type: 'string',
+      },
+    },
+  };
+
+  source: LocalDataSource = new LocalDataSource();
 
   constructor( private wiringCenterService: WiringCenterService,
                private formBuilder: FormBuilder) {
@@ -27,15 +58,14 @@ export class WiringCenterComponent implements OnInit {
 
   ngOnInit() {
     this.addWiringCenterForm = this.formBuilder.group({
-        building: ['', [Validators.required]],
-        floor: ['', [Validators.required] ],
-        name: ['', [Validators.required] ],
-        id: ['', [Validators.required]],
-       
+        idWiring: ['', [Validators.required]],
+        wiringName: ['', [Validators.required] ],
+        type: ['', [Validators.required] ],
+        floor: ['', [Validators.required]],
+
     });
     this.wiringCenterService.getBuildingsMock().subscribe( data => {
-       console.log(data);
-       this.buildings = data;
+       this.source.load(data);
      })
   }
 
@@ -56,7 +86,7 @@ export class WiringCenterComponent implements OnInit {
 
   }
 
-  
+
 
 
 }

@@ -26,11 +26,11 @@ export class ApprovePlaneService {
     console.log(this.httpOptions )
     return this.http.put(environment.apiUrl + '/approve', this.httpOptions);
    }
-  
+
    getUsersMock (): Observable<any> {
     let mockUsers = [
-      {name: 'juan', email: 'juan@gmail.com', type: 'DTI'},
-      {name: 'paco', email: 'paco@gmail.com', type: 'DTI'}
+      {name: 'Fernando Baron', description: 'Segundo Piso', version: '1.0'},
+      {name: 'Gabriel Giraldo', description: 'Sotano 1', version: '1.0'}
     ];
     return of(mockUsers);
   }

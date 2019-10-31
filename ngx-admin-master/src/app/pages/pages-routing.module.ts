@@ -9,6 +9,7 @@ import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
 import { CreateUserComponent } from './create-user/createUser.component';
 import { FindPortComponent } from './find-port/findPort.component';
 import { AddBuildingComponent } from './add-building/addBuilding.component';
+import { AddWiringCenterComponent } from './add-wiring-center/addWiringCenter.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { AddPortComponent } from './add-port/addPort.component';
 import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
@@ -118,6 +119,14 @@ const routes: Routes = [{
       }
     },
     {
+      path: 'addwiringcenter',
+      component: AddWiringCenterComponent,
+      canActivate: [AuthGuard],
+      data: {
+        roles: ['DTI', 'Contratista']
+      }
+    },
+    {
       path: 'manageaccount',
       component: ManageAccountComponent,
       canActivate: [AuthGuard],
@@ -153,7 +162,7 @@ const routes: Routes = [{
       data:{
         roles: ['DTI']
       }
-      
+
     },
     {
       path: '**',

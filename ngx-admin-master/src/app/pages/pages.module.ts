@@ -12,6 +12,7 @@ import { CreateUserComponent } from './create-user/createUser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FindPortComponent } from './find-port/findPort.component';
 import { AddBuildingComponent } from './add-building/addBuilding.component';
+import { AddWiringCenterComponent } from './add-wiring-center/addWiringCenter.component';
 import { ManageAccountComponent } from './manage-account/manageAccount.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AddPortComponent } from './add-port/addPort.component';
@@ -59,6 +60,7 @@ import {
     CreateUserComponent,
     FindPortComponent,
     AddBuildingComponent,
+    AddWiringCenterComponent,
     ManageAccountComponent,
     AddPortComponent,
     ApprovePlaneComponent,

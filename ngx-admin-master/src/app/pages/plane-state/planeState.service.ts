@@ -35,8 +35,8 @@ export class PlaneStateService {
 
    getPlanesMock (): Observable<any> {
       let mockPlanes = [
-        {name: 'juan', description: 'juan@gmail.com', status: false},
-        {name: 'paco', description: 'paco@gmail.com', status: true}
+        {name: 'Fernando Baron', description: 'Segundo piso', status: false},
+        {name: 'Gabriel Girlado', description: 'Sotano uno', status: true}
       ];
       return of(mockPlanes);
     }

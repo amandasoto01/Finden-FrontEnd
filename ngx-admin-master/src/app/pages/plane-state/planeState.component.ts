@@ -19,17 +19,22 @@ export class PlaneStateComponent  {
 
   settings = {
     hideSubHeader: true,
-  
+    actions:{
+      delete: false,
+      edit: false,
+      position: 'right',
+      hide: true,
+    },
     columns: {
-      email: {
+      name: {
         title: 'Name',
         type: 'number',
       },
-      name: {
+      description: {
         title: 'Description',
         type: 'string',
       },
-      type: {
+      status: {
         title: 'Status',
         type: 'boolean',
       },

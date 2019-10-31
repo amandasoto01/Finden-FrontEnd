@@ -26,13 +26,10 @@ export class ApprovePlaneComponent  {
   settings = {
     hideSubHeader: true,
     actions:{
-      columnTitle: 'Delete',
+      delete: false,
       edit: false,
       position: 'right',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
+      hide: true,
     },
     columns: {
       name: {
@@ -63,7 +60,7 @@ export class ApprovePlaneComponent  {
     this.approvePlaneForm = this.formBuilder.group({
         namePlane: ['', [Validators.required]],
         comments: ['', []],
- 
+
     });
 
     this.approvePlaneService.getUsersMock().subscribe( data => {
@@ -103,6 +100,6 @@ export class ApprovePlaneComponent  {
   }
 
 
-  
+
 
 }

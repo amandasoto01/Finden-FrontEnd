@@ -1,7 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
+  /*{
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
@@ -243,7 +243,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
-  },
+  },*/
   {
     title: 'Manage Accounts',
     children: [
@@ -257,36 +257,45 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Modify Account',
-        link: '/pages/',
+        link: '/pages/modifyaccount',
       }
     ]
   },
   {
-    title: 'Aprove plane',
-    link: '/pages/approveplane',
-  },
-  {
-    title: 'Plane history',
-    link: '',
+    title: 'Planes',
+    children: [
+      {
+        title: 'Aprove plane',
+        link: '/pages/approveplane',
+      },
+      {
+        title: 'Plane history',
+        link: '',
+      },
+      {
+        title: 'Upload plane',
+        link: '/pages/uploadplane',
+      },
+    ]
   },
   {
     title: 'Ports',
     children:[
       {
         title: 'Add port',
-        link: 'pages/addport',
+        link: '/pages/addport',
       },
       {
         title: 'Find port',
-        link: 'pages/findport',
+        link: '/pages/findport',
       },
     ]
   },
   {
     title: 'Add Building',
-    link: 'pages/addbuilding',
+    link: '/pages/addbuilding',
   },{
     title: 'Add wiringCenter',
-    link: 'pages/addwiringcenter',
+    link: '/pages/addwiringcenter',
   }
 ];
