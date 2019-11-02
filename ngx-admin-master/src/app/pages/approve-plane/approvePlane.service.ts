@@ -34,4 +34,8 @@ export class ApprovePlaneService {
     ];
     return of(mockUsers);
   }
+
+  downloadPlane(plane): Observable<any>{
+    return this.http.get(environment.apiUrl + '/approve' + 'plane', this.httpOptions);
+   }
 }

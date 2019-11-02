@@ -170,7 +170,13 @@ const routes: Routes = [{
       data:{
         roles: ['DTI']
       }
-
+    },{
+      path: 'planeswitch',
+      component: ModifyAccountComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['DTI']
+      }
     },
     {
       path: '**',

@@ -20,6 +20,7 @@ import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
 import { PlaneStateComponent } from './plane-state/planeState.component';
 import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
 import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
+import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
 
 import {
   NbActionsModule,
@@ -68,6 +69,7 @@ import {
     PlaneStateComponent,
     ModifyAccountComponent,
     PlaneHistoryComponent,
+    PlaneSwitchComponent,
   ],
 })
 export class PagesModule {

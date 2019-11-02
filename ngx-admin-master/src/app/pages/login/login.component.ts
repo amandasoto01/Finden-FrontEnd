@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
     this.loginModel.password = value.password;
     console.log("funcion ");
     console.log(this.loginModel);
-    localStorage.setItem('rol', 'Contratista');  
+    localStorage.setItem('rol', 'DTI');  
 
     this.loginService.login(this.loginModel).subscribe(data => {
     localStorage.setItem('email', this.loginModel.email); //Para guardar en la sesion 
     localStorage.setItem('rol', data.rol);
     //Navigate to dashboard after login using router
-    this.router.navigate(['/pages/dashboard']);  
+    this.router.navigate(['/pages/uploadplane']);  
     },err=>{
       alert("error en el servidor");
       this.router.navigate(['/pages/uploadplane']); 

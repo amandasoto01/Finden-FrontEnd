@@ -95,10 +95,23 @@ export class ApprovePlaneComponent  {
       this.planeModel.name = value.namePlane;
       this.planeModel.comments = value.comments;
       this.planeModel.status = false;
-    })
+    });
   }
 
+  downloadPlane(planeName){
+    this.approvePlaneService.downloadPlane(planeName).subscribe( data =>{
+      this.generateFile(data);
+    });
+  }
 
-
-
+  generateFile(data){
+    const blob = new Blob([data], {
+      'type': 'application/dxf'
+    });
+    const a = document.createElement('a');
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = this.planeModel.name + '.dxf';
+    a.click();
+  }
 }
