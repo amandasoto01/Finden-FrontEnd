@@ -1,16 +1,52 @@
-<div>
-    <h1>Find Port</h1>
+<nb-card>
+    <nb-card-header>
+        <h1>Find Port</h1>
+    </nb-card-header>
+  
+  <nb-card-body>
+
     <form name="findPortForm" [formGroup]="findPortForm">
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label">Enter a port number:</label>
-                <div class="col-sm-10">
+                <label for="" class="col-sm-3 col-form-label">Enter a port number:</label>
+                <div class="col-sm-6">
                     <input  matInput formControlName="port" class="form-control"  placeholder="#port">
                 </div>
             </div>
-        </form>
-        <div class="form-group row">
-            <button (click)="findPort" class="btn btn-primary">Buscar</button>
+            <div class="form-group row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                            <button (click)="findPort" class="btn btn-primary">Find</button>
+                    </div>     
+            </div>
+    </form>
+
+          
+    <div class="" id="portInfo" *ngIf=infoPortModel.found>
+        <br><br>
+        <div style="text-align: center;">
+            <h5>Resultados de la busqueda:</h5>
         </div>
-        <div class="" id="portInfo">
-        </div>
-</div>
+        <br>
+            <div class="row">
+                <label class="col-sm-2 col-form-label"><strong>MAC:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.mac}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label"><strong>State:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.state}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label"><strong>Description:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.description}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label"><strong>Speed:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.speed}}</label>
+            </div>
+            
+    </div>
+
+   
+
+  </nb-card-body>
+</nb-card>

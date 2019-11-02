@@ -156,6 +156,13 @@ const routes: Routes = [{
         roles: ['DTI', 'Contratista']
       }
     },{
+      path: 'planehistory',
+      component: PlaneStateComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['DTI']
+      }
+    },{
       path: 'modifyaccount',
       component: ModifyAccountComponent,
       canActivate: [AuthGuard],

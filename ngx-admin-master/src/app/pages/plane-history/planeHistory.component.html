@@ -4,13 +4,26 @@
     </nb-card-header>
   
     <nb-card-body>
-        
+
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Building</label>
             <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10">
-                <nb-option *ngFor="let v of availableTypes" value="{{v.value}}">{{v.label}}</nb-option>
+                 <nb-option *ngFor="let v of buildings" value="{{v.num}}"> {{v.num}} - {{v.name}}</nb-option>
             </nb-select>
-            <button (click)="createUser()" class="btn btn-primary">Modify Account</button>
+            <div class="col-sm-10">
+                <button (click)="selectBuilding()" class="btn btn-primary">Select Building</button>
+            </div>
+        </div>
+     
+
+      <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Plane name:</label>
+            <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10">
+                  <nb-option *ngFor="let v of availablePlanes" value="{{v.value}}">{{v.label}}</nb-option>
+            </nb-select>
+            <div class="col-sm-10">
+                  <button (click)="searchPlane()" class="btn btn-primary">Search Plane</button>
+            </div>
         </div>
 
         <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
@@ -21,3 +34,14 @@
     </nb-card-body>
   </nb-card>
   
+
+
+
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+
+        <div class="form-group row space">
+          <div class="col-sm-10">
+            <button (click)="createUser()" class="btn btn-primary">Modify Account</button>
+          </div>
+    </div>
