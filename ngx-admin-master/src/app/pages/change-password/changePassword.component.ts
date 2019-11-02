@@ -3,6 +3,9 @@ import { ChangePasswordService } from './changePassword.service';
 import { LoginModel } from "../../entities/request/loginModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
+import { NewPassword }  from '../../entities/request/newPasswordModel';
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-change-password',
@@ -10,44 +13,69 @@ import { validateHorizontalPosition } from '@angular/cdk/overlay';
   styleUrls: ['./changePassword.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-
-  loginModel: LoginModel;
   changePasswordForm: FormGroup;
-  codeForm: FormGroup;
+  setNewPasswordform: FormGroup;
+  newPassword: NewPassword;
 
   constructor( private changePasswordService: ChangePasswordService,
-               private formBuilder: FormBuilder) { 
-    this.loginModel = new LoginModel();
+               private formBuilder: FormBuilder,
+               private router: Router) { 
   }
 
   ngOnInit() {
     this.changePasswordForm = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email] ]
     });
-    this.codeForm = this.formBuilder.group({
-      code: ['', [Validators.required] ]
+    this.setNewPasswordform = this.formBuilder.group({
+      code: ['', [Validators.required] ],
+      password: ['', [Validators.required] ],
+      confirmPassword: ['', [Validators.required] ]
+
   });
   }
 
-  signIn(){
+  send(){
     const value = this.changePasswordForm.value;
-    console.log(value);
-    this.loginModel.email = value.email;
-    this.loginModel.password = value.password;
-    console.log("funcion ");
-    console.log(this.loginModel);
-    this.changePasswordService.login(this.loginModel).subscribe(data => {
-    localStorage.setItem('userEmail', this.loginModel.email); //Para guardar en la sesion 
+    this.newPassword.email = value.email;
+
+    this.changePasswordService.sendCode(value.email).subscribe( data =>{
+       
+      if(data){
+         alert("El codigo fue enviado a tu correo");
+       }else{
+         alert("El correo ingresado no se encuentra registrado en el sistema");
+       }
     },err=>{
       alert("error en el servidor");
+      //this.router.navigate(['/pages/uploadplane']); 
     });
+    
   }
 
-  validate(){
-      
-  }
+  setNewPassword(){
+    const val = this.setNewPasswordform.value;
+    this.newPassword.code = val.code;
 
-  send(){
+    
+    if(val.password == val.confirmPassword){
+      this.newPassword.password = val.password;
+      this.changePasswordService.sendCode(val).subscribe( data =>{
+       
+        if(data){
+           alert("Se cambio la contraseña exitosamente");
+           this.router.navigate(['/auth/login']);
+         }else{
+           alert("Hubo un error");
+         }
+      },err=>{
+        alert("error en el servidor");
+        //this.router.navigate(['/pages/uploadplane']); 
+      });
+    }else{
+      alert("Las contraseñas ingresadas no coinciden");
+    }
+    
 
+    
   }
 }
