@@ -302,3 +302,99 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/addwiringcenter',
   }
 ];
+
+export const MENU_ITEMS_DTI: NbMenuItem[] = [
+  {
+    title: 'Manage Accounts',
+    children: [
+      {
+        title: 'Create Account',
+        link:'/pages/createuser',
+      },
+      {
+        title: 'Delete Account',
+        link: '/pages/manageaccount',
+      },
+      {
+        title: 'Modify Account',
+        link: '/pages/modifyaccount',
+      }
+    ]
+  },
+  {
+    title: 'Planes',
+    children: [
+      {
+        title: 'Aprove plane',
+        link: '/pages/approveplane',
+      },{
+        title: 'Plane State',
+        link: '/pages/planestate',
+      },
+      {
+        title: 'Plane history',
+        link: '/pages/planehistory',
+      },
+      {
+        title: 'Upload plane',
+        link: '/pages/uploadplane',
+      },
+    ]
+  },
+  {
+    title: 'Ports',
+    children:[
+      {
+        title: 'Add port',
+        link: '/pages/addport',
+      },
+      {
+        title: 'Find port',
+        link: '/pages/findport',
+      },
+    ]
+  },
+  {
+    title: 'Add Building',
+    link: '/pages/addbuilding',
+  },{
+    title: 'Add wiringCenter',
+    link: '/pages/addwiringcenter',
+  }
+];
+
+export const MENU_ITEMS_CONTRATISTA: NbMenuItem[] = [
+  {
+    title: 'Planes',
+    children: [
+      {
+        title: 'Upload plane',
+        link: '/pages/uploadplane',
+      },
+      {
+        title: 'Plane State',
+        link: '/pages/planestate',
+      },
+    ]
+  },
+  {
+    title: 'Add Building',
+    link: '/pages/addbuilding',
+  },
+  {
+    title: 'Add wiringCenter',
+    link: '/pages/addwiringcenter',
+  }
+];
+
+export const MENU_ITEMS_MESA_DE_SERVICIOS: NbMenuItem[] = [
+  {
+    title: 'Ports',
+    children:[
+      {
+        title: 'Find port',
+        link: '/pages/findport',
+      },
+    ]
+  },
+];

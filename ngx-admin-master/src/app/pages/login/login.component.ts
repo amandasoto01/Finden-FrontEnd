@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginModel.password = value.password;
     console.log("funcion ");
     console.log(this.loginModel);
-    localStorage.setItem('rol', 'DTI');  
+    localStorage.setItem('rol', 'Contratista');  
 
     this.loginService.login(this.loginModel).subscribe(data => {
     localStorage.setItem('email', this.loginModel.email); //Para guardar en la sesion 

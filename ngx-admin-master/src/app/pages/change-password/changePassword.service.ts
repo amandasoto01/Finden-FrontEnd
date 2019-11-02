@@ -15,4 +15,9 @@ export class ChangePasswordService {
    sendCode( user ): Observable<any>{
      return this.http.post(environment.apiUrl + '/send', user);
    }
+   
+
+   newPassword(user ): Observable<any>{
+    return this.http.post(environment.apiUrl + '/send', user);
+  }
 }
