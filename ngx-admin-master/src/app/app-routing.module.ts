@@ -10,14 +10,14 @@ import {
 } from '@nebular/auth';
 
 import { LoginComponent } from './pages/login/login.component';
+import { ChangePasswordComponent } from './pages/change-password/changePassword.component';
 
 const routes: Routes = [
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
-  },
-  {
+  },{
     path: 'auth',
     component: NbAuthComponent,
     children: [
@@ -28,6 +28,9 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },{
+        path: 'changepassword',
+        component: ChangePasswordComponent,
       },
       {
         path: 'register',
@@ -59,5 +62,6 @@ const config: ExtraOptions = {
   imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule {
 }

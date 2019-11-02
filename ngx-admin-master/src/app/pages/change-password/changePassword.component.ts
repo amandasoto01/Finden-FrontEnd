@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ChangePasswordService } from './changePassword.service';
 import { LoginModel } from "../../entities/request/loginModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-change-password',
   templateUrl: './changePassword.component.html',
   styleUrls: ['./changePassword.component.css']
 })
-export class ChangePassword implements OnInit {
+export class ChangePasswordComponent implements OnInit {
 
   loginModel: LoginModel;
-  loginForm: FormGroup;
+  changePasswordForm: FormGroup;
+  codeForm: FormGroup;
 
   constructor( private changePasswordService: ChangePasswordService,
                private formBuilder: FormBuilder) { 
@@ -19,14 +21,16 @@ export class ChangePassword implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.email] ],
-        password: ['', [Validators.required] ]
+    this.changePasswordForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email] ]
     });
+    this.codeForm = this.formBuilder.group({
+      code: ['', [Validators.required] ]
+  });
   }
 
   signIn(){
-    const value = this.loginForm.value;
+    const value = this.changePasswordForm.value;
     console.log(value);
     this.loginModel.email = value.email;
     this.loginModel.password = value.password;
@@ -39,5 +43,11 @@ export class ChangePassword implements OnInit {
     });
   }
 
- 
+  validate(){
+      
+  }
+
+  send(){
+
+  }
 }

@@ -19,6 +19,7 @@ import { AddPortComponent } from './add-port/addPort.component';
 import { ApprovePlaneComponent } from './approve-plane/approvePlane.component';
 import { PlaneStateComponent } from './plane-state/planeState.component';
 import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
+import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 
 import {
   NbActionsModule,
@@ -66,6 +67,7 @@ import {
     ApprovePlaneComponent,
     PlaneStateComponent,
     ModifyAccountComponent,
+    PlaneHistoryComponent,
   ],
 })
 export class PagesModule {

@@ -267,10 +267,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Aprove plane',
         link: '/pages/approveplane',
+      },{
+        title: 'Plane State',
+        link: '/pages/planestate',
       },
       {
         title: 'Plane history',
-        link: '',
+        link: '/pages/planehistory',
       },
       {
         title: 'Upload plane',

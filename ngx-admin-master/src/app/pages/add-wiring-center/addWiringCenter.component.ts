@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { WiringCenterModel } from "../../entities/request/wiringCenterModel";
-import { buildingModel } from "../../entities/request/buildingModel";
+import { BuildingModel } from "../../entities/request/buildingModel";
 import { SmartTableData } from '../../@core/data/smart-table';
 import { LocalDataSource } from 'ng2-smart-table';
 
@@ -19,7 +19,7 @@ export class AddWiringCenterComponent implements OnInit {
   portModel: PortModel;
   addWiringCenterForm: FormGroup;
   wiringCenter: WiringCenterModel;
-  buildings: buildingModel;
+  buildings: BuildingModel;
 
   settings = {
     add: {

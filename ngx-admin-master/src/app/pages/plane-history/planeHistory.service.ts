@@ -26,16 +26,13 @@ export class PlaneHistoryService {
      return this.http.post(environment.apiUrl + '/getPlaneBuilding', this.httpOptions);
    }
 
-  delete ( user ): Observable<any> {
-     console.log(this.httpOptions ) 
-     return this.http.post(environment.apiUrl + '/DeleteUser', user, this.httpOptions);
-   }
-
-   getUsersMock (): Observable<any> {
-      let mockUsers = [
-        {name: 'juan', email: 'juan@gmail.com', type: 'DTI'},
-        {name: 'paco', email: 'paco@gmail.com', type: 'DTI'}
-      ];
-      return of(mockUsers);
-    }
+   getBuildingsMock (): Observable<any> {
+    let mockBuildings = [
+      {name: 'giraldo', num: 3, nfloors: 0 , nbasements: 0},
+      {name: 'baron', num: 2, nfloors: 0 , nbasements: 0},
+      {name: 'teologia', num: 94, nfloors: 0 , nbasements: 0}
+    ];
+    return of(mockBuildings);
+  }
+  
 }

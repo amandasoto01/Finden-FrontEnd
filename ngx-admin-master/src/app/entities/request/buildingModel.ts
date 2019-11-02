@@ -1,4 +1,4 @@
-export class buildingModel {
+export class BuildingModel {
     name: string;
     buildingNumber: number;
     floor: number;

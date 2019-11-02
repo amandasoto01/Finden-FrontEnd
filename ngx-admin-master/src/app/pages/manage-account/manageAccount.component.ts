@@ -4,7 +4,6 @@ import { SmartTableData } from '../../@core/data/smart-table';
 
 import { Component, OnInit } from '@angular/core';
 import { ManageAccountService } from './manageAccount.service';
-import { buildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";

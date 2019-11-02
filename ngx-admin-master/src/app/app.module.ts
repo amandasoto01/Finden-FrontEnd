@@ -23,9 +23,10 @@ import {
 } from '@nebular/theme';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './security/guard';
+import { ChangePasswordComponent } from './pages/change-password/changePassword.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, ChangePasswordComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

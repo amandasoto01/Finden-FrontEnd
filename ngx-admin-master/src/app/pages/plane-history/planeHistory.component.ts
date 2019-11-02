@@ -4,18 +4,19 @@ import { SmartTableData } from '../../@core/data/smart-table';
 
 import { Component, OnInit } from '@angular/core';
 import { PlaneHistoryService } from './planeHistory.service';
-import { buildingModel } from "../../entities/request/buildingModel";
+import { BuildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './planeHistoryService.component.html',
-  styleUrls: ['./PlaneHistoryService.component.css']
+  templateUrl: './planeHistory.component.html',
+  styleUrls: ['./planeHistory.component.css']
 })
 
 export class PlaneHistoryComponent  {
+  buildings: BuildingModel;
 
   settings = {
     hideSubHeader: true,
@@ -61,31 +62,12 @@ export class PlaneHistoryComponent  {
   }
 
   ngOnInit(){
-    this.planeHistoryService.getUsersMock().subscribe( data => {
+    this.planeHistoryService.getBuildingsMock().subscribe( data => {
        console.log(data);
-       this.source.load(data);
+      // this.source.load(data);
+      this.buildings = new BuildingModel();
+      this.buildings = data;
     })
   }
 
-
-
-  onDeleteConfirm(event): void {
-    console.log(event);
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-
-    this.planeHistoryService.delete("hola").subscribe( data => {
-        if(data == true){ 
-          alert("Se borro el usuario");
-        }else{
-          alert("No se pudo borrar al usuario");
-        }
-      },err=>{
-        console.log(err);
-        alert(err.error.text);
-      });
-    } else {
-      event.confirm.reject();
-    }
-  }
 }

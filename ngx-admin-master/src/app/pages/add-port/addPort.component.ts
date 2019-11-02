@@ -4,7 +4,7 @@ import { PortModel } from "../../entities/request/portModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
-import { buildingModel } from "../../entities/request/buildingModel";
+import { BuildingModel } from "../../entities/request/buildingModel";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class AddPortComponent implements OnInit {
 
   portModel: PortModel;
   addPortForm: FormGroup;
-  buildings: buildingModel;
+  buildings: BuildingModel;
 
   constructor( private addPortService: AddPortService,
                private formBuilder: FormBuilder) {

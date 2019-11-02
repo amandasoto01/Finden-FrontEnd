@@ -11,7 +11,8 @@ export class ChangePasswordService {
   constructor(private http: HttpClient) {
   }
 
-  login ( user ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/login', user);
+
+   sendCode( user ): Observable<any>{
+     return this.http.post(environment.apiUrl + '/send', user);
    }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddBuildingService } from './addBuilding.service';
-import { buildingModel } from "../../entities/request/buildingModel";
+import { BuildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
@@ -12,13 +12,13 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 })
 export class AddBuildingComponent implements OnInit {
 
-  buildingModel: buildingModel;
+  buildingModel: BuildingModel;
   addBuildingForm: FormGroup;
 
 
   constructor( private addBuildingService: AddBuildingService,
                private formBuilder: FormBuilder) {
-    this.buildingModel = new buildingModel();
+    this.buildingModel = new BuildingModel();
 
   }
 
