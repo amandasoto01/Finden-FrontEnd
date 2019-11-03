@@ -4,7 +4,7 @@ import { SmartTableData } from '../../@core/data/smart-table';
 
 import { Component, OnInit } from '@angular/core';
 import { PlaneSwitchService } from './planeSwitch.service';
-import { BuildingModel } from "../../entities/request/buildingModel";
+import { BuildingBasicInformationModel } from "../../entities/request/buildingBasicInformationModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
@@ -16,7 +16,9 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 })
 
 export class PlaneSwitchComponent  {
-  buildings: BuildingModel;
+  buildings: BuildingBasicInformationModel[];
+  floors = [];
+
 
   settings = {
     hideSubHeader: true,
@@ -65,9 +67,29 @@ export class PlaneSwitchComponent  {
     this.planeSwitchService.getBuildingsMock().subscribe( data => {
        console.log(data);
       // this.source.load(data);
-      this.buildings = new BuildingModel();
-      this.buildings = data;
+      this.buildings = [];
+      this.buildings = data; //tienen que ser los mismos datos
     })
+  }
+
+  generateFloors($event){
+    console.log("evento");
+    //console.log($event);
+   let min;
+   let max; 
+
+    for(let i=0; i<this.buildings.length; i++){
+      if($event == this.buildings[i].num){
+        min = this.buildings[i].min;
+        max = this.buildings[i].max;
+        break;
+      }
+    }
+    
+    for(let j=min, k=0; j<=max; j++,k++){
+      this.floors[k]= j;
+    }
+    
   }
 
 }

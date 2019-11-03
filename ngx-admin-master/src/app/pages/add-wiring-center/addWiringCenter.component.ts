@@ -5,38 +5,38 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { WiringCenterModel } from "../../entities/request/wiringCenterModel";
-import { BuildingModel } from "../../entities/request/buildingModel";
+import { BuildingBasicInformationModel } from "../../entities/request/buildingBasicInformationModel";
 import { SmartTableData } from '../../@core/data/smart-table';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login', 
   templateUrl: './addWiringCenter.component.html',
   styleUrls: ['./addWiringCenter.component.css']
 })
+
 export class AddWiringCenterComponent implements OnInit {
 
   portModel: PortModel;
   addWiringCenterForm: FormGroup;
   wiringCenter: WiringCenterModel;
-  buildings: BuildingModel;
+  buildings: BuildingBasicInformationModel[];
+  floors = [];
 
   settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
     actions:{
       delete: true,
       edit: false,
       position: 'right',
-    },
-    columns: {
+    },add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    }, 
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },columns: {
       switch: {
         title: 'Switch',
         type: 'string',
@@ -53,6 +53,7 @@ export class AddWiringCenterComponent implements OnInit {
   constructor( private wiringCenterService: WiringCenterService,
                private formBuilder: FormBuilder) {
     this.wiringCenter = new WiringCenterModel();
+    this.buildings = [];
 
   }
 
@@ -65,8 +66,29 @@ export class AddWiringCenterComponent implements OnInit {
 
     });
     this.wiringCenterService.getBuildingsMock().subscribe( data => {
-       this.source.load(data);
+      // this.source.load(data);
+      this.buildings = data; //mismos tipos de dato
      })
+  }
+
+  generateFloors($event){
+    //console.log("evento");
+    //console.log($event);
+   let min;
+   let max; 
+
+    for(let i=0; i<this.buildings.length; i++){
+      if($event == this.buildings[i].num){
+        min = this.buildings[i].min;
+        max = this.buildings[i].max;
+        break;
+      }
+    }
+    
+    for(let j=min, k=0; j<=max; j++,k++){
+      this.floors[k] = j;
+    }
+    
   }
 
   addWiringCenter(){
@@ -87,6 +109,12 @@ export class AddWiringCenterComponent implements OnInit {
   }
 
 
-
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
 
 }

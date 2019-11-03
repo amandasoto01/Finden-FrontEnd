@@ -24,7 +24,7 @@ export class ApprovePlaneService {
 
    approvePlane(plane): Observable<any>{
     console.log(this.httpOptions )
-    return this.http.put(environment.apiUrl + '/approve', this.httpOptions);
+    return this.http.put(environment.apiUrl + '/approve', this.httpOptions, plane);
    }
 
    getUsersMock (): Observable<any> {

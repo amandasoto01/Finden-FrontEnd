@@ -339,6 +339,10 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
         title: 'Upload plane',
         link: '/pages/uploadplane',
       },
+      {
+        title: 'Plane Switches',
+        link: '/pages/planeswitch',
+      }
     ]
   },
   {

@@ -18,6 +18,6 @@ export class AddBuildingService {
 
   create ( building ): Observable<any> {
     console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/AddBuilding', building, this.httpOptions);
+     return this.http.post(environment.apiUrl + '/addBuilding', building, this.httpOptions);
    }
 }

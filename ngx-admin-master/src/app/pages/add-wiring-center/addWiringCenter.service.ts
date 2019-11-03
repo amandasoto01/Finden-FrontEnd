@@ -30,9 +30,9 @@ export class WiringCenterService {
 
    getBuildingsMock (): Observable<any> {
       let mockBuildings = [
-        {switch: '101', numberofports: '10'},
-        {switch: '102', numberofports: '10'},
-        {switch: '103', numberofports: '10'},
+        {name: 'baron', num: '2', min: '-2', max:'7'},
+        {name: 'giraldo', num: '3', min: '-1', max:'5'},
+        {name: 'basicas', num: '51', min: '1', max:'5'},
       ];
       return of(mockBuildings);
     }

@@ -59,11 +59,12 @@ export class ManageAccountComponent  {
 
 
   onDeleteConfirm(event): void {
-    console.log(event);
+    console.log("hola " + event);
+    console.log("borrar " + event.data.email);
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
-
-    this.manageAccountService.delete("hola").subscribe( data => {
+    
+    this.manageAccountService.delete(event.data.email).subscribe( data => {
         if(data == true){
           alert("Se borro el usuario");
         }else{
