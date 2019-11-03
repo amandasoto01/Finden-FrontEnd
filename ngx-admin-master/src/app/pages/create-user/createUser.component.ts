@@ -50,7 +50,7 @@ export class CreateUserComponent implements OnInit {
     this.userModel.name = value.name;
     this.userModel.email = value.email;
     this.userModel.password = value.password;
-    this.userModel.type = value.type;
+    this.userModel.type = value.type.value;
 
     console.log("funcion ");
     console.log(this.userModel);

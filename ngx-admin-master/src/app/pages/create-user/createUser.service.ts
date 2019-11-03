@@ -7,11 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CreateUserService {
-
+  
+  httpOptions = {
+    headers: new HttpHeaders({})
+  };
+  
   constructor(private http: HttpClient) {
+    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
   }
 
   create ( user ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/createUser', user);
+       return this.http.post(environment.apiUrl + '/create', user, this.httpOptions);
    }
 }
