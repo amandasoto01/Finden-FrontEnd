@@ -5,6 +5,11 @@
     </a>
     <a class="logo" href="#" (click)="navigateHome()">Finden<img src="../../../../assets/images/FindenLogo.png" width=30% height=30%></a>
   </div>
+
+  <div  *ngIf="getRol() == 'DTI'">
+        <label>Planes: </label>
+        <label>{{cant}}</label>
+  </div>
 </div>
 
 <div class="header-container">

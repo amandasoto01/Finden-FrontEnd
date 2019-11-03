@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { HeaderService } from './header.service';
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+  cant: number;
 
   themes = [
     {
@@ -45,7 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private headerService: HeaderService,) {
   }
 
   ngOnInit() {
@@ -69,6 +72,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+      if(this.getRol() == 'DTI'){
+        //console.log("hola");
+        this.cantPlanes();
+      }
   }
 
   ngOnDestroy() {
@@ -91,4 +99,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
+
+  getRol(){
+    /*if(localStorage.getItem('rol') == 'DTI'){
+      return true;
+    }*/
+   return localStorage.getItem('rol');
+  }
+
+  cantPlanes(){
+    //alert("4"); 
+    this.cant=4;
+    this.headerService.amountOfPlanes().subscribe( data =>{
+      this.cant=data;
+    });
+  }
+
 }

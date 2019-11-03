@@ -18,6 +18,6 @@ export class ChangePasswordService {
    
 
    newPassword(user ): Observable<any>{
-    return this.http.post(environment.apiUrl + '/send', user);
+    return this.http.post(environment.apiUrl + '/password', user);
   }
 }

@@ -14,19 +14,20 @@ import { Router } from "@angular/router";
 })
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
-  setNewPasswordform: FormGroup;
+  setNewPasswordForm: FormGroup;
   newPassword: NewPassword;
 
   constructor( private changePasswordService: ChangePasswordService,
                private formBuilder: FormBuilder,
                private router: Router) { 
+      this.newPassword = new NewPassword();
   }
 
   ngOnInit() {
     this.changePasswordForm = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email] ]
     });
-    this.setNewPasswordform = this.formBuilder.group({
+    this.setNewPasswordForm = this.formBuilder.group({
       code: ['', [Validators.required] ],
       password: ['', [Validators.required] ],
       confirmPassword: ['', [Validators.required] ]
@@ -38,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
     const value = this.changePasswordForm.value;
     this.newPassword.email = value.email;
 
-    this.changePasswordService.sendCode(value.email).subscribe( data =>{
+    this.changePasswordService.sendCode(this.newPassword.email).subscribe( data =>{
        
       if(data){
          alert("El codigo fue enviado a tu correo");
@@ -53,13 +54,13 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   setNewPassword(){
-    const val = this.setNewPasswordform.value;
+    const val = this.setNewPasswordForm.value;
     this.newPassword.code = val.code;
 
     
     if(val.password == val.confirmPassword){
       this.newPassword.password = val.password;
-      this.changePasswordService.sendCode(val).subscribe( data =>{
+      this.changePasswordService.newPassword(this.newPassword).subscribe( data =>{
        
         if(data){
            alert("Se cambio la contraseña exitosamente");
