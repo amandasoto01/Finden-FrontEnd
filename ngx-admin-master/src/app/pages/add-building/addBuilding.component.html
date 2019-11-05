@@ -9,7 +9,7 @@
       <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
       <div class="col-sm-6">
         <input  matInput formControlName="name" class="form-control" placeholder="Nombre del edificio">
-        <div *ngIf="addBuildingForm.value.email == '' && addBuildingForm.controls.name.touched" style="color: red;">
+        <div *ngIf="addBuildingForm.value.name == '' && addBuildingForm.controls.name.touched" style="color: red;">
           El nombre es obligatorio
         </div>
       </div>
