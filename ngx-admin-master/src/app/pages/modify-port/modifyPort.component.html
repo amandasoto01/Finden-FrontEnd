@@ -1,0 +1,100 @@
+<nb-card>
+  <nb-card-header>
+      <h1 style:"text-align:center;">Modificar Puerto</h1>
+  </nb-card-header>
+
+<nb-card-body>
+<form name="modifyPortForm" [formGroup]="modifyPortForm">
+  <!--No seleccionable-->
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre del Puerto:</label>
+    <div class="col-sm-3">
+      <input type="text" matInput formControlName="portName" class="form-control"  placeholder="name">
+    </div>
+    <div *ngIf="modifyPortForm.value.portName == '' && modifyPortForm.controls.portName.touched" style="color: red;">
+      El nombre es obligatorio
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button (click)="getInfo()"  [disabled]="modifyPortForm.controls.portName.status =='INVALID'" class="btn btn-primary">Agregar Puerto</button>
+    </div>
+  </div>
+
+
+  
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Edificio:</label>
+      <nb-select formControlName="building" placeholder="Seleccione" class="col-sm-10" (ngModelChange)="generateFloors($event)">
+        <nb-option *ngFor="let v of buildings" value="{{v.number}}"> {{v.number}} - {{v.name}}</nb-option>
+      </nb-select>
+      <div *ngIf="modifyPortForm.value.building == '' && modifyPortForm.controls.building.touched" style="color: red;">
+        El nombre es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Piso:</label>
+      <nb-select formControlName="floor" placeholder="Seleccione" class="col-sm-10">
+          <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
+      </nb-select>
+      <div *ngIf="modifyPortForm.value.floor == '' && modifyPortForm.controls.floor.touched" style="color: red;">
+        El nombre es obligatorio
+      </div>
+  </div>
+
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Centro de cableado:</label>
+      <nb-select formControlName="wiringCenter" placeholder="Seleccione" class="col-sm-10">
+        <nb-option *ngFor="let v of wiringCenters" value="{{v}}"> {{v}}</nb-option>
+      </nb-select>
+      <div *ngIf="modifyPortForm.value.wiringCenter == '' && modifyPortForm.controls.wiringCenter.touched" style="color: red;">
+        El nombre es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Switch</label>
+      <div class="col-sm-3">
+        <input type="text" matInput formControlName="switch" class="form-control"  placeholder="Nombre del switch">
+      </div>
+      <label for="inputPassword3" class="col-sm-3 col-form-label">Numero de Puerto en el switch:</label>
+      <div class="col-sm-3">
+        <input  type="number" matInput formControlName="portSwitch" class="form-control" placeholder="Numero">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">
+        <div *ngIf="modifyPortForm.value.switch == '' && modifyPortForm.controls.switch.touched" style="color: red;">
+          El nombre es obligatorio
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div *ngIf="modifyPortForm.value.portSwitch == '' && modifyPortForm.controls.portSwitch.touched" style="color: red;">
+          El nombre es obligatorio
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tipo:</label>
+      <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10">
+        <nb-option *ngFor="let v of portTypes" value="{{v.value}}"> {{v.name}}</nb-option>
+      </nb-select>
+      <div *ngIf="modifyPortForm.value.type == '' && modifyPortForm.controls.type.touched" style="color: red;">
+        El nombre es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button (click)="modifyPort()"  [disabled]="modifyPortForm.status =='INVALID'" class="btn btn-primary">Agregar Puerto</button>
+      </div>
+    </div>
+  </form>
+</nb-card-body>
+</nb-card>

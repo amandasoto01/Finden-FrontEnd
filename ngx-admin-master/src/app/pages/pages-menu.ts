@@ -348,6 +348,10 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
         title: 'Buscar puerto',
         link: '/pages/findport',
       },
+      {
+        title: 'Modificar puerto',
+        link: '/pages/modifyPort',
+      },
     ]
   },
   {
