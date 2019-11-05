@@ -17,6 +17,7 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 
 export class PlaneSwitchComponent  {
   buildings: BuildingBasicInformationModel[];
+  addSwitchesForm: FormGroup;
   floors = [];
 
 
@@ -59,8 +60,14 @@ export class PlaneSwitchComponent  {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private planeSwitchService: PlaneSwitchService) {
+  constructor(private planeSwitchService: PlaneSwitchService,  private formBuilder: FormBuilder) {
+    this.addSwitchesForm = this.formBuilder.group({
+      idWiring: ['', [Validators.required]],
+      wiringName: ['', [Validators.required] ],
+      type: ['', [Validators.required] ],
+      floor: ['', [Validators.required]],
 
+  });
   }
 
   ngOnInit(){
@@ -90,6 +97,14 @@ export class PlaneSwitchComponent  {
       this.floors[k]= j;
     }
     
+  }
+
+  onDeleteConfirm(event): void{
+    if(window.confirm('Esta seguro de que quiere borrar esto?')){
+      event.confirm.resolve();
+    }else{
+      event.confirm.reject();
+    }
   }
 
 }

@@ -34,7 +34,8 @@
 
         </form>
             
-            <ng2-smart-table [settings]="settings" [source]="source" (userRowSelect)="downloadPlane($event)">
+            <ng2-smart-table [settings]="settings" [source]="source" (userRowSelect)="downloadPlane($event)"
+            (deleteConfirm)="onDeleteConfirm($event)">
             </ng2-smart-table>
     
             <div class="row">

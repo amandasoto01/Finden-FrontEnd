@@ -20,11 +20,11 @@ export class CreateUserComponent implements OnInit {
       label: 'DTI' 
     },
     {
-      value: '2',
+      value: '3',
       label: 'Contratista' 
     },
     {
-      value: '3',
+      value: '2',
       label: 'Mesa de Servicios' 
     }
   ];
