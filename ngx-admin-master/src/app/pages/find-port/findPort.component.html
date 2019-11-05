@@ -2,7 +2,7 @@
     <nb-card-header>
         <h1>Buscar Puerto</h1>
     </nb-card-header>
-  
+
   <nb-card-body>
 
     <form name="findPortForm" [formGroup]="findPortForm">
@@ -11,26 +11,29 @@
                 <div class="col-sm-6">
                     <input  matInput formControlName="port" class="form-control"  placeholder="#port">
                 </div>
+                <div *ngIf="findPortForm.value.port == '' && findPortForm.controls.port.touched" style="color: red;">
+                  El nombre es obligatorio
+                </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <button (click)="findPort()" class="btn btn-primary">Buscar</button>
-                </div>    
+                    <button (click)="findPort()" [disabled]="findPortForm.status =='INVALID'" class="btn btn-primary">Buscar</button>
+                </div>
                 <div class="col-sm-4">
                     <button (click)="cleanView()" class="btn btn-primary">Habilitar nueva busqueda</button>
-                </div>     
+                </div>
             </div>
     </form>
 
-          
+
     <div class="" id="portInfo" *ngIf=infoPortModel.found>
         <br><br>
         <div style="text-align: center;">
             <h5>Resultados de la busqueda:</h5>
         </div>
         <br>
-        
+
         <div class="row">
             <div class="col">
                 <label class="col-sm-2 col-form-label"><strong>Piso:</strong></label>
@@ -61,11 +64,11 @@
                 <label class="col-sm-4 col-form-label">{{infoPortModel.speed}}</label>
             </div>
         </div>
-        
-            
+
+
     </div>
 
-   
+
 
   </nb-card-body>
 </nb-card>
