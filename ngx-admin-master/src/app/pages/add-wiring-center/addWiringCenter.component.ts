@@ -22,17 +22,16 @@ export class AddWiringCenterComponent implements OnInit {
   wiringCenter: WiringCenterModel;
   buildings: BuildingBasicInformationModel[];
   floors = [];
+  tableData = [];
 
+  
   settings = {
+    hideSubHeader: true,
     actions:{
       delete: true,
-      edit: false,
-      position: 'right',
-    },add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    }, 
+      position: 'left',
+      add: false,
+    },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
@@ -63,6 +62,9 @@ export class AddWiringCenterComponent implements OnInit {
         wiringName: ['', [Validators.required] ],
         type: ['', [Validators.required] ],
         floor: ['', [Validators.required]],
+        switch: ['', [Validators.required]],
+        idPort: ['', [Validators.required]],
+
 
     });
     this.wiringCenterService.getBuildingsMock().subscribe( data => {
@@ -72,22 +74,6 @@ export class AddWiringCenterComponent implements OnInit {
   }
 
   generateFloors($event){
-    //console.log("evento");
-    //console.log($event);
-   let min;
-   let max; 
-
-    for(let i=0; i<this.buildings.length; i++){
-      if($event == this.buildings[i].num){
-        min = this.buildings[i].min;
-        max = this.buildings[i].max;
-        break;
-      }
-    }
-    
-    for(let j=min, k=0; j<=max; j++,k++){
-      this.floors[k] = j;
-    }
     
   }
 
@@ -108,9 +94,23 @@ export class AddWiringCenterComponent implements OnInit {
 
   }
 
+  addPortSwitch(){
+      this.tableData.push({
+        'switch': this.addWiringCenterForm.value.switch,
+        'numberofports': this.addWiringCenterForm.value.idPort,
+      });
+      this.source.load(this.tableData);
+      this.source.refresh();
+  }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
+      for(let i = 0; i<this.tableData.length; ++i){
+        if(this.tableData[i].switch == event.data.switch && this.tableData[i].numberofports == event.data.numberofports){
+          this.tableData.splice(i, 1);
+          break;
+        }
+      }
       event.confirm.resolve();
     } else {
       event.confirm.reject();

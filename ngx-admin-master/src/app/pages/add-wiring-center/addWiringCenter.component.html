@@ -34,9 +34,34 @@
               </nb-select>
           </div>
 
+          <div class="form-group">
+            <br>
+            <div class="row">
+                <div class="col"></div>
+                <label for="inputEmail3" class="col">Switch:</label>
+                <div class="col-1"></div>
+                <label for="inputEmail3" class="col">ID del primer puerto:</label>
+                <div class="col"></div>
+            
+            </div>
+            <div class="row">
+              <div class="col"></div>
+              <input type="number" matInput formControlName="switch" class="col form-control"  placeholder="name">
+              <div class="col-1"></div>
+              <input type="number" matInput formControlName="idPort" class="col form-control"  placeholder="name">
+              <div class="col"></div>
+            </div>
+          </div>
+
+          <div class="form-group row space">
+            <div class="col-sm-12" style="text-align: center;">
+              <button (click)="addPortSwitch()" class="btn btn-primary" >Agregar Switch</button>
+            </div>
+          </div>
+
           <h1>Informacion de los switch</h1>
 
-          <ng2-smart-table [settings]="settings" [source]="source">
+          <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
           </ng2-smart-table>
 
           <div class="form-group row space">
