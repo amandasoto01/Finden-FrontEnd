@@ -29,8 +29,9 @@ export class AddWiringCenterComponent implements OnInit {
     hideSubHeader: true,
     actions:{
       delete: true,
-      position: 'left',
+      position: 'right',
       add: false,
+      edit: false,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
