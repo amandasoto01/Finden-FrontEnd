@@ -21,11 +21,11 @@ export class CreateUserComponent implements OnInit {
     },
     {
       value: '3',
-      label: 'Contratista' 
+      label: 'Contratista' //planos menos aprovar plano 
     },
     {
       value: '2',
-      label: 'Mesa de Servicios' 
+      label: 'Mesa de Servicios'  //find port y modificar usuario
     }
   ];
 

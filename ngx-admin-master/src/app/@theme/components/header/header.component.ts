@@ -6,6 +6,7 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -48,7 +49,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UserData,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              private headerService: HeaderService,) {
+              private headerService: HeaderService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -96,7 +98,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
+    if(this.getRol() == 'DTI'){
+      this.router.navigate(['/pages/homedti']);
+    }
     return false;
   }
 

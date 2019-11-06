@@ -21,6 +21,7 @@ import { PlaneStateComponent } from './plane-state/planeState.component';
 import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
 import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
+import { HomeDtiComponent } from './home-dti/homeDti.component';
 
 import {
   NbActionsModule,
@@ -70,6 +71,7 @@ import {
     ModifyAccountComponent,
     PlaneHistoryComponent,
     PlaneSwitchComponent,
+    HomeDtiComponent,
   ],
 })
 export class PagesModule {

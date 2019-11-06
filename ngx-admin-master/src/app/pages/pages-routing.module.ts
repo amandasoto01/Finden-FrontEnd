@@ -17,6 +17,7 @@ import { PlaneStateComponent } from './plane-state/planeState.component';
 import { ModifyAccountComponent } from './modify-account/modifyAccount.component';
 import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
+import { HomeDtiComponent } from './home-dti/homeDti.component';
 
 import { AuthGuard } from "../security/guard";
 
@@ -174,6 +175,13 @@ const routes: Routes = [{
     },{
       path: 'planeswitch',
       component: PlaneSwitchComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['DTI']
+      }
+    },{
+      path:'homedti',
+      component: HomeDtiComponent,
       canActivate: [AuthGuard],
       data:{
         roles: ['DTI']

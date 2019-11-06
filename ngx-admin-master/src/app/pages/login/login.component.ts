@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('rol', data.res);
     console.log(data);
     //Navigate to dashboard after login using router
-    this.router.navigate(['/pages/uploadplane']);  
+    this.router.navigate(['/pages/homedti']);  
     },err=>{
       alert("error en el servidor");
       //this.router.navigate(['/pages/uploadplane']); 
