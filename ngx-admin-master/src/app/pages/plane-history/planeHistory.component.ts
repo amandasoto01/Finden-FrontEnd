@@ -11,6 +11,7 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { BuildingBasicInformationModel} from '../../entities/request/buildingBasicInformationModel';
 import { DownloadButtonComponent } from '../download-button/downloadButton.component';
 import { PlaneHistoryTableModel } from '../../entities/internal/planeHistoryTableModel';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ import { PlaneHistoryTableModel } from '../../entities/internal/planeHistoryTabl
 
 export class PlaneHistoryComponent  {
   buildings: BuildingBasicInformationModel[];
+  building: BuildingBasicInformationModel;
   addSwitchesForm: FormGroup;
   floors = [];
   planeHistoryTableModel: PlaneHistoryTableModel;
@@ -74,7 +76,8 @@ export class PlaneHistoryComponent  {
       building: ['' ],
       floor: ['' ],
     });
-    this.planeHistoryTableModel = new PlaneHistoryTableModel();
+    this.building = new BuildingBasicInformationModel();
+    /*this.planeHistoryTableModel = new PlaneHistoryTableModel();
     this.planeHistoryTableModel.approvedBy='yo';
     this.planeHistoryTableModel.name='yo';
     this.planeHistoryTableModel.date='yo';
@@ -82,10 +85,11 @@ export class PlaneHistoryComponent  {
     this.planeHistoryTableModel.version='1';
     this.planeHistoryTableModel.descarga.name='yo';
     this.planeHistoryTableModel.descarga.version='1';
-    this.source.add(this.planeHistoryTableModel);
+    this.source.add(this.planeHistoryTableModel);*/
   }
 
   ngOnInit(){
+
     this.planeHistoryService.getBuildings().subscribe( data => {
        console.log(data);
       // this.source.load(data);
@@ -108,10 +112,20 @@ export class PlaneHistoryComponent  {
   }
 
   getPlaneBuilding(){
-    this.addSwitchesForm.value.building;
-    this.addSwitchesForm.value.floor; 
+    this.building.name = this.addSwitchesForm.value.building;
+    this.building.number = this.addSwitchesForm.value.floor; 
+    alert("92592592595")
+    this.planeHistoryService.getPlaneBuilding(this.building).subscribe(data =>{
+      this.planeHistoryTableModel = data;
+      this.source.add(this.planeHistoryTableModel);
+    },err=>{
+      alert("error en el servidor");
+    }); 
   }
 
+  getPlanes(){
+
+  }
   onDeleteConfirm(event): void {
     if (window.confirm('Esta seguro que desea borrar este plano?')) {
       event.confirm.resolve();

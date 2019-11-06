@@ -13,7 +13,7 @@ export class CreateUserService {
   };
   
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   create ( user ): Observable<any> {

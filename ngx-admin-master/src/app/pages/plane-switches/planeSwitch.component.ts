@@ -80,23 +80,7 @@ export class PlaneSwitchComponent  {
   }
 
   generateFloors($event){
-    console.log("evento");
-    //console.log($event);
-   let min;
-   let max; 
-
-    for(let i=0; i<this.buildings.length; i++){
-      if($event == this.buildings[i].num){
-        min = this.buildings[i].min;
-        max = this.buildings[i].max;
-        break;
-      }
-    }
-    
-    for(let j=min, k=0; j<=max; j++,k++){
-      this.floors[k]= j;
-    }
-    
+    alert("Se debe llamar el servicio de pisos");
   }
 
   onDeleteConfirm(event): void{

@@ -13,12 +13,12 @@ export class ManageAccountService {
   };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   getUsers (): Observable<any> {
      console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/getUsers', this.httpOptions);
+     return this.http.get(environment.apiUrl + '/getUsers', this.httpOptions);
    }
 
   delete ( user ): Observable<any> {

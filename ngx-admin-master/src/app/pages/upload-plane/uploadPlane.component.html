@@ -6,6 +6,7 @@
 
     <nb-card-body>
 
+        <form class="space" name="uploadPlaneForm" [formGroup]="uploadPlaneForm">
         <div class="box">
                 <div class="search-input-wrapper mx-12 m-md-0"
                 fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
@@ -14,17 +15,22 @@
                 <!--<mat-icon class="secondary-text">search</mat-icon>-->
                 </label>
                 <div floatPlaceholder="never" fxFlex="1 0 auto">
-                    <input  class="btn btn-primary" type="file" id="fileUpload" (change)="onFileChange($event)" #fileInput
-                    accept="application/dxf">
+                    <input  class="btn btn-primary" type="file" (change)="onFileChange($event)" #fileInput
+                    accept="application/dxf"  matInput formControlName="fileUpload">
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Descripcion:</label>
+                <textarea class="col-sm-6" matInput formControlName="description" _ngcontent-cca-c25="" fullwidth="" nbinput="" placeholder="Text Area" rows="5" shape="round" ng-reflect-shape="round" ng-reflect-full-width="" class="input-full-width size-medium shape-round"></textarea>
             </div>
 
             <div id="showPlane">
             </div>
             <br>
-            <button type="button" class="btn btn-primary">Subir Plano</button>
+            <button type="button" class="btn btn-primary" (click)="submitPlane()">Subir Plano</button>
         </div>
-        
+    </form>
         
 
     </nb-card-body>

@@ -20,8 +20,9 @@ export class PlaneHistoryService {
      return this.http.get(environment.apiUrl + '/getBuildings', this.httpOptions);
   }
 
+  //toca modificar el servicio
   getPlanes(): Observable<any> {
-     return this.http.post(environment.apiUrl + '/getPlaneBuilding', this.httpOptions);
+     return this.http.post(environment.apiUrl + '/getAllPlanes', this.httpOptions);
    }
 
    getFloors(building): Observable <any>{

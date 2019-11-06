@@ -8,10 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class UploadPlaneService {
 
+  
+  httpOptions = {
+    headers: new HttpHeaders({})
+  };
+
   constructor(private http: HttpClient) {
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
-  uploadPlane( plane ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/addPlane', plane);
+  uploadPlane( plane , description ): Observable<any> {
+    this.httpOptions.headers = this.httpOptions.headers.set('description', 'lala');
+       return this.http.post(environment.apiUrl + '/addPlane', plane, this.httpOptions);
    }
 }

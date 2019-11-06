@@ -21,7 +21,7 @@ export class CreateUserComponent implements OnInit {
     },
     {
       value: '3',
-      label: 'Contratista' //planos menos aprovar plano 
+      label: 'Contratista' //planos menos aprobar plano 
     },
     {
       value: '2',
@@ -50,7 +50,7 @@ export class CreateUserComponent implements OnInit {
     this.userModel.name = value.name;
     this.userModel.email = value.email;
     this.userModel.password = value.password;
-    this.userModel.type = value.type.value;
+    this.userModel.type = value.type;
 
     console.log("funcion ");
     console.log(this.userModel);

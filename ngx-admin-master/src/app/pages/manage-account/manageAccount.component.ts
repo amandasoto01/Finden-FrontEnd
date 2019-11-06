@@ -50,10 +50,13 @@ export class ManageAccountComponent  {
   }
 
   ngOnInit(){
-    this.manageAccountService.getUsersMock().subscribe( data => {
+    this.manageAccountService.getUsers().subscribe( data => {
        console.log(data);
        this.source.load(data);
-    })
+    },err=>{
+      console.log(err);
+      alert(err.error.text);
+    });
   }
 
 

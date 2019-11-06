@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UploadPlaneService } from './uploadPlane.service';
+
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-uploadPlane',
@@ -7,10 +9,16 @@ import { UploadPlaneService } from './uploadPlane.service';
   styleUrls: ['./uploadPlane.component.css']
 })
 export class UploadPlaneComponent implements OnInit {
-  filePlane: any;
-  
-  constructor(private uploadPlaneService: UploadPlaneService) { 
+  filePlane: File;
+  uploadPlaneForm: FormGroup;
 
+  
+  constructor(private uploadPlaneService: UploadPlaneService,
+              private formBuilder: FormBuilder) { 
+    this.uploadPlaneForm = this.formBuilder.group ({
+      description: ['' ],
+      fileUpload: [''],
+    });
   }
 
   ngOnInit() {
@@ -18,20 +26,16 @@ export class UploadPlaneComponent implements OnInit {
   
   onFileChange(event) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      console.log(file);
-      this.filePlane = file;
-     // this.form.get('fileUpload').setValue(file);
+      this.filePlane = event.target.files[0];
     }
   }
 
-  private submitPlane(): any {
-    const data = this.filePlane;
-    const input = new FormData();
-    input.append('name', data.name);
-    input.append('file', data.fileUpload);
+  submitPlane() {
+    let input = new FormData();
+    input.append('File', this.filePlane, this.filePlane.name);
+    console.log(input);
     //return input;
-    this.uploadPlaneService.uploadPlane( input ).subscribe( 
+    this.uploadPlaneService.uploadPlane( input, this.uploadPlaneForm.value.description ).subscribe( 
       data =>{ 
         if( data.resultado == "Yes" )
           alert(" Se subio exitosamente! ");
