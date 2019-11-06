@@ -16,11 +16,11 @@ export class ModifyAccountService {
   }
 
   create ( user ): Observable<any> {
-       return this.http.put(environment.apiUrl + '/updateUser', user);
+       return this.http.post(environment.apiUrl + '/updateUser', user);
    }
 
    getAllUsers(): Observable<any>{
-      return this.http.get(environment.apiUrl + '/getUsers', this.httpOptions);
+      return this.http.post(environment.apiUrl + '/getUsers', this.httpOptions);
    }
 
    getAllUsersMock(): Observable<any>{

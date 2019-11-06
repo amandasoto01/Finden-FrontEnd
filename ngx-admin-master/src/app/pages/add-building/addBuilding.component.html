@@ -1,37 +1,37 @@
 <nb-card>
   <nb-card-header>
-      <h1>Add building</h1>
+      <h1>Agregar Edificio</h1>
   </nb-card-header>
 
 <nb-card-body>
 <form name="addBuildingForm" [formGroup]="addBuildingForm">
     <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
       <div class="col-sm-6">
         <input  matInput formControlName="name" class="form-control" placeholder="building">
       </div>
     </div>
     <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Number</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Numero:</label>
         <div class="col-sm-6">
           <input  matInput formControlName="buildingNumber" class="form-control"  placeholder="number">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Floors</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Pisos:</label>
         <div class="col-sm-6">
           <input type="number" matInput formControlName="floors" class="form-control"  placeholder="floors">
         </div>
     </div>
     <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Basements</label>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Sotanos:</label>
       <div class="col-sm-6">
         <input  type="number" matInput formControlName="basements" class="form-control" placeholder="basements">
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button (click)="addBuilding()" class="btn btn-primary">Add Building</button>
+        <button (click)="addBuilding()" class="btn btn-primary">Agregar Edificio</button>
       </div>
     </div>
   </form>

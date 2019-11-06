@@ -42,9 +42,11 @@ export class FindPortComponent implements OnInit {
         }else{
           this.infoPortModel.mac = data.mac;
           this.infoPortModel.state = data.state;
-          this.infoPortModel.description = data.description;
           this.infoPortModel.speed = data.speed;
           this.infoPortModel.found = data.found;
+          this.infoPortModel.wiringCenter = data.wiringCenter;
+          this.infoPortModel.building = data.building;
+          this.infoPortModel.floor = data.floor;
         }
     },err=>{
       alert("error en el servidor");

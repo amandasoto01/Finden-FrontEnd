@@ -1,22 +1,25 @@
 <nb-card>
     <nb-card-header>
-        <h1>Find Port</h1>
+        <h1>Buscar Puerto</h1>
     </nb-card-header>
   
   <nb-card-body>
 
     <form name="findPortForm" [formGroup]="findPortForm">
             <div class="form-group row">
-                <label for="" class="col-sm-3 col-form-label">Enter a port number:</label>
+                <label for="" class="col-sm-3 col-form-label">Nombre del puerto a buscar:</label>
                 <div class="col-sm-6">
                     <input  matInput formControlName="port" class="form-control"  placeholder="#port">
                 </div>
             </div>
             <div class="form-group row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                            <button (click)="findPort" class="btn btn-primary">Find</button>
-                    </div>     
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <button (click)="findPort()" class="btn btn-primary">Buscar</button>
+                </div>    
+                <div class="col-sm-4">
+                    <button (click)="cleanView()" class="btn btn-primary">Habilitar nueva busqueda</button>
+                </div>     
             </div>
     </form>
 
@@ -27,22 +30,38 @@
             <h5>Resultados de la busqueda:</h5>
         </div>
         <br>
-            <div class="row">
+        
+        <div class="row">
+            <div class="col">
+                <label class="col-sm-2 col-form-label"><strong>Piso:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.floor}}</label>
+            </div>
+            <div class="col">
+                <label class="col-sm-2 col-form-label"><strong>Centro de cableado:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.wiringCenter}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="col-sm-2 col-form-label"><strong>Edificio:</strong></label>
+                <label class="col-sm-2 col-form-label">{{infoPortModel.building}}</label>
+            </div>
+            <div class="col">
                 <label class="col-sm-2 col-form-label"><strong>MAC:</strong></label>
                 <label class="col-sm-2 col-form-label">{{infoPortModel.mac}}</label>
             </div>
-            <div class="row">
+        </div>
+        <div class="row">
+            <div class="col">
                 <label class="col-sm-2 col-form-label"><strong>State:</strong></label>
                 <label class="col-sm-2 col-form-label">{{infoPortModel.state}}</label>
             </div>
-            <div class="row">
-                <label class="col-sm-2 col-form-label"><strong>Description:</strong></label>
-                <label class="col-sm-2 col-form-label">{{infoPortModel.description}}</label>
-            </div>
-            <div class="row">
+            <div class="col">
                 <label class="col-sm-2 col-form-label"><strong>Speed:</strong></label>
                 <label class="col-sm-2 col-form-label">{{infoPortModel.speed}}</label>
             </div>
+        </div>
+        
             
     </div>
 

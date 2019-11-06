@@ -28,9 +28,9 @@ export class PlaneHistoryService {
 
    getBuildingsMock (): Observable<any> {
     let mockBuildings = [
-      {name: 'giraldo', num: 3, nfloors: 0 , nbasements: 0},
-      {name: 'baron', num: 2, nfloors: 0 , nbasements: 0},
-      {name: 'teologia', num: 94, nfloors: 0 , nbasements: 0}
+      {name: 'baron', num: '2', min: '-2', max:'7'},
+      {name: 'giraldo', num: '3', min: '-1', max:'5'},
+      {name: 'basicas', num: '51', min: '1', max:'5'},
     ];
     return of(mockBuildings);
   }

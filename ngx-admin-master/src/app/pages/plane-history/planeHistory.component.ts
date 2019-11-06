@@ -8,6 +8,7 @@ import { BuildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
+import { BuildingBasicInformationModel} from '../../entities/request/buildingBasicInformationModel';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
 })
 
 export class PlaneHistoryComponent  {
-  buildings: BuildingModel;
+  buildings: BuildingBasicInformationModel[];
+  addSwitchesForm: FormGroup;
+  floors = [];
 
   settings = {
     hideSubHeader: true,
@@ -65,9 +68,29 @@ export class PlaneHistoryComponent  {
     this.planeHistoryService.getBuildingsMock().subscribe( data => {
        console.log(data);
       // this.source.load(data);
-      this.buildings = new BuildingModel();
+      this.buildings = [];
       this.buildings = data;
     })
   }
 
+
+  generateFloors($event){
+    console.log("evento");
+    //console.log($event);
+   let min;
+   let max; 
+
+    for(let i=0; i<this.buildings.length; i++){
+      if($event == this.buildings[i].num){
+        min = this.buildings[i].min;
+        max = this.buildings[i].max;
+        break;
+      }
+    }
+    
+    for(let j=min, k=0; j<=max; j++,k++){
+      this.floors[k]= j;
+    }
+    
+  }
 }

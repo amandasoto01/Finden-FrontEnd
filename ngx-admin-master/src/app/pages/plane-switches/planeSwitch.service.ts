@@ -18,11 +18,11 @@ export class PlaneSwitchService {
 
   getBuildings ( ): Observable<any> {
     console.log(this.httpOptions )
-     return this.http.get(environment.apiUrl + '/getBuildings', this.httpOptions);
+     return this.http.post(environment.apiUrl + '/getBuildings', this.httpOptions);
   }
 
   getPortsFloor(edificio, piso): Observable<any>{
-    return this.http.get(environment.apiUrl + '/getPortsFloor/' + edificio + '/' + piso,  this.httpOptions);
+    return this.http.post(environment.apiUrl + '/getPortsFloor/' + edificio + '/' + piso,  this.httpOptions);
   }
 
   getBuildingsMock (): Observable<any> {

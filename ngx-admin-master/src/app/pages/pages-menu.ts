@@ -245,158 +245,158 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },*/
   {
-    title: 'Manage Accounts',
+    title: 'Manejar Cuentas',
     children: [
       {
-        title: 'Create Account',
-        link:'/pages/createuser',
-      },
-      {
-        title: 'Delete Account',
+        title: 'Manejar Cuenta',
         link: '/pages/manageaccount',
       },
       {
-        title: 'Modify Account',
+        title: 'Crear Cuenta',
+        link:'/pages/createuser',
+      },
+      {
+        title: 'Modificar Cuenta',
         link: '/pages/modifyaccount',
       }
     ]
   },
   {
-    title: 'Planes',
+    title: 'Planos',
     children: [
       {
-        title: 'Aprove plane',
+        title: 'Aprobar planos',
         link: '/pages/approveplane',
       },{
-        title: 'Plane State',
+        title: 'Estado de Planos',
         link: '/pages/planestate',
       },
       {
-        title: 'Plane history',
+        title: 'Historial de planos',
         link: '/pages/planehistory',
       },
       {
-        title: 'Upload plane',
+        title: 'Subir plano',
         link: '/pages/uploadplane',
       },
     ]
   },
   {
-    title: 'Ports',
+    title: 'Puertos',
     children:[
       {
-        title: 'Add port',
+        title: 'Agregar Puerto',
         link: '/pages/addport',
       },
       {
-        title: 'Find port',
+        title: 'Buscar Puerto',
         link: '/pages/findport',
       },
     ]
   },
   {
-    title: 'Add Building',
+    title: 'Agregar Edificio',
     link: '/pages/addbuilding',
   },{
-    title: 'Add wiringCenter',
+    title: 'Agregar Centro de cableado',
     link: '/pages/addwiringcenter',
   }
 ];
 
 export const MENU_ITEMS_DTI: NbMenuItem[] = [
   {
-    title: 'Manage Accounts',
+    title: 'Manejar Cuentas',
     children: [
       {
-        title: 'Create Account',
+        title: 'Crear Cuenta',
         link:'/pages/createuser',
       },
       {
-        title: 'Delete Account',
+        title: 'Manejar Cuenta',
         link: '/pages/manageaccount',
       },
       {
-        title: 'Modify Account',
+        title: 'Modificar Cuenta',
         link: '/pages/modifyaccount',
       }
     ]
   },
   {
-    title: 'Planes',
+    title: 'Planos',
     children: [
       {
-        title: 'Aprove plane',
+        title: 'Aprobar planos',
         link: '/pages/approveplane',
       },{
-        title: 'Plane State',
+        title: 'Estado de los planos',
         link: '/pages/planestate',
       },
       {
-        title: 'Plane history',
+        title: 'Historial de planos',
         link: '/pages/planehistory',
       },
       {
-        title: 'Upload plane',
+        title: 'Subir Plano',
         link: '/pages/uploadplane',
       },
       {
-        title: 'Plane Switches',
+        title: 'Agregar Switches',
         link: '/pages/planeswitch',
       }
     ]
   },
   {
-    title: 'Ports',
+    title: 'Puertos',
     children:[
       {
-        title: 'Add port',
+        title: 'Agregar puertos',
         link: '/pages/addport',
       },
       {
-        title: 'Find port',
+        title: 'Buscar puerto',
         link: '/pages/findport',
       },
     ]
   },
   {
-    title: 'Add Building',
+    title: 'Agregar Edificio',
     link: '/pages/addbuilding',
   },{
-    title: 'Add wiringCenter',
+    title: 'Agregar Centro de cableado',
     link: '/pages/addwiringcenter',
   }
 ];
 
 export const MENU_ITEMS_CONTRATISTA: NbMenuItem[] = [
   {
-    title: 'Planes',
+    title: 'Planos',
     children: [
       {
-        title: 'Upload plane',
+        title: 'Subir Planos',
         link: '/pages/uploadplane',
       },
       {
-        title: 'Plane State',
+        title: 'Estado de los planos',
         link: '/pages/planestate',
       },
     ]
   },
   {
-    title: 'Add Building',
+    title: 'Agregar Edificio',
     link: '/pages/addbuilding',
   },
   {
-    title: 'Add wiringCenter',
+    title: 'Agregar Centro de cableado',
     link: '/pages/addwiringcenter',
   }
 ];
 
 export const MENU_ITEMS_MESA_DE_SERVICIOS: NbMenuItem[] = [
   {
-    title: 'Ports',
+    title: 'Puertos',
     children:[
       {
-        title: 'Find port',
+        title: 'Buscar puertos',
         link: '/pages/findport',
       },
     ]

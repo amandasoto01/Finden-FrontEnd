@@ -19,12 +19,12 @@ export class ApprovePlaneService {
 
   getPlanes (): Observable<any> {
      console.log(this.httpOptions )
-     return this.http.get(environment.apiUrl + '/getPlanes', this.httpOptions);
+     return this.http.post(environment.apiUrl + '/getPlanes', this.httpOptions);
    }
 
    approvePlane(plane): Observable<any>{
     console.log(this.httpOptions )
-    return this.http.put(environment.apiUrl + '/approve', this.httpOptions, plane);
+    return this.http.post(environment.apiUrl + '/approve', this.httpOptions, plane);
    }
 
    getUsersMock (): Observable<any> {
@@ -36,6 +36,6 @@ export class ApprovePlaneService {
   }
 
   downloadPlane(plane): Observable<any>{
-    return this.http.get(environment.apiUrl + '/approve' + 'plane', this.httpOptions);
+    return this.http.post(environment.apiUrl + '/approve' + 'plane', this.httpOptions);
    }
 }

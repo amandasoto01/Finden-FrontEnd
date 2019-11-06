@@ -6,38 +6,38 @@
   <nb-card-body>
     <form name="createUserForm" [formGroup]="createUserForm">
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Correo:</label>
               <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-6">
                   <nb-option *ngFor="let v of users" value="{{v.email}}">{{v.email}}</nb-option>
               </nb-select>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Name:</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
             <input  matInput formControlName="name" class="form-control" placeholder="Username">
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña:</label>
           <div class="col-sm-10">
             <input  matInput formControlName="password" type="password" class="form-control" placeholder="Password">
           </div>
         </div>
         <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password:</label>
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirmar Contraseña:</label>
             <div class="col-sm-10">
               <input  matInput formControlName="confirmPassword" type="password" class="form-control" placeholder="Password">
             </div>
           </div>
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Type:</label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo:</label>
             <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10">
               <nb-option *ngFor="let v of availableTypes" value="{{v.value}}">{{v.label}}</nb-option>
             </nb-select>
         </div>
         <div class="form-group row">
           <div class="col-sm-10">
-            <button (click)="createAccount()" class="btn btn-primary">Modify Account</button>
+            <button (click)="createAccount()" class="btn btn-primary">Modificar Cuenta</button>
           </div>
         </div>
       </form>
