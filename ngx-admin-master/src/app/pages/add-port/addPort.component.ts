@@ -4,7 +4,8 @@ import { PortModel } from "../../entities/request/portModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
-import { BuildingModel } from "../../entities/request/buildingModel";
+import { BuildingBasicInformationModel } from "../../entities/request/buildingBasicInformationModel";
+import { AvailablePortTypes } from '../../entities/internal/availablePortTypes';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,15 @@ export class AddPortComponent implements OnInit {
 
   portModel: PortModel;
   addPortForm: FormGroup;
-  buildings: BuildingModel;
+  buildings: BuildingBasicInformationModel[];
+  floors: number[];
+  wiringCenters: string[];
+  switch: number[];
+  portTypes: AvailablePortTypes[] = [];
 
   constructor( private addPortService: AddPortService,
                private formBuilder: FormBuilder) {
     this.portModel = new PortModel();
-
   }
 
   ngOnInit() {
@@ -33,10 +37,34 @@ export class AddPortComponent implements OnInit {
         type: ['',[Validators.required]],
         wiringCenter: ['',[Validators.required]],
     });
-    this.addPortService.getBuildingsMock().subscribe( data => {
+    
+    this.portTypes.push(new AvailablePortTypes('VD', 'Voz y Datos'));
+    this.portTypes.push(new AvailablePortTypes('D', 'Datos'));
+    this.portTypes.push(new AvailablePortTypes('V', 'Voz'));
+
+    this.addPortService.getBuildings().subscribe( data => {
        console.log(data);
        this.buildings = data;
-     })
+     },err=>{
+      console.log(err);
+      alert(err.error.text);
+    })
+     
+     this.addPortService.getWiringCenter().subscribe( data => {
+      console.log(data);
+      this.wiringCenters = data;
+     },err=>{
+      console.log(err);
+      alert(err.error.text);
+    })
+
+    this.addPortService.getSwitches().subscribe( data => {
+      console.log(data);
+      this.switch = data;
+     },err=>{
+      console.log(err);
+      alert(err.error.text);
+    })
   }
 
 
@@ -63,5 +91,13 @@ export class AddPortComponent implements OnInit {
     });
   }
 
+  generateFloors($event){
+    console.log($event)
+    this.addPortService.getFloors($event).subscribe(
+      data => {
+        this.floors = data;
+      }
+    )
+  }
 
 }

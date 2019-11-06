@@ -53,5 +53,8 @@ export class FindPortComponent implements OnInit {
     });
   }
 
+  cleanView(){
+    this.infoPortModel = new InfoPortModel();
+  }
  
 }

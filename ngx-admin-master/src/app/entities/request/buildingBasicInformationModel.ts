@@ -1,13 +1,9 @@
 export class BuildingBasicInformationModel {
     name: string;
-    num: number;
-    min: number;
-    max: number;
+    number: number;
 
     constructor (){
         this.name = '';
-        this.num = 0;
-        this.min = 0;
-        this.max = 0;
+        this.number = 0;
     }
 }
