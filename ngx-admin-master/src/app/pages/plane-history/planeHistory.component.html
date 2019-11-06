@@ -1,26 +1,35 @@
 <nb-card>
-    <nb-card-header>
-        <h1>Plane History</h1>
+    <nb-card-header style="text-align: center;">
+        <h1>Historial de planos</h1>
     </nb-card-header>
   
     <nb-card-body>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Edificio:</label>
-            <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10" (ngModelChange)="generateFloors($event)">
-                 <nb-option *ngFor="let v of buildings" value="{{v.num}}"> {{v.num}} - {{v.name}}</nb-option>
-            </nb-select>
-            <div class="col-sm-10">
-                <button (click)="selectBuilding()" class="btn btn-primary">Seleccionar Edificio</button>
+        <form name="addSwitchesForm" [formGroup]="addSwitchesForm" style="margin-left: 15%;">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Edificio: </label>
+                <nb-select formControlName="building" placeholder="Seleccione" class="col-sm-10" (ngModelChange)="generateFloors($event)">
+                    <nb-option *ngFor="let v of buildings" value="{{v.number}}"> {{v.number}} - {{v.name}}</nb-option>
+                </nb-select>
             </div>
+            
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Piso: </label>
+                <nb-select formControlName="floor" placeholder="Seleccione" class="col-sm-10">
+                    <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
+                </nb-select>
+            </div>
+        </form>
+
+        <div class="row" style="margin: 20px 25%;">
+            <div class="col-sm-6">
+                <button (click)="getPlaneBuilding()" class="btn btn-primary">Buscar Planos</button>
+            </div>
+            <div class="col-sm-6">
+              <button (click)="getPlanes()" class="btn btn-primary">Obtener todos los Planos</button>
+            </div>
+           
         </div>
-        
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Floor</label>
-            <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-10">
-                <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
-            </nb-select>
-        </div>
+      
     <!--
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Plane name:</label>

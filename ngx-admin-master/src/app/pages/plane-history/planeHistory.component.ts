@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { BuildingBasicInformationModel} from '../../entities/request/buildingBasicInformationModel';
+import { DownloadButtonComponent } from '../download-button/downloadButton.component';
+import { PlaneHistoryTableModel } from '../../entities/internal/planeHistoryTableModel';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class PlaneHistoryComponent  {
   buildings: BuildingBasicInformationModel[];
   addSwitchesForm: FormGroup;
   floors = [];
+  planeHistoryTableModel: PlaneHistoryTableModel;
 
   settings = {
     hideSubHeader: true,
@@ -41,18 +44,23 @@ export class PlaneHistoryComponent  {
         title: 'Description',
         type: 'string',
       },
-      Version: {
+      version: {
         title: 'Version',
         type: 'number',
       }, 
-      ApprovedBy:{
+      approvedBy:{
           title: 'Approved By',
           type: 'string',    
       },
-      Date:{
+      date:{
           title: 'Date',
           type: 'string',
-      }
+      },
+      descarga:{
+        title:'Descargar',
+        type: 'custom',
+        renderComponent: DownloadButtonComponent,
+      },
 
 
     },
@@ -60,37 +68,58 @@ export class PlaneHistoryComponent  {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private planeHistoryService: PlaneHistoryService) {
-
+  constructor(private planeHistoryService: PlaneHistoryService,
+              private formBuilder: FormBuilder) {
+    this.addSwitchesForm = this.formBuilder.group ({
+      building: ['' ],
+      floor: ['' ],
+    });
+    this.planeHistoryTableModel = new PlaneHistoryTableModel();
+    this.planeHistoryTableModel.approvedBy='yo';
+    this.planeHistoryTableModel.name='yo';
+    this.planeHistoryTableModel.date='yo';
+    this.planeHistoryTableModel.description='yo';
+    this.planeHistoryTableModel.version='1';
+    this.planeHistoryTableModel.descarga.name='yo';
+    this.planeHistoryTableModel.descarga.version='1';
+    this.source.add(this.planeHistoryTableModel);
   }
 
   ngOnInit(){
-    this.planeHistoryService.getBuildingsMock().subscribe( data => {
+    this.planeHistoryService.getBuildings().subscribe( data => {
        console.log(data);
       // this.source.load(data);
       this.buildings = [];
       this.buildings = data;
-    })
+    },err=>{
+      alert("error en el servidor");
+    });
   }
 
 
   generateFloors($event){
-    console.log("evento");
+    //console.log("evento");
     //console.log($event);
-   let min;
-   let max; 
-
-    for(let i=0; i<this.buildings.length; i++){
-      if($event == this.buildings[i].num){
-        min = this.buildings[i].min;
-        max = this.buildings[i].max;
-        break;
-      }
-    }
-    
-    for(let j=min, k=0; j<=max; j++,k++){
-      this.floors[k]= j;
-    }
-    
+    this.planeHistoryService.getFloors($event).subscribe(data =>{
+      this.floors = data;
+    },err=>{
+      alert("error en el servidor");
+    }); 
   }
+
+  getPlaneBuilding(){
+    this.addSwitchesForm.value.building;
+    this.addSwitchesForm.value.floor; 
+  }
+
+  onDeleteConfirm(event): void {
+    if (window.confirm('Esta seguro que desea borrar este plano?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  
+
 }
