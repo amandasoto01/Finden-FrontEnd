@@ -26,12 +26,7 @@ export class ApprovePlaneComponent  {
 
   settings = {
     hideSubHeader: true,
-    actions:{
-      delete: false,
-      edit: false,
-      position: 'right',
-      hide: true,
-    },
+    actions:false,
     columns: {
       name: {
         title: 'Plano',
