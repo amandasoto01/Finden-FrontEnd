@@ -11,6 +11,8 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 import { TablePlanesModel } from "../../entities/internal/planesTableModel";
 import { PlaneModel } from "../../entities/request/planeModel";
+import { ApprovePlaneButtonComponent } from '../approve-plane-button/approvePlaneButton.component';
+import { DownloadButtonComponent } from '../download-button/downloadButton.component';
 
 @Component({
   selector: 'app-login',
@@ -32,16 +34,26 @@ export class ApprovePlaneComponent  {
     },
     columns: {
       name: {
-        title: 'Name',
+        title: 'Plano',
         type: 'string',
       },
       description: {
-        title: 'Description',
+        title: 'Descripcion',
         type: 'string',
       },
       version: {
         title: 'Version',
-        type: 'any',
+        type: 'number',
+      },
+      descarga:{
+        title:'Descargar',
+        type: 'custom',
+        renderComponent: DownloadButtonComponent,
+      },
+      accion:{
+        title:'Accion',
+        type: 'custom',
+        renderComponent: ApprovePlaneButtonComponent,
       },
     },
   };
@@ -59,13 +71,8 @@ export class ApprovePlaneComponent  {
     this.approvePlaneForm = this.formBuilder.group({
         namePlane: ['', [Validators.required]],
         comments: ['', []],
-
     });
 
-    this.approvePlaneService.getUsersMock().subscribe( data => {
-       console.log(data);
-       this.source.load(data);
-    })
 
     this.approvePlaneService.getPlanes().subscribe( data => {
         if(data == true){
@@ -84,7 +91,6 @@ export class ApprovePlaneComponent  {
     this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
       const value = this.approvePlaneForm.value;
       this.planeModel.name = value.namePlane;
-      this.planeModel.comments = value.comments;
       this.planeModel.status = true;
     });
   }
@@ -93,7 +99,6 @@ export class ApprovePlaneComponent  {
     this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
       const value = this.approvePlaneForm.value;
       this.planeModel.name = value.namePlane;
-      this.planeModel.comments = value.comments;
       this.planeModel.status = false;
     });
   }

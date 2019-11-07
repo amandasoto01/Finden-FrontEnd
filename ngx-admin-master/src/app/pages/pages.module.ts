@@ -36,6 +36,7 @@ import {
 } from '@nebular/theme';
 import { DownloadButtonComponent } from './download-button/downloadButton.component';
 import { ModifyUserButtonComponent } from './modify-user-button/modifyUserButton.component';
+import { ApprovePlaneButtonComponent } from "./approve-plane-button/approvePlaneButton.component";
 
 @NgModule({
   imports: [
@@ -75,11 +76,13 @@ import { ModifyUserButtonComponent } from './modify-user-button/modifyUserButton
     PlaneSwitchComponent,
     HomeDtiComponent,
     DownloadButtonComponent,
-    ModifyUserButtonComponent,
+    ModifyUserButtonComponent, 
+    ApprovePlaneButtonComponent,
   ],
   entryComponents:[
     DownloadButtonComponent,
     ModifyUserButtonComponent,
+    ApprovePlaneButtonComponent,
   ]
 })
 export class PagesModule {

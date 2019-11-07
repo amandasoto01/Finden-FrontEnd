@@ -30,7 +30,7 @@ export class PlaneHistoryService {
    }
 
    getPlaneBuilding(building): Observable<any>{
-      return this.http.post(environment.apiUrl + '/getPlaneBuilding', building, this.httpOptions);
+      return this.http.post(environment.apiUrl + '/getAllPlanesDTI', building, this.httpOptions);
    }
   
 }

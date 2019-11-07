@@ -3,11 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class ApprovePlaneService {
+export class DownloadButtonService {
 
    httpOptions = {
     headers: new HttpHeaders({})
@@ -17,13 +16,9 @@ export class ApprovePlaneService {
     this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
-  getPlanes (): Observable<any> {
-     console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/getAllPlanes', 'a', this.httpOptions);
-   }
-
-   approvePlane(plane): Observable<any>{
-    console.log(this.httpOptions )
-    return this.http.post(environment.apiUrl + '/approve', this.httpOptions, plane);
-   }
+  downloadFile(data): Observable<any> {
+    let headers = new HttpHeaders().set('email', localStorage.getItem('email') );
+    return this.http.post(environment.apiUrl + '/getPlane', data , {headers: headers, responseType: 'arraybuffer'});
+  }
+  
 }

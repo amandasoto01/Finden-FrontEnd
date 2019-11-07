@@ -1,11 +1,11 @@
 export class PlaneModel {
     name: string;
-    comments: string;
+    email: string;
     status: boolean;
     
     constructor (){
         this.name = '';
-        this.comments = '';
+        this.email = '';
         this.status = false;
     }
 }

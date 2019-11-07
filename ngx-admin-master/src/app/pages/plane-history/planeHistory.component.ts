@@ -24,7 +24,7 @@ export class PlaneHistoryComponent  {
   building: BuildingBasicInformationModel;
   addSwitchesForm: FormGroup;
   floors = [];
-  planeHistoryTableModel: PlaneHistoryTableModel;
+  planeHistoryTableModel: PlaneHistoryTableModel[];
 
   settings = {
     hideSubHeader: true,
@@ -39,25 +39,21 @@ export class PlaneHistoryComponent  {
     },
     columns: {
       name: {
-        title: 'Name',
+        title: 'Plano',
         type: 'string',
       },
       description: {
-        title: 'Description',
+        title: 'Descripcion',
+        type: 'string',
+      },
+      status:{
+        title: "Estado",
         type: 'string',
       },
       version: {
         title: 'Version',
         type: 'number',
       }, 
-      approvedBy:{
-          title: 'Approved By',
-          type: 'string',    
-      },
-      date:{
-          title: 'Date',
-          type: 'string',
-      },
       descarga:{
         title:'Descargar',
         type: 'custom',
@@ -77,15 +73,7 @@ export class PlaneHistoryComponent  {
       floor: ['' ],
     });
     this.building = new BuildingBasicInformationModel();
-    /*this.planeHistoryTableModel = new PlaneHistoryTableModel();
-    this.planeHistoryTableModel.approvedBy='yo';
-    this.planeHistoryTableModel.name='yo';
-    this.planeHistoryTableModel.date='yo';
-    this.planeHistoryTableModel.description='yo';
-    this.planeHistoryTableModel.version='1';
-    this.planeHistoryTableModel.descarga.name='yo';
-    this.planeHistoryTableModel.descarga.version='1';
-    this.source.add(this.planeHistoryTableModel);*/
+    this.planeHistoryTableModel = []
   }
 
   ngOnInit(){
@@ -112,12 +100,24 @@ export class PlaneHistoryComponent  {
   }
 
   getPlaneBuilding(){
-    this.building.name = this.addSwitchesForm.value.building;
-    this.building.number = this.addSwitchesForm.value.floor; 
+    let aux = {
+      building: this.addSwitchesForm.value.building,
+      floor: this.addSwitchesForm.value.floor,
+    }
 
-    this.planeHistoryService.getPlaneBuilding(this.building).subscribe(data =>{
-      this.planeHistoryTableModel = data;
-      this.source.add(this.planeHistoryTableModel);
+    this.planeHistoryService.getPlaneBuilding(aux).subscribe(data =>{
+      this.planeHistoryTableModel = [];
+      for(let i = 0; i<data.length; i++){
+        let newModel = new PlaneHistoryTableModel();
+        newModel.name=data[i].name;
+        newModel.description=data[i].description;
+        newModel.version=data[i].version;
+        newModel.status=data[i].status;
+        newModel.descarga.name=data[i].name;
+        newModel.descarga.version=data[i].version != '0' ? data[i].version : null;
+        this.planeHistoryTableModel.push(newModel);
+      }
+      this.source.load(this.planeHistoryTableModel)
     },err=>{
       alert("error en el servidor");
     }); 

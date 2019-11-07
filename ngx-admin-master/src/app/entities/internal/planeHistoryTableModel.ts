@@ -1,9 +1,8 @@
 export class PlaneHistoryTableModel {
     name: string;
     description: string;
+    status: string;
     version: any;
-    approvedBy: string;
-    date: string;
     descarga: {
         name: string;
         version: string;
@@ -13,8 +12,7 @@ export class PlaneHistoryTableModel {
         this.name = '';
         this.description = '';
         this.version = '';
-        this.approvedBy = '';
-        this.date = '';
+        this.status = '';
         this.descarga = {
             'name': '',
             'version': ''
