@@ -94,7 +94,7 @@ const routes: Routes = [{
       component: UploadPlaneComponent,
       canActivate: [AuthGuard],
       data: {
-        roles: ['DTI', 'Contratista', 'Mesa de Servicios']
+        roles: ['DTI', 'contratista', 'mesa de servicios']
       }
     },
     {
@@ -110,7 +110,7 @@ const routes: Routes = [{
       component: FindPortComponent,
       canActivate: [AuthGuard],
       data: {
-        roles: ['DTI', 'Mesa de Servicios']
+        roles: ['DTI', 'mesa de servicios']
       }
     },
     {
@@ -156,7 +156,7 @@ const routes: Routes = [{
       component: PlaneStateComponent,
       canActivate: [AuthGuard],
       data:{
-        roles: ['DTI', 'Contratista']
+        roles: ['DTI', 'contratista']
       }
     },{
       path: 'planehistory',

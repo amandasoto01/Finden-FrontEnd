@@ -373,14 +373,6 @@ export const MENU_ITEMS_CONTRATISTA: NbMenuItem[] = [
       },
     ]
   },
-  {
-    title: 'Agregar Edificio',
-    link: '/pages/addbuilding',
-  },
-  {
-    title: 'Agregar Centro de cableado',
-    link: '/pages/addwiringcenter',
-  }
 ];
 
 export const MENU_ITEMS_MESA_DE_SERVICIOS: NbMenuItem[] = [

@@ -41,8 +41,16 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('email', this.loginModel.email); //Para guardar en la sesion 
     localStorage.setItem('rol', data.res);
     console.log(data);
-    //Navigate to dashboard after login using router
-    this.router.navigate(['/pages/homedti']);  
+    
+    if(data.res == 'DTI'){
+      //Navigate to dashboard after login using router  
+      this.router.navigate(['/pages/homedti']); 
+    }else if(data.res =='contratista'){
+      this.router.navigate(['pages/uploadplane']);
+    }else if(data.res=='mesa de servicios'){
+      this.router.navigate(['pages/findport']);
+    }
+     
     },err=>{
       alert("error en el servidor");
       //this.router.navigate(['/pages/uploadplane']); 

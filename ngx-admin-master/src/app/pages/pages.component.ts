@@ -14,5 +14,5 @@ import { MENU_ITEMS, MENU_ITEMS_DTI, MENU_ITEMS_CONTRATISTA, MENU_ITEMS_MESA_DE_
 })
 export class PagesComponent {
 
-  menu = localStorage.getItem('rol') == 'DTI' ? MENU_ITEMS_DTI : localStorage.getItem('rol') == 'Contratista' ? MENU_ITEMS_CONTRATISTA : localStorage.getItem('rol') == 'Mesa de Servicios' ? MENU_ITEMS_MESA_DE_SERVICIOS : MENU_ITEMS  ;
+  menu = localStorage.getItem('rol') == 'DTI' ? MENU_ITEMS_DTI : localStorage.getItem('rol') == 'contratista' ? MENU_ITEMS_CONTRATISTA : localStorage.getItem('rol') == 'mesa de servicios' ? MENU_ITEMS_MESA_DE_SERVICIOS : MENU_ITEMS  ;
 }
