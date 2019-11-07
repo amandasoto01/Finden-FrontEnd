@@ -27,15 +27,11 @@ export class ApprovePlaneButtonComponent {
   constructor(private http: HttpClient,
               private approvePlaneService: ApprovePlaneService,
               private router: Router) {
-        this.planeModel = new PlaneModel();
-        this.planeModel.email = this.value.email;
-        this.planeModel.name = this.value.name;
-        this.planeModel.status = this.value.status;
   }
  
   approve(){
     
-    this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
+    this.approvePlaneService.approvePlane(this.value.name).subscribe( data =>{
       alert(data.res);
       this.router.navigate(['/pages/homedti']);
     }, err => {
@@ -44,7 +40,7 @@ export class ApprovePlaneButtonComponent {
   }
 
   reject(){
-    this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
+    this.approvePlaneService.approvePlane(this.value.name).subscribe( data =>{
         alert(data.res);
         this.router.navigate(['/pages/homedti']);
     }, err => {

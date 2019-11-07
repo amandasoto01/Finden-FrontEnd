@@ -21,7 +21,7 @@ import { DownloadButtonComponent } from '../download-button/downloadButton.compo
 })
 
 export class ApprovePlaneComponent  {
-  tablePlaneModel: TablePlanesModel;
+  tablePlaneModel: TablePlanesModel[];
   planeModel: PlaneModel;
 
   settings = {
@@ -58,7 +58,7 @@ export class ApprovePlaneComponent  {
 
   constructor(private approvePlaneService: ApprovePlaneService,
               private formBuilder: FormBuilder) {
-         this.tablePlaneModel = new TablePlanesModel();
+         this.tablePlaneModel = [];
   }
 
   ngOnInit(){
@@ -69,14 +69,26 @@ export class ApprovePlaneComponent  {
     });
 
 
+    
+      
+
     this.approvePlaneService.getPlanes().subscribe( data => {
-    this.tablePlaneModel = data;
-      this.source.load(data);  
-      if(data == true){
-            alert("Planos");
-          }else{
-            alert("No se pudo obtener los planos");
-          }
+      //this.tablePlaneModel = data;
+      
+      this.tablePlaneModel = [];
+      for(let i = 0; i<data.length; i++){
+        let newModel = new TablePlanesModel();
+        newModel.name=data[i].name;
+        newModel.description=data[i].description;
+        newModel.version=data[i].version;
+        newModel.descarga.name=data[i].name;
+        newModel.descarga.version=data[i].version != '0' ? data[i].version : null;
+        newModel.acciones.name = data[i].name;
+        this.tablePlaneModel.push(newModel);
+      }
+      
+      this.source.load(this.tablePlaneModel);  
+      
         },err=>{
           console.log(err);
           alert(err.error.text);
@@ -84,36 +96,5 @@ export class ApprovePlaneComponent  {
   }
 
 
-  approve(){
-    this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
-      const value = this.approvePlaneForm.value;
-      this.planeModel.name = value.namePlane;
-      this.planeModel.status = true;
-    });
-  }
-
-  reject(){
-    this.approvePlaneService.approvePlane(this.planeModel).subscribe( data =>{
-      const value = this.approvePlaneForm.value;
-      this.planeModel.name = value.namePlane;
-      this.planeModel.status = false;
-    });
-  }
-
-  /*downloadPlane(planeName){
-    this.approvePlaneService.downloadPlane(planeName).subscribe( data =>{
-      this.generateFile(data);
-    });
-  }
-
-  generateFile(data){
-    const blob = new Blob([data], {
-      'type': 'application/dxf'
-    });
-    const a = document.createElement('a');
-    const url = window.URL.createObjectURL(blob);
-    a.href = url;
-    a.download = this.planeModel.name + '.dxf';
-    a.click();
-  }**/
+ 
 }
