@@ -63,7 +63,7 @@ export class ApprovePlaneComponent  {
 
   constructor(private approvePlaneService: ApprovePlaneService,
               private formBuilder: FormBuilder) {
-
+         this.tablePlaneModel = new TablePlanesModel();
   }
 
   ngOnInit(){
@@ -75,7 +75,9 @@ export class ApprovePlaneComponent  {
 
 
     this.approvePlaneService.getPlanes().subscribe( data => {
-        if(data == true){
+    this.tablePlaneModel = data;
+      this.source.load(data);  
+      if(data == true){
             alert("Planos");
           }else{
             alert("No se pudo obtener los planos");
@@ -103,7 +105,7 @@ export class ApprovePlaneComponent  {
     });
   }
 
-  downloadPlane(planeName){
+  /*downloadPlane(planeName){
     this.approvePlaneService.downloadPlane(planeName).subscribe( data =>{
       this.generateFile(data);
     });
@@ -118,5 +120,5 @@ export class ApprovePlaneComponent  {
     a.href = url;
     a.download = this.planeModel.name + '.dxf';
     a.click();
-  }
+  }**/
 }

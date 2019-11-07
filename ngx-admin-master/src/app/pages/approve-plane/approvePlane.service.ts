@@ -19,7 +19,7 @@ export class ApprovePlaneService {
 
   getPlanes (): Observable<any> {
      console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/getAllPlanes', 'a', this.httpOptions);
+     return this.http.post(environment.apiUrl + '/getAllPlanes', localStorage.getItem('email'), this.httpOptions);
    }
 
    approvePlane(plane): Observable<any>{
