@@ -23,7 +23,7 @@ export class ManageAccountService {
 
   delete ( user ): Observable<any> {
      console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/DeleteUser', user, this.httpOptions);
+     return this.http.post(environment.apiUrl + '/deleteUser', user, this.httpOptions);
    }
 
    getUsersMock (): Observable<any> {

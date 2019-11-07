@@ -83,7 +83,7 @@ export class ManageAccountComponent  {
       event.confirm.resolve();
     
     this.manageAccountService.delete(event.data.email).subscribe( data => {
-        if(data == true){
+        if(data.request){
           alert("Se borro el usuario");
         }else{
           alert("No se pudo borrar al usuario");
