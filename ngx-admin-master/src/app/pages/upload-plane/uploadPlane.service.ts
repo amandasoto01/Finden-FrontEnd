@@ -18,7 +18,11 @@ export class UploadPlaneService {
   }
 
   uploadPlane( plane , description ): Observable<any> {
-    this.httpOptions.headers = this.httpOptions.headers.set('description', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('description', description);
        return this.http.post(environment.apiUrl + '/addPlane', plane, this.httpOptions);
+   }
+
+   checkPlane( plane ): Observable<any> {
+       return this.http.post(environment.apiUrl + '/checkPlane', plane, this.httpOptions);
    }
 }

@@ -13,13 +13,13 @@ export class WiringCenterService {
   };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
 
    getBuildings ( ): Observable<any> {
      console.log(this.httpOptions )
-      return this.http.post(environment.apiUrl + '/getBuildings', this.httpOptions);
+      return this.http.get(environment.apiUrl + '/getBuildings', this.httpOptions);
    }
 
    addWiringCenter (data): Observable<any> {
@@ -27,13 +27,7 @@ export class WiringCenterService {
      return this.http.post(environment.apiUrl + '/addWiringCenter',data, this.httpOptions);
   }
 
-
-   getBuildingsMock (): Observable<any> {
-      let mockBuildings = [
-        {name: 'baron', num: '2', min: '-2', max:'7'},
-        {name: 'giraldo', num: '3', min: '-1', max:'5'},
-        {name: 'basicas', num: '51', min: '1', max:'5'},
-      ];
-      return of(mockBuildings);
-    }
+    getFloors(building): Observable <any>{
+    return this.http.post(environment.apiUrl + '/getFloors', building, this.httpOptions);
+  }
 }

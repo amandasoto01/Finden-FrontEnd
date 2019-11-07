@@ -13,7 +13,7 @@ export class AddBuildingService {
   };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   create ( building ): Observable<any> {

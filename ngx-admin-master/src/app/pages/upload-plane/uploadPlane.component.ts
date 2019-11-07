@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UploadPlaneService } from './uploadPlane.service';
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uploadPlane',
@@ -14,7 +15,8 @@ export class UploadPlaneComponent implements OnInit {
 
   
   constructor(private uploadPlaneService: UploadPlaneService,
-              private formBuilder: FormBuilder) { 
+              private formBuilder: FormBuilder,
+              private router: Router) { 
     this.uploadPlaneForm = this.formBuilder.group ({
       description: ['' ],
       fileUpload: [''],
@@ -35,16 +37,24 @@ export class UploadPlaneComponent implements OnInit {
     input.append('File', this.filePlane, this.filePlane.name);
     console.log(input);
     //return input;
-    this.uploadPlaneService.uploadPlane( input, this.uploadPlaneForm.value.description ).subscribe( 
-      data =>{ 
-        if( data.resultado == "Yes" )
-          alert(" Se subio exitosamente! ");
-        else
-          alert(" No se subio el archivo! ");
-       },
-      err => { 
-        alert("Hubo un error subiendo el archivo");
-       }
-    );
+
+    this.uploadPlaneService.checkPlane(input).subscribe(data =>{
+        if(data.request && confirm(data.res)){
+          this.uploadPlaneService.uploadPlane( input, this.uploadPlaneForm.value.description ).subscribe( 
+            data2 =>{ 
+              
+                alert(data2.res);
+                this.router.navigate(['/pages/homedti']);
+             },
+            err => { 
+              alert("Hubo un error subiendo el archivo");
+             }
+          );
+        }
+    }, err =>{
+      alert("El plano tiene un error");
+    });
+
+
   }
 }

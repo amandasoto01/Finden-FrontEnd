@@ -4,6 +4,7 @@ import { BuildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class AddBuildingComponent implements OnInit {
 
 
   constructor( private addBuildingService: AddBuildingService,
-               private formBuilder: FormBuilder) {
+               private formBuilder: FormBuilder,
+               private router: Router) {
     this.buildingModel = new BuildingModel();
 
   }
@@ -34,17 +36,21 @@ export class AddBuildingComponent implements OnInit {
   addBuilding(){
     const value = this.addBuildingForm.value;
     console.log(value);
-    this.buildingModel.name = value.name;
-    this.buildingModel.buildingNumber = value.buildingNumber;
-    this.buildingModel.floor = value.floor;
-    this.buildingModel.basement = value.basement;
+    let aux = {
+      name: value.name,
+      number: value.buildingNumber,
+      nfloors: value.floors,
+      nbasement: value.basements,
+    }
+    
 
     console.log("funcion ");
     console.log(this.buildingModel);
 
-    this.addBuildingService.create(this.buildingModel).subscribe(data => {
+    this.addBuildingService.create(aux).subscribe(data => {
       //localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion
-      alert(data);
+      alert("Creado exitosamente");
+      this.router.navigate(['/pages/homedti']);
     },err=>{
       //console.log(err);
       //alert(err.error.text);
