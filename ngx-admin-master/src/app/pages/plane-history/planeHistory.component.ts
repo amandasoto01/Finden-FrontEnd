@@ -114,7 +114,7 @@ export class PlaneHistoryComponent  {
   getPlaneBuilding(){
     this.building.name = this.addSwitchesForm.value.building;
     this.building.number = this.addSwitchesForm.value.floor; 
-    alert("92592592595")
+
     this.planeHistoryService.getPlaneBuilding(this.building).subscribe(data =>{
       this.planeHistoryTableModel = data;
       this.source.add(this.planeHistoryTableModel);

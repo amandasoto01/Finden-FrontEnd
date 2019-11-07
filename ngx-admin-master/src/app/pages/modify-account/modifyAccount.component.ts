@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { AllUsersModel } from "../../entities/request/allUsersModel";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class ModifyAccountComponent implements OnInit {
   userModel: UserModel;
   createUserForm: FormGroup;
   users: AllUsersModel;
+  email: string;
 
   availableTypes: AvailableTypes[] = [
     {
@@ -33,47 +35,48 @@ export class ModifyAccountComponent implements OnInit {
   ];
 
   constructor( private modifyAccountService: ModifyAccountService,
-               private formBuilder: FormBuilder) { 
+               private formBuilder: FormBuilder,
+               private activatedRoute: ActivatedRoute,
+               private router: Router) { 
     this.userModel = new UserModel();
     this.users = new AllUsersModel();
   }
 
   ngOnInit() {
+    this.email=this.activatedRoute.snapshot.paramMap.get('email');
     this.createUserForm = this.formBuilder.group({
         name: [''],
         email: ['', [Validators.required, Validators.email] ],
-        password: ['' ],
-        confirmPassword: [''],
         type: ['']
     });
 
-    this.modifyAccountService.getAllUsersMock().subscribe( data => {
-      console.log(data);
-      this.users = data;
-    })
+    this.modifyAccountService.getUser(this.email).subscribe(data =>{
+      this.createUserForm.setValue({
+        name: data.name,
+        email: data.email,
+        type: "" + data.type,
+      })
+      this.userModel.password = data.password;
+      this.userModel.type = data.type;
+    });
+
   }
   
-  createAccount(){
+  updateUser(){
     const value = this.createUserForm.value;
     console.log(value);
     this.userModel.name = value.name;
     this.userModel.email = value.email;
     this.userModel.type = value.type.value;
 
-    console.log("funcion ");
-    console.log(this.userModel);
+    this.modifyAccountService.updateUser(this.userModel).subscribe( data => {
+      alert(data.res);
+      this.router.navigate(['/pages/manageaccount']);
+    }, err =>{
+      alert("Error en el servidor");
+    });
 
-    if(this.userModel.password != value.confirmPassword){
-        alert("Contrase;as distintas");
-       return; 
-    }else{
-      this.userModel.password = value.password;
-      this.modifyAccountService.create(this.userModel).subscribe(data => {
-        localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion 
-        },err=>{
-          alert("error en el servidor");
-        });
-    }
+
   }
 
  

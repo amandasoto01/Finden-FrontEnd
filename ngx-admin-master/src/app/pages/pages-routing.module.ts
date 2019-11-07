@@ -166,7 +166,7 @@ const routes: Routes = [{
         roles: ['DTI']
       }
     },{
-      path: 'modifyaccount',
+      path: 'modifyaccount/:email',
       component: ModifyAccountComponent,
       canActivate: [AuthGuard],
       data:{

@@ -8,6 +8,8 @@ import { BuildingBasicInformationModel } from "../../entities/request/buildingBa
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
+import { SwitchModel } from "../../entities/request/switchModel";
+import { PortTableModel } from '../../entities/request/portTableModel';
 
 @Component({
   selector: 'app-login',
@@ -19,14 +21,20 @@ export class PlaneSwitchComponent  {
   buildings: BuildingBasicInformationModel[];
   addSwitchesForm: FormGroup;
   floors = [];
-
+  switch: SwitchModel;
 
   settings = {
     hideSubHeader: true,
     actions:{
       columnTitle: 'Delete',
-      edit: false,
+      edit: true,
       position: 'right',
+    },
+    edit:{
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -36,10 +44,21 @@ export class PlaneSwitchComponent  {
       port: {
         title: 'Port',
         type: 'string',
+        editable: false,
       },
       type: {
         title: 'Type',
-        type: 'string',
+        editor: {
+          type: 'list',
+          config: {
+            selectText: 'Select',
+            list: [
+              {value: 'VD', title:'Voz y Datos'},
+              {value: 'D', title:'Datos'},
+              {value: 'V', title:'Voz'},
+            ],
+          },
+        },
       },
       wiringCenter: {
         title: 'Wiring Center',
@@ -48,7 +67,7 @@ export class PlaneSwitchComponent  {
       switch:{
           title: 'Switch',
           type: 'number',    
-      },
+      },  
       portSwitch:{
           title: 'Port in switch',
           type: 'integer',
@@ -62,16 +81,19 @@ export class PlaneSwitchComponent  {
 
   constructor(private planeSwitchService: PlaneSwitchService,  private formBuilder: FormBuilder) {
     this.addSwitchesForm = this.formBuilder.group({
+      building: ['', [Validators.required]],
       idWiring: ['', [Validators.required]],
       wiringName: ['', [Validators.required] ],
       type: ['', [Validators.required] ],
       floor: ['', [Validators.required]],
 
   });
+
+    this.switch = new SwitchModel();
   }
 
   ngOnInit(){
-    this.planeSwitchService.getBuildingsMock().subscribe( data => {
+    this.planeSwitchService.getBuildings().subscribe( data => {
        console.log(data);
       // this.source.load(data);
       this.buildings = [];
@@ -80,7 +102,12 @@ export class PlaneSwitchComponent  {
   }
 
   generateFloors($event){
-    alert("Se debe llamar el servicio de pisos");
+    this.planeSwitchService.getFloors($event).subscribe( data => {
+        console.log(data);
+      this.floors = data;
+    },err=>{
+      alert("error en el servidor");
+    });
   }
 
   onDeleteConfirm(event): void{
@@ -90,5 +117,50 @@ export class PlaneSwitchComponent  {
       event.confirm.reject();
     }
   }
+
+  getPorts(){
+    this.planeSwitchService.getPortsFloor(this.addSwitchesForm.value.building, this.addSwitchesForm.value.floor).subscribe( data => {
+        console.log(data);
+        for(let i = 0; i<data.length; i++){
+          console.log(data[i]);
+          console.log(data[i].port);
+          let row = new PortTableModel();
+          row.port = data[i].port;
+          console.log(row);
+          this.switch.ports.push(row);
+        }
+        this.source.load(this.switch.ports);
+    },err=>{
+      alert("error en el servidor");
+    });
+  }
+
+  onEditConfirm(event){
+    console.log(event.newData);
+    for(let i = 0; i < this.switch.ports.length; i++){
+      if(this.switch.ports[i].port == event.newData.port){
+          this.switch.ports[i].switch = event.newData.switch;
+          this.switch.ports[i].portSwitch = event.newData.portSwitch;
+          this.switch.ports[i].type = event.newData.type;
+          this.switch.ports[i].wiringCenter = event.newData.wiringCenter;
+          break;
+      }
+    }
+    event.confirm.resolve();
+  }
+
+  saveInfo(){
+    this.switch.building = this.addSwitchesForm.value.building;
+    this.switch.floor = this.addSwitchesForm.value.floor;
+
+
+    this.planeSwitchService.addSwitch(this.switch).subscribe( data => {
+          //console.log(data);
+        this.floors = data;
+      },err=>{
+        alert("error en el servidor");
+      });
+  }
+  
 
 }

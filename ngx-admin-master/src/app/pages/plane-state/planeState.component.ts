@@ -18,12 +18,7 @@ export class PlaneStateComponent  {
 
   settings = {
     hideSubHeader: true,
-    actions:{
-      delete: false,
-      edit: false,
-      position: 'right',
-      hide: true,
-    },
+    actions:false,
     columns: {
       name: {
         title: 'Name',
@@ -47,7 +42,7 @@ export class PlaneStateComponent  {
   }
 
   ngOnInit(){
-    this.planeStateServices.getPlanesMock().subscribe( data => {
+    this.planeStateServices.getAllPlanes().subscribe( data => {
        console.log(data);
        this.source.load(data);
     })

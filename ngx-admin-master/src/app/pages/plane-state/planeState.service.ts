@@ -13,7 +13,7 @@ export class PlaneStateService {
   };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   getAllPlanes (): Observable<any> {
@@ -32,12 +32,4 @@ export class PlaneStateService {
   }
 
 
-
-   getPlanesMock (): Observable<any> {
-      let mockPlanes = [
-        {name: 'Fernando Baron', description: 'Segundo piso', status: false},
-        {name: 'Gabriel Girlado', description: 'Sotano uno', status: true}
-      ];
-      return of(mockPlanes);
-    }
 }

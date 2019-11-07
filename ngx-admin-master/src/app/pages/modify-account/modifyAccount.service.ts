@@ -12,7 +12,7 @@ export class ModifyAccountService {
   };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   create ( user ): Observable<any> {
@@ -23,12 +23,12 @@ export class ModifyAccountService {
       return this.http.post(environment.apiUrl + '/getUsers', this.httpOptions);
    }
 
-   getAllUsersMock(): Observable<any>{
-    let mockUsers = [
-      {name: 'amanda', email: 'amanda@javeriana.edu.co', type: 'DTI'},
-      {name: 'bastos', email: 'bastos@javeriana.edu.co', type: 'DTI'},
-      {name: 'javier', email: 'javier@javeriana.edu.co', type: 'DTI'}
-    ];
-    return of(mockUsers);
-   }
+   getUser(email): Observable<any>{
+    return this.http.post(environment.apiUrl + '/getUser',email, this.httpOptions);
+ }
+
+    updateUser(user): Observable<any>{
+      return this.http.post(environment.apiUrl + '/updateUser',user, this.httpOptions);
+    }
+  
 }

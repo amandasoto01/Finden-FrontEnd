@@ -255,10 +255,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Crear Cuenta',
         link:'/pages/createuser',
       },
-      {
-        title: 'Modificar Cuenta',
-        link: '/pages/modifyaccount',
-      }
     ]
   },
   {
@@ -315,10 +311,6 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
         title: 'Manejar Cuenta',
         link: '/pages/manageaccount',
       },
-      {
-        title: 'Modificar Cuenta',
-        link: '/pages/modifyaccount',
-      }
     ]
   },
   {

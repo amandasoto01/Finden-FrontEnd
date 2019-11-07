@@ -7,6 +7,7 @@ import { ManageAccountService } from './manageAccount.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
+import { ModifyUserButtonComponent } from "../modify-user-button/modifyUserButton.component";
 
 @Component({
   selector: 'app-login',
@@ -40,6 +41,11 @@ export class ManageAccountComponent  {
         title: 'Type',
         type: 'string',
       },
+      modify:{
+        title: 'Modificar',
+        type: 'custom',
+        renderComponent: ModifyUserButtonComponent,
+      },
     },
   };
 
@@ -51,8 +57,17 @@ export class ManageAccountComponent  {
 
   ngOnInit(){
     this.manageAccountService.getUsers().subscribe( data => {
-       console.log(data);
-       this.source.load(data);
+      let arr = [];
+      for( let i = 0; i < data.length; i++){
+        let aux = {
+          email: data[i].email,
+          name: data[i].name,
+          type: data[i].type,
+          modify: data[i].email,
+        }
+        arr.push(aux);
+      } 
+       this.source.load(arr);
     },err=>{
       console.log(err);
       alert(err.error.text);

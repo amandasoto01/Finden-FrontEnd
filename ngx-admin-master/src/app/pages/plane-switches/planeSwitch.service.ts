@@ -18,20 +18,19 @@ export class PlaneSwitchService {
 
   getBuildings ( ): Observable<any> {
     console.log(this.httpOptions )
-     return this.http.post(environment.apiUrl + '/getBuildings', this.httpOptions);
+     return this.http.get(environment.apiUrl + '/getBuildings', this.httpOptions);
+  }
+
+  getFloors(building): Observable <any>{
+    return this.http.post(environment.apiUrl + '/getFloors', building, this.httpOptions);
   }
 
   getPortsFloor(edificio, piso): Observable<any>{
-    return this.http.post(environment.apiUrl + '/getPortsFloor/' + edificio + '/' + piso,  this.httpOptions);
+    return this.http.post(environment.apiUrl + '/getPortsFloor/' + edificio + '/' + piso, '',  this.httpOptions);
   }
 
-  getBuildingsMock (): Observable<any> {
-    let mockBuildings = [
-      {name: 'baron', num: '2', min: '-2', max:'7'},
-      {name: 'giraldo', num: '3', min: '-1', max:'5'},
-      {name: 'basicas', num: '51', min: '1', max:'5'},
-    ];
-    return of(mockBuildings);
+  addSwitch(portSwitches): Observable<any>{
+    return this.http.put(environment.apiUrl + '/switches', portSwitches,  this.httpOptions);
   }
   
 }
