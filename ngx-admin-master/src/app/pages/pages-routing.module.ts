@@ -118,7 +118,7 @@ const routes: Routes = [{
       component: AddBuildingComponent,
       canActivate: [AuthGuard],
       data: {
-        roles: ['DTI', 'Contratista']
+        roles: ['DTI']
       }
     },
     {
@@ -126,7 +126,7 @@ const routes: Routes = [{
       component: AddWiringCenterComponent,
       canActivate: [AuthGuard],
       data: {
-        roles: ['DTI', 'Contratista']
+        roles: ['DTI']
       }
     },
     {

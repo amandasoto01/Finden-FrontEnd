@@ -50,7 +50,8 @@ export class PlaneStateComponent  {
 
   approvedPlanes(){
     this.planeStateServices.getApprovedPlanes().subscribe(data=>{
-        this.source.load(data);
+      console.log(data);  
+      this.source.load(data);
     },err=>{
         console.log(err);
         alert(err.error.text);

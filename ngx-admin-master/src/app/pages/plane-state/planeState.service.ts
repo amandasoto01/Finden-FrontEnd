@@ -18,17 +18,17 @@ export class PlaneStateService {
 
   getAllPlanes (): Observable<any> {
      console.log(this.httpOptions )
-     return this.http.get(environment.apiUrl + '/getAllPlanes', this.httpOptions);
+     return this.http.post(environment.apiUrl + '/getAllPlanes', localStorage.getItem('email'),this.httpOptions);
    }
 
   getRejectedPlanes (): Observable<any> {
     console.log(this.httpOptions )
-    return this.http.get(environment.apiUrl + '/getRejectedPlanes', this.httpOptions);
+    return this.http.post(environment.apiUrl + '/getRejectedPlanes',  localStorage.getItem('email'), this.httpOptions);
   }
 
   getApprovedPlanes (): Observable<any> {
     console.log(this.httpOptions )
-    return this.http.get(environment.apiUrl + '/getApprovedPlanes', this.httpOptions);
+    return this.http.post(environment.apiUrl + '/getApprovedPlanes', localStorage.getItem('email'), this.httpOptions);
   }
 
 
