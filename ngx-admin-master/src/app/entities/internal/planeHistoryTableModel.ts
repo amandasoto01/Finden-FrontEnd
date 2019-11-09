@@ -7,6 +7,7 @@ export class PlaneHistoryTableModel {
         name: string;
         version: string;
     }
+    observation: string;
 
     constructor (){
         this.name = '';
@@ -17,5 +18,6 @@ export class PlaneHistoryTableModel {
             'name': '',
             'version': ''
         }
+        this.observation = '';
     }
 }

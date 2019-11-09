@@ -30,6 +30,7 @@ export class AddWiringCenterComponent implements OnInit {
   settings = {
     hideSubHeader: true,
     actions:{
+      columnTitle: 'Borrar',
       delete: true,
       position: 'right',
       add: false,
@@ -44,7 +45,7 @@ export class AddWiringCenterComponent implements OnInit {
         type: 'string',
       },
       numberofports: {
-        title: 'Number of Ports',
+        title: 'Numero de Puertos',
         type: 'string',
       },
     },
@@ -97,8 +98,12 @@ export class AddWiringCenterComponent implements OnInit {
     this.wiringCenter.id = value.id;
 
     this.wiringCenterService.addWiringCenter(this.wiringCenter).subscribe(data=>{
-        alert(data.res);
-        this.router.navigate(['/pages/homedti']);
+        if(data.request == true ){
+          alert(data.res);
+          this.router.navigate(['/pages/homedti']);
+        } else {
+          alert(data.res);
+        }
     },err=>{
         console.log(err);
         alert(err.error.text);
@@ -120,7 +125,7 @@ export class AddWiringCenterComponent implements OnInit {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm('Esta seguro que desea borrar?')) {
       for(let i = 0; i<this.tableData.length; ++i){
         if(this.tableData[i].switch == event.data.switch && this.tableData[i].numberofports == event.data.numberofports){
           this.tableData.splice(i, 1);

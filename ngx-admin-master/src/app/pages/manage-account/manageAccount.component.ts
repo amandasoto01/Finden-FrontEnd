@@ -20,7 +20,7 @@ export class ManageAccountComponent  {
   settings = {
     hideSubHeader: true,
     actions:{
-      columnTitle: 'Delete',
+      columnTitle: 'Borrar',
       edit: false,
       position: 'right',
     },
@@ -30,15 +30,15 @@ export class ManageAccountComponent  {
     },
     columns: {
       email: {
-        title: 'Email',
+        title: 'Correo',
         type: 'number',
       },
       name: {
-        title: 'Name',
+        title: 'Nombre',
         type: 'string',
       },
       type: {
-        title: 'Type',
+        title: 'Tipo',
         type: 'string',
       },
       modify:{
@@ -80,7 +80,7 @@ export class ManageAccountComponent  {
   onDeleteConfirm(event): void {
     console.log("hola " + event);
     console.log("borrar " + event.data.email);
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm('Esta seguro que desea borrar el usuario?')) {
       event.confirm.resolve();
     
     this.manageAccountService.delete(event.data.email).subscribe( data => {

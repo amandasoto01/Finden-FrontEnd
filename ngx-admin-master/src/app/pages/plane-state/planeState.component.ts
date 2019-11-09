@@ -21,16 +21,20 @@ export class PlaneStateComponent  {
     actions:false,
     columns: {
       name: {
-        title: 'Name',
+        title: 'Nombre del Plano',
         type: 'number',
       },
       description: {
-        title: 'Description',
+        title: 'Descripcion',
         type: 'string',
       },
       status: {
-        title: 'Status',
+        title: 'Estados',
         type: 'boolean',
+      },
+      observation: {
+        title: 'Observacion',
+        type: 'string',
       },
     },
   };

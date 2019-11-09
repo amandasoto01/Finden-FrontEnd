@@ -61,8 +61,13 @@ export class ApprovePlaneButtonComponent {
 
     
     this.approvePlaneButtonService.approvePlane(plane).subscribe( data =>{
-        alert(data.res);
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/approveplane']));
+        if(data.request == true){
+          alert(data.res);
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/approveplane']));
+        } else { 
+          alert('Hubo un error en el servicio');
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/approveplane']));
+        }
        // this.router.navigate(['/pages/homedti']);
     }, err => {
         alert("Hubo un error");

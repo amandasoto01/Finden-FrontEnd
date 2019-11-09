@@ -161,8 +161,6 @@ export class PlaneSwitchComponent  {
 
 
     this.planeSwitchService.addSwitch(this.switch).subscribe( data => {
-          //console.log(data);
-        //this.floors = data;
         alert(data);
       },err=>{
         alert("error en el servidor");

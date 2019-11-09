@@ -42,6 +42,10 @@ export class PlaneHistoryComponent  {
         title: 'Plano',
         type: 'string',
       },
+      version: {
+        title: 'Version',
+        type: 'number',
+      },
       description: {
         title: 'Descripcion',
         type: 'string',
@@ -50,16 +54,15 @@ export class PlaneHistoryComponent  {
         title: "Estado",
         type: 'string',
       },
-      version: {
-        title: 'Version',
-        type: 'number',
+      observation:{
+        title: 'Revisado por',
+        type: 'string',
       }, 
       descarga:{
         title:'Descargar',
         type: 'custom',
         renderComponent: DownloadButtonComponent,
-      },
-
+      }
 
     },
   };
@@ -115,6 +118,7 @@ export class PlaneHistoryComponent  {
         newModel.status=data[i].status;
         newModel.descarga.name=data[i].name;
         newModel.descarga.version=data[i].version != '0' ? data[i].version : null;
+        newModel.observation = data[i].observation != null ? data[i].observation.substring(data[i].observation.indexOf(':') + 1) : '';
         this.planeHistoryTableModel.push(newModel);
       }
       this.source.load(this.planeHistoryTableModel)
@@ -123,9 +127,11 @@ export class PlaneHistoryComponent  {
     }); 
   }
 
+  /*
   getPlanes(){
 
   }
+  */
   onDeleteConfirm(event): void {
     if (window.confirm('Esta seguro que desea borrar este plano?')) {
       event.confirm.resolve();

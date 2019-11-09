@@ -48,12 +48,14 @@ export class AddBuildingComponent implements OnInit {
     console.log(this.buildingModel);
 
     this.addBuildingService.create(aux).subscribe(data => {
-      //localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion
-      alert("Creado exitosamente");
-      this.router.navigate(['/pages/homedti']);
+      if(data.request == true){
+        alert("Creado exitosamente");
+        this.router.navigate(['/pages/homedti']);
+      } else {
+        alert(data.res);
+      }
     },err=>{
-      //console.log(err);
-      //alert(err.error.text);
+      alert(err.error.text);
     });
   }
 
