@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { BuildingBasicInformationModel } from "../../entities/request/buildingBasicInformationModel";
 import { AvailablePortTypes } from '../../entities/internal/availablePortTypes';
+import { AddPortService } from '../add-port/addPort.service';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +26,12 @@ export class ModifyPortComponent implements OnInit {
 
   constructor( private modifyPortService: ModifyPortService,
                private formBuilder: FormBuilder,
-              private addPortService: AddPortService,) {
+              private addPortService: AddPortService) {
     this.portModel = new PortModel();
   }
 
   ngOnInit() {
-    this.addPortForm = this.formBuilder.group({
+    this.modifyPortForm = this.formBuilder.group({
         building: ['', [Validators.required]],
         floor: ['', [Validators.required] ],
         portName: ['', [Validators.required] ],
@@ -52,7 +53,7 @@ export class ModifyPortComponent implements OnInit {
       alert(err.error.text);
     })
 
-    this.addPortService.getfloors().subscribe( data => {
+    this.addPortService.getFloors(this.building).subscribe( data => {
        console.log(data);
        this.buildings = data;
      },err=>{
@@ -77,14 +78,15 @@ export class ModifyPortComponent implements OnInit {
   }
 
   getInfo(){
-    this.modifyPortService.getInfo().subscribe( data => {
+    this.modifyPortService.getPort(this.modifyPortForm.value.portName).subscribe( data => {
       this.modifyPortForm.setValue({
         building: data.building,
         floor: data.floor,
         wiringCenter:data.wiringCenter,
         switch: data.switch,
-        portSwitch: data.portSwitch,
+        portSwitch: data.nportSwitch,
         type: data.type,
+        portName: this.modifyPortForm.value.portName
       })
     })
   }

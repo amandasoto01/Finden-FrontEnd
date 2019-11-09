@@ -18,7 +18,7 @@ import { ModifyAccountComponent } from './modify-account/modifyAccount.component
 import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
 import { HomeDtiComponent } from './home-dti/homeDti.component';
-import { ModifyPort } from './modify-port/modifyPort.component';
+import { ModifyPortComponent } from './modify-port/modifyPort.component';
 
 import { AuthGuard } from "../security/guard";
 

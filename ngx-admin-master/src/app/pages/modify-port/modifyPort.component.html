@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header>
-      <h1 style:"text-align:center;">Modificar Puerto</h1>
+      <h1> <div>Modificar Puerto</div></h1>
   </nb-card-header>
 
 <nb-card-body>
@@ -18,7 +18,7 @@
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <button (click)="getInfo()"  [disabled]="modifyPortForm.controls.portName.status =='INVALID'" class="btn btn-primary">Agregar Puerto</button>
+      <button (click)="getInfo()"  [disabled]="modifyPortForm.controls.portName.status =='INVALID'" class="btn btn-primary">Buscar Puerto</button>
     </div>
   </div>
 
@@ -26,9 +26,7 @@
   
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Edificio:</label>
-      <nb-select formControlName="building" placeholder="Seleccione" class="col-sm-10" (ngModelChange)="generateFloors($event)">
-        <nb-option *ngFor="let v of buildings" value="{{v.number}}"> {{v.number}} - {{v.name}}</nb-option>
-      </nb-select>
+      <input  class="col-sm-6" type="building" matInput formControlName="portSwitch" class="form-control" placeholder="Numero">
       <div *ngIf="modifyPortForm.value.building == '' && modifyPortForm.controls.building.touched" style="color: red;">
         El nombre es obligatorio
       </div>
@@ -36,9 +34,7 @@
 
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Piso:</label>
-      <nb-select formControlName="floor" placeholder="Seleccione" class="col-sm-10">
-          <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
-      </nb-select>
+      <input class="col-sm-6" type="string" matInput formControlName="floor" class="form-control" placeholder="Numero">
       <div *ngIf="modifyPortForm.value.floor == '' && modifyPortForm.controls.floor.touched" style="color: red;">
         El nombre es obligatorio
       </div>
@@ -46,9 +42,7 @@
 
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Centro de cableado:</label>
-      <nb-select formControlName="wiringCenter" placeholder="Seleccione" class="col-sm-10">
-        <nb-option *ngFor="let v of wiringCenters" value="{{v}}"> {{v}}</nb-option>
-      </nb-select>
+      <input class="col-sm-6"  type="string" matInput formControlName="wiringCenter" class="form-control" placeholder="Numero">
       <div *ngIf="modifyPortForm.value.wiringCenter == '' && modifyPortForm.controls.wiringCenter.touched" style="color: red;">
         El nombre es obligatorio
       </div>
@@ -92,7 +86,7 @@
 
     <div class="form-group row">
       <div class="col-sm-10">
-        <button (click)="modifyPort()"  [disabled]="modifyPortForm.status =='INVALID'" class="btn btn-primary">Agregar Puerto</button>
+        <button (click)="modifyPort()"  [disabled]="modifyPortForm.status =='INVALID'" class="btn btn-primary">Modificar Puerto</button>
       </div>
     </div>
   </form>

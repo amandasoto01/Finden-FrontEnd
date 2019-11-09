@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { BuildingBasicInformationModel } from "../../entities/request/buildingBasicInformationModel";
 import { AvailablePortTypes } from '../../entities/internal/availablePortTypes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class AddPortComponent implements OnInit {
   portTypes: AvailablePortTypes[] = [];
 
   constructor( private addPortService: AddPortService,
-               private formBuilder: FormBuilder) {
+               private formBuilder: FormBuilder,
+               private router: Router) {
     this.portModel = new PortModel();
   }
 
@@ -84,8 +86,12 @@ export class AddPortComponent implements OnInit {
 
 
     this.addPortService.create(this.portModel).subscribe(data => {
-    //localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion
-      alert(data);
+      if(data.request == true){
+        alert(data.res);
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/addport']));
+      } else {
+        alert(data.res);
+      }
     },err=>{
       console.log(err);
       alert(err.error.text);

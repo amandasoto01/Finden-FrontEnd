@@ -32,5 +32,9 @@ export class PlaneSwitchService {
   addSwitch(portSwitches): Observable<any>{
     return this.http.post(environment.apiUrl + '/switches', portSwitches,  this.httpOptions);
   }
+
+  deletePort(port): Observable<any>{
+    return this.http.post(environment.apiUrl + '/deletePort', port,  this.httpOptions);
+  }
   
 }

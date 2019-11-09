@@ -350,7 +350,7 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
       },
       {
         title: 'Modificar puerto',
-        link: '/pages/modifyPort',
+        link: '/pages/modifyport',
       },
     ]
   },

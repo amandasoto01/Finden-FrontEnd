@@ -140,7 +140,7 @@ export class PlaneSwitchComponent  {
     for(let i = 0; i < this.switch.ports.length; i++){
       if(this.switch.ports[i].port == event.newData.port){
           this.switch.ports[i].switch = event.newData.switch;
-          this.switch.ports[i].NPortSwitch = event.newData.portSwitch;
+          this.switch.ports[i].nPortSwitch = event.newData.portSwitch;
           this.switch.ports[i].type = event.newData.type;
           this.switch.ports[i].wiringCenter = event.newData.wiringCenter;
           break;

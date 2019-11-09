@@ -22,11 +22,12 @@ export class PlaneSwitchComponent  {
   addSwitchesForm: FormGroup;
   floors = [];
   switch: SwitchModel;
+  portsToUpdate: boolean[];
 
   settings = {
     hideSubHeader: true,
     actions:{
-      columnTitle: 'Delete',
+      columnTitle: 'Eliminar',
       edit: true,
       position: 'right',
     },
@@ -42,12 +43,12 @@ export class PlaneSwitchComponent  {
     },
     columns: {
       port: {
-        title: 'Port',
+        title: 'Puerto',
         type: 'string',
         editable: false,
       },
       type: {
-        title: 'Type',
+        title: 'Tipo',
         editor: {
           type: 'list',
           config: {
@@ -61,15 +62,15 @@ export class PlaneSwitchComponent  {
         },
       },
       wiringCenter: {
-        title: 'Wiring Center',
+        title: 'Centro de Cableado',
         type: 'string',
       }, 
       switch:{
           title: 'Switch',
           type: 'number',    
       },  
-      NPortSwitch:{
-          title: 'Port in switch',
+      nPortSwitch:{
+          title: 'Puerto en el switch',
           type: 'integer',
       }
 
@@ -98,7 +99,8 @@ export class PlaneSwitchComponent  {
       // this.source.load(data);
       this.buildings = [];
       this.buildings = data; //tienen que ser los mismos datos
-    })
+      this.portsToUpdate = [];
+    });
   }
 
   generateFloors($event){
@@ -113,6 +115,18 @@ export class PlaneSwitchComponent  {
   onDeleteConfirm(event): void{
     if(window.confirm('Esta seguro de que quiere borrar esto?')){
       event.confirm.resolve();
+      for(let i = 0; i < this.switch.ports.length; i++){
+        if(this.switch.ports[i].port == event.data.port){
+            this.planeSwitchService.deletePort(this.switch.ports[i].port).subscribe( data => {
+              event.confirm.resolve();
+            },err=>{
+              alert("Error borrando el puerto");
+              event.confirm.reject();
+            });
+            this.portsToUpdate[i] = false;
+            break;
+        }
+      }
     }else{
       event.confirm.reject();
     }
@@ -126,13 +140,14 @@ export class PlaneSwitchComponent  {
           console.log(data[i].port);
           let row = new PortTableModel();
           row.port = data[i].port;
-          row.type = data[i].type;
+          row.type = data[i].type; 
           row.switch = data[i].switch;
           row.wiringCenter = data[i].writingCenter;
-          row.NPortSwitch = data[i].portInSwitch;
+          row.nPortSwitch = data[i].portInSwitch;
 
           console.log(row);
           this.switch.ports.push(row);
+          this.portsToUpdate.push(false);
         }
         this.source.load(this.switch.ports);
     },err=>{
@@ -145,10 +160,11 @@ export class PlaneSwitchComponent  {
     for(let i = 0; i < this.switch.ports.length; i++){
       if(this.switch.ports[i].port == event.newData.port){
           this.switch.ports[i].switch = event.newData.switch;
-          this.switch.ports[i].NPortSwitch = event.newData.NPortSwitch;
+          this.switch.ports[i].nPortSwitch = event.newData.NPortSwitch;
           this.switch.ports[i].type = event.newData.type;
           this.switch.ports[i].name = event.newData.port;
           this.switch.ports[i].wiringCenter = event.newData.wiringCenter;
+          this.portsToUpdate[i] = true;
           break;
       }
     }
@@ -159,13 +175,22 @@ export class PlaneSwitchComponent  {
     this.switch.building = this.addSwitchesForm.value.building;
     this.switch.floor = this.addSwitchesForm.value.floor;
 
+    let switchToUpdate: SwitchModel = new SwitchModel();
+    switchToUpdate.building = this.switch.building;
+    switchToUpdate.floor = this.switch.floor;
 
-    this.planeSwitchService.addSwitch(this.switch).subscribe( data => {
+    for(let i = 0; i<this.portsToUpdate.length; i++){
+      if(this.portsToUpdate[i] == true){
+        switchToUpdate.ports.push(this.switch.ports[i]);
+      }
+    }
+
+    this.planeSwitchService.addSwitch(switchToUpdate).subscribe( data => {
         alert(data);
       },err=>{
-        alert("error en el servidor");
+        alert(err);
       });
   }
-  
+     
 
 }
