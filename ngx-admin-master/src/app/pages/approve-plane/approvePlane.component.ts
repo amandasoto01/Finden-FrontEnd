@@ -45,7 +45,7 @@ export class ApprovePlaneComponent  {
         type: 'custom',
         renderComponent: DownloadButtonComponent,
       },
-      accion:{
+      acciones:{
         title:'Accion',
         type: 'custom',
         renderComponent: ApprovePlaneButtonComponent,
@@ -73,18 +73,21 @@ export class ApprovePlaneComponent  {
       
 
     this.approvePlaneService.getPlanes().subscribe( data => {
-      //this.tablePlaneModel = data;
-      
+      this.tablePlaneModel = data;
       this.tablePlaneModel = [];
+      
       for(let i = 0; i<data.length; i++){
         let newModel = new TablePlanesModel();
-        newModel.name=data[i].name;
-        newModel.description=data[i].description;
-        newModel.version=data[i].version;
-        newModel.descarga.name=data[i].name;
-        newModel.descarga.version=data[i].version != '0' ? data[i].version : null;
-        newModel.acciones.name = data[i].name;
-        this.tablePlaneModel.push(newModel);
+        if(data[i].status == 'en revisión'){
+          newModel.name=data[i].name;
+          newModel.description=data[i].description;
+          newModel.version=data[i].version;
+          newModel.descarga.name=data[i].name;
+          newModel.descarga.version=data[i].version != '0' ? data[i].version : null;
+          newModel.acciones.name = data[i].name;
+          this.tablePlaneModel.push(newModel);
+        }
+        console.log(newModel);
       }
       
       this.source.load(this.tablePlaneModel);  

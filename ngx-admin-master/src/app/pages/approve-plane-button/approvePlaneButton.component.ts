@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ApprovePlaneService } from '../approve-plane/approvePlane.service';
+import { ApprovePlaneButtonService } from '../approve-plane-button/approvePlaneButton.service';
 import { PlaneModel } from '../../entities/request/planeModel';
 import { Router } from '@angular/router';
 
@@ -25,44 +25,47 @@ export class ApprovePlaneButtonComponent {
   };
 
   constructor(private http: HttpClient,
-              private approvePlaneService: ApprovePlaneService,
+              private approvePlaneButtonService: ApprovePlaneButtonService,
               private router: Router) {
   }
  
   approvePlane(){
-    let plane: {
-        namePlane: string;
-        status: boolean;
+    let plane = {
+        namePlane: this.value.name,
+        status: true,
     }
-    alert(this.value);
-    console.log(this.value.name);
-    plane.namePlane = this.value.name;
-    plane.status = true;
+   /* alert(this.value);
+    console.log(this.value);
+    plane.name = this.value;
+    plane.status = true;*/
 
-    this.approvePlaneService.approvePlane(plane).subscribe( data =>{
+    this.approvePlaneButtonService.approvePlane(plane).subscribe( data =>{
       alert(data.res);
-      this.router.navigate(['/pages/homedti']);
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/approveplane']));
+     // this.router.navigate(['/pages/homedti']);
     }, err => {
-        alert("Hubo un error")
+        alert("Hubo un error");
     });
   }
 
   rejectPlane(){
-    let plane: {
-        namePlane: string;
-        status: boolean;
+    console.log("aaaacaaa " + this.value.name);
+
+    let plane= {
+        namePlane: this.value.name,
+        status: false,
     }
 
-    plane.namePlane = this.value.name;
-    plane.status = false;
+    //plane.name = this.value.name;
+    //plane.status = false;
 
-    console.log(this.value.name);
-
-    this.approvePlaneService.approvePlane(this.value.name).subscribe( data =>{
+    
+    this.approvePlaneButtonService.approvePlane(plane).subscribe( data =>{
         alert(data.res);
-        this.router.navigate(['/pages/homedti']);
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>this.router.navigate(['/pages/approveplane']));
+       // this.router.navigate(['/pages/homedti']);
     }, err => {
-        alert("Hubo un error")
+        alert("Hubo un error");
     });
   }
   

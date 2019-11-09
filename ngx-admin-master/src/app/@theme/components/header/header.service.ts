@@ -14,11 +14,11 @@ export class HeaderService {
     };
 
   constructor(private http: HttpClient) {
-    this.httpOptions.headers = this.httpOptions.headers.set('email', 'lala');
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   amountOfPlanes(): Observable<any>{
-    return this.http.get(environment.apiUrl + '/planesToApprove' , this.httpOptions);
+    return this.http.post(environment.apiUrl + '/planesToApprove' ,null,this.httpOptions);
    }
 
    getUsername(): Observable<any>{

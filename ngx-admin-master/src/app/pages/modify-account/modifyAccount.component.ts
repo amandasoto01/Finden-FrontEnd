@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ModifyAccountService } from './modifyAccount.service';
-import { UserModel } from "../../entities/request/userModel"; 
+import { UpdateUserModel } from "../../entities/request/updateUserModel"; 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { AllUsersModel } from "../../entities/request/allUsersModel";
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../@core/data/users';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ModifyAccountComponent implements OnInit {
 
-  userModel: UserModel;
+  userModel: UpdateUserModel;
   createUserForm: FormGroup;
   users: AllUsersModel;
   email: string;
-
+  
   availableTypes: AvailableTypes[] = [
     {
       value: '1',
@@ -38,7 +39,7 @@ export class ModifyAccountComponent implements OnInit {
                private formBuilder: FormBuilder,
                private activatedRoute: ActivatedRoute,
                private router: Router) { 
-    this.userModel = new UserModel();
+    this.userModel = new UpdateUserModel();
     this.users = new AllUsersModel();
   }
 
@@ -56,8 +57,8 @@ export class ModifyAccountComponent implements OnInit {
         email: data.email,
         type: "" + data.type,
       })
-      this.userModel.password = data.password;
-      this.userModel.type = data.type;
+      //this.userModel.password = data.password;
+      //this.userModel.type = data.type;
     });
 
   }
@@ -67,7 +68,8 @@ export class ModifyAccountComponent implements OnInit {
     console.log(value);
     this.userModel.name = value.name;
     this.userModel.email = value.email;
-    this.userModel.type = value.type.value;
+    this.userModel.type = value.type;
+    console.log(this.userModel);
 
     this.modifyAccountService.updateUser(this.userModel).subscribe( data => {
       alert(data.res);

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
+import { ManageAccountService } from '../manage-account/manageAccount.service';
+import { UserModel } from '../../entities/request/userModel';
 
 
 @Component({
@@ -10,12 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./modifyUserButton.component.css']
 })
 export class ModifyUserButtonComponent implements OnInit {
-
+  
+  arr: [];
 
   @Input() value;    
-  constructor(private router: Router ) { 
-
-
+  constructor(private router: Router) { 
   }
 
   ngOnInit() {

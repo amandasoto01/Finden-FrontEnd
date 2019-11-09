@@ -68,7 +68,7 @@ export class PlaneSwitchComponent  {
           title: 'Switch',
           type: 'number',    
       },  
-      portSwitch:{
+      NPortSwitch:{
           title: 'Port in switch',
           type: 'integer',
       }
@@ -126,6 +126,11 @@ export class PlaneSwitchComponent  {
           console.log(data[i].port);
           let row = new PortTableModel();
           row.port = data[i].port;
+          row.type = data[i].type;
+          row.switch = data[i].switch;
+          row.wiringCenter = data[i].writingCenter;
+          row.NPortSwitch = data[i].portInSwitch;
+
           console.log(row);
           this.switch.ports.push(row);
         }
@@ -140,8 +145,9 @@ export class PlaneSwitchComponent  {
     for(let i = 0; i < this.switch.ports.length; i++){
       if(this.switch.ports[i].port == event.newData.port){
           this.switch.ports[i].switch = event.newData.switch;
-          this.switch.ports[i].portSwitch = event.newData.portSwitch;
+          this.switch.ports[i].NPortSwitch = event.newData.NPortSwitch;
           this.switch.ports[i].type = event.newData.type;
+          this.switch.ports[i].name = event.newData.port;
           this.switch.ports[i].wiringCenter = event.newData.wiringCenter;
           break;
       }
@@ -156,7 +162,8 @@ export class PlaneSwitchComponent  {
 
     this.planeSwitchService.addSwitch(this.switch).subscribe( data => {
           //console.log(data);
-        this.floors = data;
+        //this.floors = data;
+        alert(data);
       },err=>{
         alert("error en el servidor");
       });

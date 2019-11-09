@@ -56,6 +56,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
+    /*this.headerService.getUsername().subscribe(data => {
+
+    });*/
+
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
       .subscribe((users: any) => this.user = users.nick);
@@ -113,10 +117,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   cantPlanes(){
     //alert("4"); 
-    this.cant=4;
+    //this.cant=4;
     this.headerService.amountOfPlanes().subscribe( data =>{
       this.cant=data;
     });
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/auth/login']); 
+  }
 }

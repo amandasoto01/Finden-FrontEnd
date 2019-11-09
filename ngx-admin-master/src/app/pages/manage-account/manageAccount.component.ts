@@ -57,6 +57,7 @@ export class ManageAccountComponent  {
 
   ngOnInit(){
     this.manageAccountService.getUsers().subscribe( data => {
+      console.log(data);
       let arr = [];
       for( let i = 0; i < data.length; i++){
         let aux = {

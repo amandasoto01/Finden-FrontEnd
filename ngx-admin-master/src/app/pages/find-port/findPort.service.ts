@@ -8,10 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class FindPortService {
 
+  httpOptions = {
+    headers: new HttpHeaders({})
+  };
+  
   constructor(private http: HttpClient) {
+    this.httpOptions.headers = this.httpOptions.headers.set('email', localStorage.getItem('email'));
   }
 
   findPort ( port ): Observable<any> {
-       return this.http.post(environment.apiUrl + '/findport', port);
+       return this.http.post(environment.apiUrl + '/findPort', port, this.httpOptions);
    }
 }

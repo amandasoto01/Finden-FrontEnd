@@ -31,12 +31,13 @@ export class FindPortComponent implements OnInit {
 
   findPort(){
     const value = this.findPortForm.value;
-    console.log(value);
-    console.log("funcion ");
+   // console.log(value);
+   // console.log("funcion ");
   
 
     this.findPortService.findPort(this.findPortForm.value.port).subscribe(data => {
-        if(!data.found){
+        console.log("respuesta back " + data);  
+      /*if(!data.found){
           alert ("Port not found");
           this.infoPortModel.found = data.found;
         }else{
@@ -47,7 +48,7 @@ export class FindPortComponent implements OnInit {
           this.infoPortModel.wiringCenter = data.wiringCenter;
           this.infoPortModel.building = data.building;
           this.infoPortModel.floor = data.floor;
-        }
+        }*/
     },err=>{
       alert("error en el servidor");
     });
