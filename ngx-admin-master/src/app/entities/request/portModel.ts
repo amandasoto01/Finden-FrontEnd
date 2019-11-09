@@ -6,6 +6,7 @@ export class PortModel {
     portSwitch: number;
     type: string;
     wiringCenter: string;
+    port: string;
 
     constructor (){
         this.building = '';
@@ -15,5 +16,6 @@ export class PortModel {
         this.portSwitch = 0;
         this.type = '';
         this.wiringCenter = '';
+        this.port = '';
     }
 }

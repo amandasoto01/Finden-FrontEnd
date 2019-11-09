@@ -101,6 +101,7 @@ export class ModifyPortComponent implements OnInit {
     this.portModel.portSwitch = value.portSwitch;
     this.portModel.type = value.type;
     this.portModel.wiringCenter = value.wiringCenter;
+    this.portModel.port = value.portName;
 
     console.log("funcion ");
     console.log(this.portModel);

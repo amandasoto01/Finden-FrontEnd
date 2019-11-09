@@ -11,19 +11,8 @@
         <label>{{cant}}</label>
   </div>
 
-  <div style="padding-left: 15px;">
-    <button (click)="logout()">Logout</button>
-  </div>
-</div>
-
-<div class="header-container">
-  <nb-actions size="small">
-    <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
-      <nb-user [nbContextMenu]="userMenu"
-               [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
-               [picture]="default">
-      </nb-user>
-    </nb-action>
-  </nb-actions>
+  <nb-select placeholder="Usuario" class="col-sm-3">
+    <nb-option  (click)="logout()"> Salir </nb-option>
+    <nb-option  (click)="modificarCuenta()"> Modificar Usuario </nb-option>
+  </nb-select>
 </div>

@@ -127,4 +127,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     localStorage.clear();
     this.router.navigate(['/auth/login']); 
   }
+
+  modificarCuenta(){
+    this.router.navigate(['/pages/modifyaccount']); 
+  }
 }
