@@ -68,11 +68,12 @@ export class AddPortComponent implements OnInit {
   }
 
 
-  createAccount(){
+  addPort(){
     const value = this.addPortForm.value;
     console.log(value);
     this.portModel.building = value.building;
-    this.portModel.portName = value.portName;
+    this.portModel.floor = value.floor;
+    this.portModel.name = value.portName;
     this.portModel.switch = value.switch;
     this.portModel.portSwitch = value.portSwitch;
     this.portModel.type = value.type;

@@ -1,7 +1,7 @@
 export class PortModel {
     building: string;
     floor: number;
-    portName: string;
+    name: string;
     switch: number;
     portSwitch: number;
     type: string;
@@ -10,7 +10,7 @@ export class PortModel {
     constructor (){
         this.building = '';
         this.floor = 0;
-        this.portName = '';
+        this.name = '';
         this.switch = 0;
         this.portSwitch = 0;
         this.type = '';

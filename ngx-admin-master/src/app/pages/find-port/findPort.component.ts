@@ -37,7 +37,7 @@ export class FindPortComponent implements OnInit {
 
     this.findPortService.findPort(this.findPortForm.value.port).subscribe(data => {
         console.log("respuesta back " + data);  
-      if(data.mac == null || data.mac == ''){
+      if(data == null){
           alert ("Port not found");
           this.infoPortModel.found = false;
         }else{
