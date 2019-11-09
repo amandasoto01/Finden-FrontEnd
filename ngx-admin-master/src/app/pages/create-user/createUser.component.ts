@@ -4,6 +4,7 @@ import { UserModel } from "../../entities/request/userModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { from } from 'rxjs';
 import { AvailableTypes } from "../../entities/internal/availableTypes";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class CreateUserComponent implements OnInit {
   ];
 
   constructor( private createUserService: CreateUserService,
-               private formBuilder: FormBuilder) { 
+               private formBuilder: FormBuilder,
+               private router: Router) { 
     this.userModel = new UserModel();
 
   }
@@ -42,6 +44,7 @@ export class CreateUserComponent implements OnInit {
         password: ['', [Validators.required] ],
         type: ['', [Validators.required] ]
     });
+    console.log(this.createUserForm);
   }
 
   createAccount(){
@@ -56,8 +59,13 @@ export class CreateUserComponent implements OnInit {
     console.log(this.userModel);
 
     this.createUserService.create(this.userModel).subscribe(data => {
-    localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion 
-      alert(data);
+      if(data.request == true){
+        localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion 
+        alert(data.res);
+        this.router.navigate(['/pages/manageaccount'])
+      } else {
+        alert(data.res);
+      }
     },err=>{
       console.log(err);
       alert(err.error.text);

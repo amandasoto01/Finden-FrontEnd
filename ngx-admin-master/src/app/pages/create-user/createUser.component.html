@@ -9,18 +9,30 @@
       <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
       <div class="col-sm-6">
         <input  matInput formControlName="name" class="form-control" placeholder="Username">
+        <div *ngIf="createUserForm.controls.name.status=='INVALID' && createUserForm.controls.name.touched" style="color: red;">
+          El nombre es obligatorio
+        </div>
       </div>
     </div>
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Correo:</label>
         <div class="col-sm-6">
           <input  matInput formControlName="email" class="form-control"  placeholder="Email">
+          <div *ngIf="createUserForm.value.email == '' && createUserForm.controls.email.touched" style="color: red;">
+            Correo es obligatorio
+          </div>
+          <div *ngIf="createUserForm.value.email != '' && createUserForm.controls.email.status == 'INVALID' && createUserForm.controls.email.touched" style="color: red;">
+            Correo invalido
+          </div>
         </div>
     </div>
     <div class="form-group row">
       <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña:</label>
       <div class="col-sm-6">
         <input  matInput formControlName="password" type="password" class="form-control" placeholder="Password">
+        <div *ngIf="createUserForm.controls.password.status=='INVALID' && createUserForm.controls.password.touched" style="color: red;">
+          Contraseña es obligatorio
+        </div>
       </div>
     </div>
     <div class="form-group row">
@@ -28,10 +40,13 @@
         <nb-select formControlName="type" placeholder="Seleccione" class="col-sm-6">
           <nb-option *ngFor="let v of availableTypes" value="{{v.value}}">{{v.label}}</nb-option>
         </nb-select>
+        <div *ngIf="createUserForm.controls.type.status=='INVALID' && createUserForm.controls.type.touched" style="color: red;">
+          El tipo es obligatorio
+        </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-6">
-        <button (click)="createAccount()" class="btn btn-primary">Crear Cuenta</button>
+        <button (click)="createAccount()" [disabled]="createUserForm.status=='INVALID'" class="btn btn-primary">Crear Cuenta</button>
       </div>
     </div>
   </form>
