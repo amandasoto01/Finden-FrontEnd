@@ -22,7 +22,7 @@ export class HeaderService {
    }
 
    getUsername(user): Observable<any>{
-       return this.http.post(environment.apiUrl + '/getUsername',user ,this.httpOptions);
+       return this.http.post(environment.apiUrl + '/getUsername', user ,this.httpOptions);
    }
   
 }

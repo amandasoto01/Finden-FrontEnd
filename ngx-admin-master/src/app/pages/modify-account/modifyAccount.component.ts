@@ -81,5 +81,8 @@ export class ModifyAccountComponent implements OnInit {
 
   }
 
+  getRol(){
+    return localStorage.getItem('rol');
+   }
  
 }

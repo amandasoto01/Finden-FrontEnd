@@ -4,11 +4,13 @@ import { HeaderService } from './header.service';
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators, Form } from "@angular/forms";
+import { ModifyAccountService } from '../../../pages/modify-account/modifyAccount.service';
+
 
 @Component({
   selector: 'ngx-header',
@@ -22,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   user: any;
   cant: number;
   username: string;
-  usernameForm: FormGroup;
+
 
   themes = [
     {
@@ -55,7 +57,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private breakpointService: NbMediaBreakpointsService,
               private headerService: HeaderService,
               private router: Router,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private modifyAcccountService: ModifyAccountService) {
   }
 
   ngOnInit() {
@@ -84,27 +87,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(themeName => this.currentTheme = themeName);
       
-      this.usernameForm = this.formBuilder.group({
-        username: ['', [Validators.required]],
+      let email = localStorage.getItem('email');
+      //alert(email);
+
+      this.headerService.getUsername(email).subscribe( data => { 
+        //alert(data);
+        this.username = data.username; 
+      }, err => {
+        //alert("error en el servidor");
       });
-    
-      if(this.getRol() == 'DTI'){
+
+     if(this.getRol() == 'DTI'){
         //console.log("hola");
         this.cantPlanes();
       }
 
       this.router.events.subscribe(event => {
+       // console.log(event);
         if(this.getRol() == 'DTI'){
           //console.log("hola");
           this.cantPlanes();
         }
       });
-
       
-      /*this.headerService.getUsername(localStorage.getItem('email')).subscribe( data => { 
-        this.username = data;
-      })*/
   }
+  
+  getUsername(){}
 
   ngOnDestroy() {
     this.destroy$.next();
@@ -135,6 +143,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   cantPlanes(){
     this.headerService.amountOfPlanes().subscribe( data =>{
+     // alert(data);
       this.cant=data;
     });
   }
@@ -145,6 +154,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   modificarCuenta(){
-    this.router.navigate(['/pages/modifyaccount']); 
+    //alert("pasoziduhf");
+    let email = localStorage.getItem('email');
+    this.router.navigate(['/pages/modifyaccount/'+email]); 
   }
 }
