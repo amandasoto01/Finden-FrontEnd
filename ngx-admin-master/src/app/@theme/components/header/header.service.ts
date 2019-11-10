@@ -21,8 +21,8 @@ export class HeaderService {
     return this.http.post(environment.apiUrl + '/planesToApprove' ,null,this.httpOptions);
    }
 
-   getUsername(): Observable<any>{
-       return this.http.get(environment.apiUrl + '/getUsername', this.httpOptions);
+   getUsername(user): Observable<any>{
+       return this.http.post(environment.apiUrl + '/getUsername',user ,this.httpOptions);
    }
   
 }

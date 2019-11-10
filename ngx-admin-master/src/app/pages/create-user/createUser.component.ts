@@ -22,7 +22,7 @@ export class CreateUserComponent implements OnInit {
     },
     {
       value: '3',
-      label: 'Contratista' //planos menos aprobar plano 
+      label: 'Constructora' //planos menos aprobar plano 
     },
     {
       value: '2',

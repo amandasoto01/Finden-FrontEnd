@@ -26,7 +26,7 @@
   
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Edificio:</label>
-      <input  class="col-sm-6" type="building" matInput formControlName="portSwitch" class="form-control" placeholder="Numero">
+      <input  class="col-sm-6" type="number" matInput formControlName="building" class="form-control" placeholder="Numero">
       <div *ngIf="modifyPortForm.value.building == '' && modifyPortForm.controls.building.touched" style="color: red;">
         El nombre es obligatorio
       </div>
@@ -36,7 +36,7 @@
       <label for="inputEmail3" class="col-sm-2 col-form-label">Piso:</label>
       <input class="col-sm-6" type="string" matInput formControlName="floor" class="form-control" placeholder="Numero">
       <div *ngIf="modifyPortForm.value.floor == '' && modifyPortForm.controls.floor.touched" style="color: red;">
-        El nombre es obligatorio
+        El piso es obligatorio
       </div>
   </div>
 
@@ -69,7 +69,7 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
         <div *ngIf="modifyPortForm.value.portSwitch == '' && modifyPortForm.controls.portSwitch.touched" style="color: red;">
-          El nombre es obligatorio
+          El numero es obligatorio
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
+import { FormBuilder, FormGroup, Validators, Form } from "@angular/forms";
+
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
@@ -19,6 +21,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userPictureOnly: boolean = false;
   user: any;
   cant: number;
+  username: string;
+  usernameForm: FormGroup;
 
   themes = [
     {
@@ -50,7 +54,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
               private headerService: HeaderService,
-              private router: Router) {
+              private router: Router,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -78,11 +83,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
-
+      
+      this.usernameForm = this.formBuilder.group({
+        username: ['', [Validators.required]],
+      });
+    
       if(this.getRol() == 'DTI'){
         //console.log("hola");
         this.cantPlanes();
       }
+
+      this.router.events.subscribe(event => {
+        if(this.getRol() == 'DTI'){
+          //console.log("hola");
+          this.cantPlanes();
+        }
+      });
+
+      
+      /*this.headerService.getUsername(localStorage.getItem('email')).subscribe( data => { 
+        this.username = data;
+      })*/
   }
 
   ngOnDestroy() {
@@ -109,15 +130,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getRol(){
-    /*if(localStorage.getItem('rol') == 'DTI'){
-      return true;
-    }*/
    return localStorage.getItem('rol');
   }
 
   cantPlanes(){
-    //alert("4"); 
-    //this.cant=4;
     this.headerService.amountOfPlanes().subscribe( data =>{
       this.cant=data;
     });

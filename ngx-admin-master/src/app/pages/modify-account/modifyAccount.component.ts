@@ -26,11 +26,11 @@ export class ModifyAccountComponent implements OnInit {
       label: 'DTI' 
     },
     {
-      value: '2',
-      label: 'Contratista' 
+      value: '3',
+      label: 'Constructora' 
     },
     {
-      value: '3',
+      value: '2',
       label: 'Mesa de Servicios' 
     }
   ];

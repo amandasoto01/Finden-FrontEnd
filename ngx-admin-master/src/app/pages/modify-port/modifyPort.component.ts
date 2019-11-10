@@ -45,7 +45,7 @@ export class ModifyPortComponent implements OnInit {
     this.portTypes.push(new AvailablePortTypes('D', 'Datos'));
     this.portTypes.push(new AvailablePortTypes('V', 'Voz'));
 
-    this.addPortService.getBuildings().subscribe( data => {
+   /* this.addPortService.getBuildings().subscribe( data => {
        console.log(data);
        this.buildings = data;
      },err=>{
@@ -53,32 +53,19 @@ export class ModifyPortComponent implements OnInit {
       alert(err.error.text);
     })
 
-    this.addPortService.getFloors(this.building).subscribe( data => {
-       console.log(data);
-       this.buildings = data;
-     },err=>{
-      console.log(err);
-      alert(err.error.text);
-    })
-     /*this.addPortService.getWiringCenter().subscribe( data => {
+    this.addPortService.getFloors(this.buildings).subscribe( data => {
       console.log(data);
-      this.wiringCenters = data;
-     },err=>{
-      console.log(err);
-      alert(err.error.text);
-    })
-
-    this.addPortService.getSwitches().subscribe( data => {
-      console.log(data);
-      this.switch = data;
-     },err=>{
-      console.log(err);
-      alert(err.error.text);
-    })*/
+      this.buildings = data;
+    },err=>{
+     console.log(err);
+     alert(err.error.text);
+   })*/
   }
+
 
   getInfo(){
     this.modifyPortService.getPort(this.modifyPortForm.value.portName).subscribe( data => {
+      console.log(data);
       this.modifyPortForm.setValue({
         building: data.building,
         floor: data.floor,
@@ -89,6 +76,7 @@ export class ModifyPortComponent implements OnInit {
         portName: this.modifyPortForm.value.portName
       })
     })
+    console.log(this.modifyPortForm);
   }
 
   modifyPort(){
@@ -103,13 +91,13 @@ export class ModifyPortComponent implements OnInit {
     this.portModel.wiringCenter = value.wiringCenter;
     this.portModel.port = value.portName;
 
-    console.log("funcion ");
-    console.log(this.portModel);
+   // console.log("funcion ");
+    //console.log(this.portModel);
 
 
     this.modifyPortService.updatePort(this.portModel).subscribe(data => {
     //localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion
-      alert(data);
+     alert(data);
     },err=>{
       console.log(err);
       alert(err.error.text);

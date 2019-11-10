@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { NewPassword }  from '../../entities/request/newPasswordModel';
 import { Router } from "@angular/router";
+import { UserModel } from '../../entities/request/userModel';
 
 
 @Component({
@@ -16,11 +17,13 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
   setNewPasswordForm: FormGroup;
   newPassword: NewPassword;
+  userModel: UserModel;
 
   constructor( private changePasswordService: ChangePasswordService,
                private formBuilder: FormBuilder,
                private router: Router) { 
       this.newPassword = new NewPassword();
+      this.userModel = new UserModel();
   }
 
   ngOnInit() {
@@ -39,7 +42,8 @@ export class ChangePasswordComponent implements OnInit {
     const value = this.changePasswordForm.value;
     this.newPassword.email = value.email;
 
-    this.changePasswordService.sendCode(this.newPassword.email).subscribe( data =>{
+    this.userModel.email = this.newPassword.email;
+    this.changePasswordService.sendCode(this.userModel).subscribe( data =>{
        
       if(data){
          alert("El codigo fue enviado a tu correo");
@@ -60,6 +64,7 @@ export class ChangePasswordComponent implements OnInit {
     
     if(val.password == val.confirmPassword){
       this.newPassword.password = val.password;
+      console.log(this.newPassword);
       this.changePasswordService.newPassword(this.newPassword).subscribe( data =>{
        
         if(data){
