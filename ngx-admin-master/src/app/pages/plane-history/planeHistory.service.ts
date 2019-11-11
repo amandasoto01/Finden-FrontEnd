@@ -32,5 +32,9 @@ export class PlaneHistoryService {
    getPlaneBuilding(building): Observable<any>{
       return this.http.post(environment.apiUrl + '/getAllPlanesDTI', building, this.httpOptions);
    }
+   
+   deletePlane(plane): Observable<any>{
+     return this.http.post(environment.apiUrl + '/deletePlane' , plane, this.httpOptions);
+   }
   
 }

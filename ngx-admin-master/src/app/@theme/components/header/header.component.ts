@@ -96,6 +96,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }, err => {
        // alert("error en el servidor");
          //console.log(err.error.text);
+         
+         //se hace esto porque el servicio se recibe con un error pero la data bien
          this.username = err.error.text;
       });
 

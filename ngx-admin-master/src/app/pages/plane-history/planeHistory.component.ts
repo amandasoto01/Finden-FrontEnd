@@ -133,11 +133,23 @@ export class PlaneHistoryComponent  {
   }
   */
   onDeleteConfirm(event): void {
-    if (window.confirm('Esta seguro que desea borrar este plano?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
+  console.log(event);
+    if(event.data.status != 'actual' && event.data.status != 'aprobado'){
+      if (window.confirm('Esta seguro que desea borrar este plano?')) {
+        //this.planeHistoryService.deletePlane();
+        this.planeHistoryService.deletePlane(event.data.name).subscribe( data => {
+            alert(data);
+        }, err => {
+            alert(err);
+        });
+        event.confirm.resolve();
+      } else {
+        event.confirm.reject();
+      }
+    }else{
+      alert("Solo se pueden borrar planos que tengan estado rechazado o en revisión");
     }
+   
   }
 
   

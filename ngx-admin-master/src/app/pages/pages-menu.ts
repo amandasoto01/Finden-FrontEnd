@@ -244,7 +244,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },*/
-  {
+ /* {
     title: 'Manejar Cuentas',
     children: [
       {
@@ -296,12 +296,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },{
     title: 'Agregar Centro de cableado',
     link: '/pages/addwiringcenter',
-  }
+  }*/
 ];
 
 export const MENU_ITEMS_DTI: NbMenuItem[] = [
   {
     title: 'Manejar Cuentas',
+    icon: 'people-outline',
     children: [
       {
         title: 'Crear Cuenta',
@@ -315,21 +316,22 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
   },
   {
     title: 'Planos',
+    icon: 'map-outline',
     children: [
       {
-        title: 'Aprobar planos',
-        link: '/pages/approveplane',
-      },{
-        title: 'Estado de los planos',
-        link: '/pages/planestate',
+        title: 'Subir Plano',
+        link: '/pages/uploadplane',
       },
       {
         title: 'Historial de planos',
         link: '/pages/planehistory',
       },
       {
-        title: 'Subir Plano',
-        link: '/pages/uploadplane',
+        title: 'Aprobar planos',
+        link: '/pages/approveplane',
+      },{
+        title: 'Estado de los planos',
+        link: '/pages/planestate',
       },
       {
         title: 'Agregar Switches',
@@ -339,6 +341,7 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
   },
   {
     title: 'Puertos',
+    icon: 'settings-outline',
     children:[
       {
         title: 'Agregar puertos',
@@ -355,17 +358,31 @@ export const MENU_ITEMS_DTI: NbMenuItem[] = [
     ]
   },
   {
-    title: 'Agregar Edificio',
-    link: '/pages/addbuilding',
+    title: 'Edificio',
+    icon: 'home-outline',
+    children:[
+    {
+      title:'Agregar edificio',
+      link:  '/pages/addbuilding',
+    }
+    ]
   },{
-    title: 'Agregar Centro de cableado',
-    link: '/pages/addwiringcenter',
+    title: 'Centro de cableado',
+    icon: 'globe-outline',
+    children:[
+      {
+        title: 'Agregar Centro de cableado',
+        link: '/pages/addwiringcenter',
+      }
+    ]
+
   }
 ];
 
 export const MENU_ITEMS_CONTRATISTA: NbMenuItem[] = [
   {
     title: 'Planos',
+    icon: 'map-outline',
     children: [
       {
         title: 'Subir Planos',
@@ -382,6 +399,7 @@ export const MENU_ITEMS_CONTRATISTA: NbMenuItem[] = [
 export const MENU_ITEMS_MESA_DE_SERVICIOS: NbMenuItem[] = [
   {
     title: 'Puertos',
+    icon: 'settings-outline',
     children:[
       {
         title: 'Buscar puertos',
