@@ -19,8 +19,11 @@ import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
 import { HomeDtiComponent } from './home-dti/homeDti.component';
 import { ModifyPortComponent } from './modify-port/modifyPort.component';
+import { HomeContratistaComponent } from './home-contratista/homeContratista.component';
+
 
 import { AuthGuard } from "../security/guard";
+import { HomeMesaServiciosComponent } from './home-mesa-servicios/homeMesaServicios.component';
 
 
 const routes: Routes = [{
@@ -193,6 +196,21 @@ const routes: Routes = [{
       canActivate: [AuthGuard],
       data:{
         roles: ['DTI']
+      },
+    },{
+      path:'homecontratista',
+      component: HomeContratistaComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['contratista']
+      },
+    },
+    {
+      path:'homemesadeservicios',
+      component: HomeMesaServiciosComponent,
+      canActivate: [AuthGuard],
+      data:{
+        roles: ['mesa de servicios']
       },
     },
     {

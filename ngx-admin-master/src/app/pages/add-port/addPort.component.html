@@ -11,7 +11,7 @@
         <nb-option *ngFor="let v of buildings" value="{{v.number}}"> {{v.number}} - {{v.name}}</nb-option>
       </nb-select>
       <div *ngIf="addPortForm.value.building == '' && addPortForm.controls.building.touched" style="color: red;">
-        El nombre es obligatorio
+        El edificio es obligatorio
       </div>
     </div>
 
@@ -21,7 +21,7 @@
           <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
       </nb-select>
       <div *ngIf="addPortForm.value.floor == '' && addPortForm.controls.floor.touched" style="color: red;">
-        El nombre es obligatorio
+        El psio es obligatorio
       </div>
   </div>
 
@@ -31,7 +31,7 @@
         <nb-option *ngFor="let v of wiringCenters" value="{{v}}"> {{v}}</nb-option>
       </nb-select>
       <div *ngIf="addPortForm.value.wiringCenter == '' && addPortForm.controls.wiringCenter.touched" style="color: red;">
-        El nombre es obligatorio
+        El centro de cableado es obligatorio
       </div>
     </div>
 
@@ -61,13 +61,13 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-3">
         <div *ngIf="addPortForm.value.switch == '' && addPortForm.controls.switch.touched" style="color: red;">
-          El nombre es obligatorio
+          El portSwitch es obligatorio
         </div>
       </div>
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
         <div *ngIf="addPortForm.value.portSwitch == '' && addPortForm.controls.portSwitch.touched" style="color: red;">
-          El nombre es obligatorio
+          El numero es obligatorio
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@
         <nb-option *ngFor="let v of portTypes" value="{{v.value}}"> {{v.name}}</nb-option>
       </nb-select>
       <div *ngIf="addPortForm.value.type == '' && addPortForm.controls.type.touched" style="color: red;">
-        El nombre es obligatorio
+        El tipo es obligatorio
       </div>
     </div>
 

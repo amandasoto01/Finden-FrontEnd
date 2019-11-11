@@ -19,7 +19,7 @@
         <div class="col-sm-6">
           <input  matInput formControlName="buildingNumber" class="form-control"  placeholder="Numero del edificio">
           <div *ngIf="addBuildingForm.value.buildingNumber == '' && addBuildingForm.controls.buildingNumber.touched" style="color: red;">
-            El nombre es obligatorio
+            El numero es obligatorio
           </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="col-sm-6">
           <input type="number" matInput formControlName="floors" class="form-control"  placeholder="Numero de pisos">
           <div *ngIf="addBuildingForm.value.floors == '' && addBuildingForm.controls.floors.touched" style="color: red;">
-            El nombre es obligatorio
+            El numero de pisos es obligatorio
           </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
       <div class="col-sm-6">
         <input  type="number" matInput formControlName="basements" class="form-control" placeholder="Numero de sotanos">
         <div *ngIf="addBuildingForm.value.basements == '' && addBuildingForm.controls.basements.touched" style="color: red;">
-          El nombre es obligatorio
+          El numero de sotanos es obligatorio
         </div>
       </div>
     </div>

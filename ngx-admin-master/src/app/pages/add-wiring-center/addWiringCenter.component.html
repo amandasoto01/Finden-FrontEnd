@@ -12,7 +12,7 @@
                       <input type="number" matInput formControlName="id" class="form-control"  placeholder="id">
                     </div>
                     <div *ngIf="addWiringCenterForm.value.id == '' && addWiringCenterForm.controls.id.touched" style="color: red;">
-                      El nombre es obligatorio
+                      El id es obligatorio
                     </div>
             </div>
 
@@ -32,7 +32,7 @@
                 <nb-option *ngFor="let v of buildings" value="{{v.number}}"> {{v.number}} - {{v.name}}</nb-option>
                 </nb-select>
                 <div *ngIf="addWiringCenterForm.value.building == '' && addWiringCenterForm.controls.building.touched" style="color: red;">
-                  El nombre es obligatorio
+                  El edificio es obligatorio
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                   <nb-option *ngFor="let v of floors" value="{{v}}"> {{v}}</nb-option>
               </nb-select>
               <div *ngIf="addWiringCenterForm.value.floor == '' && addWiringCenterForm.controls.floor.touched" style="color: red;">
-                El nombre es obligatorio
+                El piso es obligatorio
               </div>
           </div>
 
@@ -60,12 +60,12 @@
               <div class="col"></div>
               <input type="number" matInput formControlName="switch" class="col form-control"  placeholder="name">
               <div *ngIf="addWiringCenterForm.value.switch == '' && addWiringCenterForm.controls.name.touched" style="color: red;">
-                El nombre es obligatorio
+                El switch es obligatorio
               </div>
               <div class="col-1"></div>
               <input type="number" matInput formControlName="idPort" class="col form-control"  placeholder="name">
               <div *ngIf="addWiringCenterForm.value.idPort == '' && addWiringCenterForm.controls.idPort.touched" style="color: red;">
-                El nombre es obligatorio
+                El id del primer puerto es obligatorio
               </div>
               <div class="col"></div>
             </div>
@@ -73,7 +73,7 @@
 
           <div class="form-group row space">
             <div class="col-sm-12" style="text-align: center;">
-              <button (click)="addPortSwitch()" class="btn btn-primary" >Agregar Switch</button>
+              <button (click)="addPortSwitch()" [disabled]="addWiringCenterForm.status =='INVALID'" class="btn btn-primary" >Agregar Switch</button>
             </div>
           </div>
 

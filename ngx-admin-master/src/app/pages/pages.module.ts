@@ -23,6 +23,8 @@ import { PlaneHistoryComponent } from './plane-history/planeHistory.component';
 import { PlaneSwitchComponent } from './plane-switches/planeSwitch.component';
 import { HomeDtiComponent } from './home-dti/homeDti.component';
 import { ModifyPortComponent } from './modify-port/modifyPort.component';
+import { HomeMesaServiciosComponent } from './home-mesa-servicios/homeMesaServicios.component';
+
 
 import {
   NbActionsModule,
@@ -38,6 +40,7 @@ import {
 import { DownloadButtonComponent } from './download-button/downloadButton.component';
 import { ModifyUserButtonComponent } from './modify-user-button/modifyUserButton.component';
 import { ApprovePlaneButtonComponent } from "./approve-plane-button/approvePlaneButton.component";
+import { HomeContratistaComponent } from './home-contratista/homeContratista.component';
 
 @NgModule({
   imports: [
@@ -80,6 +83,8 @@ import { ApprovePlaneButtonComponent } from "./approve-plane-button/approvePlane
     ModifyUserButtonComponent,
     ApprovePlaneButtonComponent,
     ModifyPortComponent,
+    HomeContratistaComponent,
+    HomeMesaServiciosComponent,
   ],
   entryComponents:[
     DownloadButtonComponent,

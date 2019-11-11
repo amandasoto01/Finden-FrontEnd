@@ -46,9 +46,12 @@ export class LoginComponent implements OnInit {
       //Navigate to dashboard after login using router  
       this.router.navigate(['/pages/homedti']); 
     }else if(data.res =='contratista'){
-      this.router.navigate(['pages/uploadplane']);
+      alert('contratista');
+      this.router.navigate(['pages/homecontratista']);
     }else if(data.res=='mesa de servicios'){
-      this.router.navigate(['pages/findport']);
+      this.router.navigate(['pages/homemesadeservicios']);
+    }else{
+      alert("Correo o contraseña incorrecta");
     }
      
     },err=>{
