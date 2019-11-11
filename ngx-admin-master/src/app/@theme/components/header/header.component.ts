@@ -94,7 +94,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         //alert(data);
         this.username = data.username; 
       }, err => {
-        //alert("error en el servidor");
+       // alert("error en el servidor");
+         //console.log(err.error.text);
+         this.username = err.error.text;
       });
 
      if(this.getRol() == 'DTI'){

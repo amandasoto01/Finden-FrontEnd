@@ -14,8 +14,7 @@
 
 
       <div>
-          <label>{{username}}</label>
-          <nb-select  placeholder="usuario" class="col-sm-1">     
+          <nb-select  placeholder={{username}} style="font-weight: bolder;" class="col-sm-1">     
               <nb-option  (click)="modificarCuenta()"> Modificar Usuario </nb-option>
               <nb-option  (click)="logout()"> Salir </nb-option>
             </nb-select>
