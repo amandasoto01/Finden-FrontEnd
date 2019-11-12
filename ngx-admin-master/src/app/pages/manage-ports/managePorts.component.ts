@@ -29,6 +29,7 @@ export class PlaneSwitchComponent  {
       columnTitle: 'Delete',
       edit: true,
       position: 'right',
+      reset: true,
     },
     edit:{
       editButtonContent: '<i class="nb-edit"></i>',
@@ -119,6 +120,8 @@ export class PlaneSwitchComponent  {
   }
 
   getPorts(){
+
+    this.source.empty();
     this.managePortsService.getPortsFloor(this.addSwitchesForm.value.building, this.addSwitchesForm.value.floor).subscribe( data => {
         console.log(data);
         for(let i = 0; i<data.length; i++){
