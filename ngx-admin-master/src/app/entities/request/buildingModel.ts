@@ -1,3 +1,4 @@
+//Clase utilizada para el servicio de agregar edificio
 export class BuildingModel {
     name: string;
     buildingNumber: number;

@@ -97,7 +97,7 @@ export class ModifyPortComponent implements OnInit {
 
     this.modifyPortService.updatePort(this.portModel).subscribe(data => {
     //localStorage.setItem('userEmail', this.userModel.email); //Para guardar en la sesion
-     alert(data);
+      alert("El puerto se ha actualizado exitosamente");
     },err=>{
       console.log(err);
       alert(err.error.text);

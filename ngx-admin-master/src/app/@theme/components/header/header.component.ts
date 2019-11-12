@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   username: string;
 
 
+
   themes = [
     {
       value: 'default',
@@ -62,6 +63,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cant=0;
     this.currentTheme = this.themeService.currentTheme;
 
     /*this.headerService.getUsername().subscribe(data => {
@@ -112,6 +114,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
           //console.log("hola");
           this.cantPlanes();
         }
+      },err=>{
+        alert(err.error.text);
       });
       
   }
@@ -137,6 +141,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     if(this.getRol() == 'DTI'){
       this.router.navigate(['/pages/homedti']);
+    } else if(this.getRol() == 'contratista'){
+      this.router.navigate(['/pages/homecontratista']);
+    }else if(this.getRol() == 'mesa de servicios'){
+      this.router.navigate(['/pages/homemesadeservicios']);
     }
     return false;
   }

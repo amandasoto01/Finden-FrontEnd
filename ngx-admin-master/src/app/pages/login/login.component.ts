@@ -4,6 +4,7 @@ import { LoginModel } from "../../entities/request/loginModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,23 +31,23 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     const value = this.loginForm.value;
-    console.log(value);
+    //console.log(value);
     this.loginModel.email = value.email;
     this.loginModel.password = value.password;
-    console.log("funcion ");
-    console.log(this.loginModel);
+    //console.log("funcion ");
+    //console.log(this.loginModel);
     //localStorage.setItem('rol', 'DTI');  
 
     this.loginService.login(this.loginModel).subscribe(data => {
     localStorage.setItem('email', this.loginModel.email); //Para guardar en la sesion 
     localStorage.setItem('rol', data.res);
-    console.log(data);
+    //console.log(data);
     
     if(data.res == 'DTI'){
       //Navigate to dashboard after login using router  
       this.router.navigate(['/pages/homedti']); 
     }else if(data.res =='contratista'){
-      alert('contratista');
+      //alert('contratista');
       this.router.navigate(['pages/homecontratista']);
     }else if(data.res=='mesa de servicios'){
       this.router.navigate(['pages/homemesadeservicios']);

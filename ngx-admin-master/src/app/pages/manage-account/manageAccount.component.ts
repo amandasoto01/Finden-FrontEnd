@@ -60,6 +60,9 @@ export class ManageAccountComponent  {
       console.log(data);
       let arr = [];
       for( let i = 0; i < data.length; i++){
+        if(data[i].type =='contratista'){
+            data[i].type='constructora';
+        }
         let aux = {
           email: data[i].email,
           name: data[i].name,

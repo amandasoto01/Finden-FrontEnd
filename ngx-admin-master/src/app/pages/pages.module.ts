@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule } from '@nebular/theme';
+import { NbMenuModule, NbAlertModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -36,6 +36,7 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbUserModule,
+
 } from '@nebular/theme';
 import { DownloadButtonComponent } from './download-button/downloadButton.component';
 import { ModifyUserButtonComponent } from './modify-user-button/modifyUserButton.component';
@@ -63,6 +64,7 @@ import { HomeContratistaComponent } from './home-contratista/homeContratista.com
     NbSelectModule,
     NbIconModule,
     Ng2SmartTableModule,
+    NbAlertModule,
   ],
   declarations: [
     PagesComponent,

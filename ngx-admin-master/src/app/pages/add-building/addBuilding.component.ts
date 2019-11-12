@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AddBuildingService } from './addBuilding.service';
 import { BuildingModel } from "../../entities/request/buildingModel";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { from } from 'rxjs';
-import { AvailableTypes } from "../../entities/internal/availableTypes";
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './addBuilding.component.html',
   styleUrls: ['./addBuilding.component.css']
 })
+
 export class AddBuildingComponent implements OnInit {
 
   buildingModel: BuildingModel;
