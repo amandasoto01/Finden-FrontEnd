@@ -28,4 +28,9 @@ export class ModifyPortService {
     return this.http.post(environment.apiUrl + '/updatePort' , port, this.httpOptions);
  }
 
+ deletePort(port): Observable<any>{
+  return this.http.post(environment.apiUrl + '/deletePort', port,  this.httpOptions);
+}
+
+
 }

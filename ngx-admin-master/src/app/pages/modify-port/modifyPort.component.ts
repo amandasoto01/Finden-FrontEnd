@@ -113,6 +113,15 @@ export class ModifyPortComponent implements OnInit {
       alert(err.error.text);
     });
   }
-
-
+  
+  deletePort(){
+    if ( confirm("Esta seguro que desea eliminar el puerto ?") ) {
+      this.modifyPortService.deletePort(this.modifyPortForm.value.name).subscribe(data => {
+        alert("El puerto se ha borrado exitosamente");
+      },err=>{
+        console.log(err);
+        alert(err.error.text);
+      });
+    } 
+  }
 }
