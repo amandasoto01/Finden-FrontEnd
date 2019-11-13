@@ -10,6 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./addBuilding.component.css']
 })
 
+
+/**
+ * Componente que se encarga de la interfaz de Añadir Edificio.
+ * En esta interfaz se tiene un formulario donde el usuario puede ingresar: nombre, numero de edificio,
+ * pisos y sotanos. Este formulario tiene validaciones de las entradas y permite ser enviado cuando
+ * todos los datos han sido llenados
+ * Al realizarse el envio del formulario, utiliza el servicio de addBUildingService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
 export class AddBuildingComponent implements OnInit {
 
   buildingModel: BuildingModel;
@@ -24,6 +33,7 @@ export class AddBuildingComponent implements OnInit {
   }
 
   ngOnInit() {
+    //creacion de instancia del formulario
     this.addBuildingForm = this.formBuilder.group({
         name: ['', [Validators.required]],
         buildingNumber: ['', [Validators.required] ],

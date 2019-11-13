@@ -20,6 +20,15 @@ import { DownloadButtonComponent } from '../download-button/downloadButton.compo
   styleUrls: ['./approvePlane.component.css']
 })
 
+
+/**
+ * Componente que se encarga de la interfaz de aprobar o rechazar los planos cargados al sistema.
+ * En esta interfaz se tiene una tabla en donde se muestran los planos que se encuentran en un estado de "revision", 
+ * se podra descargar el plano y aprobar o rechazar.
+ * Para la interacccion con los botones se hace uso de los componentes download-button y approve-plane-button 
+ */
+
+
 export class ApprovePlaneComponent  {
   tablePlaneModel: TablePlanesModel[];
   planeModel: PlaneModel;

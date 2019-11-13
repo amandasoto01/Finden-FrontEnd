@@ -13,6 +13,19 @@ import { UserModel } from '../../entities/request/userModel';
   templateUrl: './changePassword.component.html',
   styleUrls: ['./changePassword.component.css']
 })
+
+
+
+/**
+ * Componente que se encarga de la interfaz para realizar el cambio/recuperar contraseña.
+ * En esta interfaz se tiene un formulario donde el usuario puede ingresar su correo electronico, codigo de verificacion, 
+ * contraseña y confirmacion de contraseña.
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de changePasswordService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
   setNewPasswordForm: FormGroup;

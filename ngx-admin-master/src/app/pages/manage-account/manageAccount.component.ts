@@ -15,6 +15,13 @@ import { ModifyUserButtonComponent } from "../modify-user-button/modifyUserButto
   styleUrls: ['./manageAccount.component.css']
 })
 
+/**
+ * Componente que se encarga de la interfaz para la administrcion de los usuarios.
+ * En esta interfaz se tiene una tabla donde se tienen los usuarios del sistema. Para cada uno de los usuarios
+ * se tiene nombre, correo, tipo, boton para modificar y boton para eliminar.
+ * El componente utiliza el servicio de manageAccount.service para cargar la informacion de los usuarios del sistema.
+ */
+
 export class ManageAccountComponent  {
 
   settings = {

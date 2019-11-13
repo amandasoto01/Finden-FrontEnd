@@ -8,6 +8,16 @@ import { BuildingBasicInformationModel } from "../../entities/request/buildingBa
 import { AvailablePortTypes } from '../../entities/internal/availablePortTypes';
 import { AddPortService } from '../add-port/addPort.service';
 
+
+/**
+ * Componente que se encarga de la interfaz para la modificacion de un puerto.
+ * El usuario ingresa el numero del puerto y se tiene un formulario donde se puede modificar parte de la informacion del mismo.
+ * Dentro de los campos que se pueden visualizar del puerto estan edificio, piso, nombe del puerto, switch asociado,
+ * tipo y centro de cableado.
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de modifyPortComponente para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './modifyPort.component.html',

@@ -3,6 +3,11 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
+
+ /**
+  * Componente principal donde se definen los modulos que hacen parte del proyecto, las entradas
+  * generales al sistema y los proveedores de servicios que se utilizan. ( En este caso el proveedor de seguridad )
+  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';

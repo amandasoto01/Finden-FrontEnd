@@ -15,8 +15,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./approvePlaneButton.component.css']
 })
 
-export class ApprovePlaneButtonComponent {
 
+/**
+ * Componente que se encarga de llamar el servicio para aprobar o rechazar un plano.
+ * Este componente recibe un valor al ser instanciado (value). Este valor contiene
+ * el nombre del plano que va a ser aprobado o rechazado por el usuario.
+ * Se utiliza el servicio de approvePlaneButtonService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+export class ApprovePlaneButtonComponent {
 
   @Input() value;   
   planeModel: PlaneModel; 
@@ -34,10 +42,7 @@ export class ApprovePlaneButtonComponent {
         namePlane: this.value.name,
         status: true,
     }
-   /* alert(this.value);
-    console.log(this.value);
-    plane.name = this.value;
-    plane.status = true;*/
+
 
     this.approvePlaneButtonService.approvePlane(plane).subscribe( data =>{
       alert(data.res);
@@ -55,9 +60,6 @@ export class ApprovePlaneButtonComponent {
         namePlane: this.value.name,
         status: false,
     }
-
-    //plane.name = this.value.name;
-    //plane.status = false;
 
     
     this.approvePlaneButtonService.approvePlane(plane).subscribe( data =>{

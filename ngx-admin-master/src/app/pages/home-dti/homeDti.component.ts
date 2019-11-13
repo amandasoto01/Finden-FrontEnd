@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeDtiComponent implements OnInit {
 
 
-  
+    /**
+ *Componente que contiene el menu principal para usuarios tipo DTI
+ */
+
   constructor() { 
-       
-  //  this.userModel = new UserModel();
+
   }
 
   ngOnInit() {

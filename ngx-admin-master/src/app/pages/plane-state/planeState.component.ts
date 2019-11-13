@@ -14,6 +14,13 @@ import { AvailableTypes } from "../../entities/internal/availableTypes";
   styleUrls: ['./planeState.component.css']
 })
 
+/**
+ * Componente que se encarga de la interfaz para mostrar el estado de los planos.
+ * En esta interfaz incialmente se cargan y muestran todos los planos subidos por el usuario, este puede filtrar su busqueda 
+ * Al realizarse el envio del formulario, utiliza el servicio de planeStateService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
 export class PlaneStateComponent  {
 
   settings = {

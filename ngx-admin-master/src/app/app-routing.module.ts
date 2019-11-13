@@ -2,11 +2,6 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 import {
   NbAuthComponent,
-  NbLoginComponent,
-  NbLogoutComponent,
-  NbRegisterComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent,
 } from '@nebular/auth';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -21,10 +16,6 @@ const routes: Routes = [
     path: 'auth',
     component: NbAuthComponent,
     children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
       {
         path: 'login',
         component: LoginComponent,

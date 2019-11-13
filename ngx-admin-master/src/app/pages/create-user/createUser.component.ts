@@ -11,6 +11,17 @@ import { Router } from '@angular/router';
   templateUrl: './createUser.component.html',
   styleUrls: ['./createUser.component.css']
 })
+
+/**
+ * Componente que se encarga de la interfaz para la creacion de un usuario nuevo.
+ * En esta interfaz se tiene un formulario donde el usuario (rol DTI) debe llenar correo electronico,
+ * contraseña, nombre y tipo de usuario 
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de createUserService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+
 export class CreateUserComponent implements OnInit {
 
   userModel: UserModel;

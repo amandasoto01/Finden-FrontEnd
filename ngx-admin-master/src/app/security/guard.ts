@@ -3,6 +3,13 @@ import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '
 import { Observable } from "rxjs/Observable";
 import { environment } from "../../environments/environment";
 
+/**
+ * Esta clase sirve para interceptar las peticiones de cambio de ruta dentro de la aplicacion.
+ * Se verifica si la ruta tiene algun tipo de restriccion dada en la definicion de las mismas, y siendo el caso
+ * se revisa que el usuario que esta queriendo acceder a la ruta posea los permisos necesarios.
+ * En este caso, el rol del usuario dentro del sistema. Por ejemplo DTI.
+ **/
+
 @Injectable()
 export class AuthGuard implements CanActivate{
     

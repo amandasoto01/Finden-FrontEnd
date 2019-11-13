@@ -8,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeContratistaComponent implements OnInit {
 
 
-  
+  /**
+ *Componente que contiene el menu principal para usuarios tipo Constructora/Contratista
+ */
+
+
   constructor() { 
-       
-  //  this.userModel = new UserModel();
+      
   }
 
   ngOnInit() {

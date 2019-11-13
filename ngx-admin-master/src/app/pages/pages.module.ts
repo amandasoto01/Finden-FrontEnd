@@ -43,6 +43,12 @@ import { ModifyUserButtonComponent } from './modify-user-button/modifyUserButton
 import { ApprovePlaneButtonComponent } from "./approve-plane-button/approvePlaneButton.component";
 import { HomeContratistaComponent } from './home-contratista/homeContratista.component';
 
+/**
+ * En este modulo se definen e instancian los componentes que se pueden ver cuando un usuario esta logueado al sistema
+ * Las rutas de cada componente estan definidas en el archivo pages-routing.module.ts
+ * Adicionalmente, aqui se definen los servicios y modulos adicionales que son importados para el uso en la pagina.
+ */
+
 @NgModule({
   imports: [
     PagesRoutingModule,

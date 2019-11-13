@@ -12,6 +12,16 @@ import { DownloadButtonService } from './downloadButton.service';
   templateUrl: './downloadButton.component.html',
   styleUrls: ['./downloadButton.component.css']
 })
+
+/**
+ * Componente que se encarga de llamar el servicio para descargar un plano.
+ * Este componente recibe un valor al ser instanciado (value). Este valor contiene
+ * el nombre del plano que va a ser descargado.
+ * Se utiliza el servicio de downloadButtonService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+
 export class DownloadButtonComponent {
 
 

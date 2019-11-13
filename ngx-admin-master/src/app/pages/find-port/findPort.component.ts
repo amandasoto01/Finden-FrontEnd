@@ -10,6 +10,19 @@ import { InfoPortModel } from '../../entities/request/infoPortModel';
   templateUrl: './findPort.component.html',
   styleUrls: ['./findPort.component.css']
 })
+
+
+/**
+ * Componente que se encarga de la interfaz para la busqueda de un puerto.
+ * En esta interfaz se tiene un fomrulario donde el usuario debe ingresar el numero de puerto.
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de finPortService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ * Al realizar este llamado se muestra la informacion correspondiente al puerto ingresado. 
+ */
+
+
+
 export class FindPortComponent implements OnInit {
 
  // userModel: UserModel;

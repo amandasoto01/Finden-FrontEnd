@@ -11,6 +11,10 @@ import { UserModel } from '../../entities/request/userModel';
   templateUrl: './modifyUserButton.component.html',
   styleUrls: ['./modifyUserButton.component.css']
 })
+/**
+ * Componente que se encarga de la redireccion a la pagina de modificar usuario.
+ * Al ser inicializado recibe un parametro (value) con el correo del usuario que se va a modificar.
+ */
 export class ModifyUserButtonComponent implements OnInit {
   
   arr: [];

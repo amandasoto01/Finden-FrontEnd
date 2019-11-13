@@ -2,8 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { UploadPlaneComponent } from './upload-plane/uploadPlane.component';
 import { CreateUserComponent } from './create-user/createUser.component';
@@ -25,7 +23,14 @@ import { HomeContratistaComponent } from './home-contratista/homeContratista.com
 import { AuthGuard } from "../security/guard";
 import { HomeMesaServiciosComponent } from './home-mesa-servicios/homeMesaServicios.component';
 
-
+/**
+ * Definicion de las rutas del sistema.
+ * Las rutas constan de direccion (path), que es la Url a la cual accede el usuario. Ademas, del componente
+ * que será llamado cuando se acceda a la ruta.
+ * Algunas rutas tienen definido el uso de AuthGuard para el acceso a la misma. Este es un componente, que se encarga
+ * de verificar que la persona tenga el rol que le da acceso a la ruta. Los roles que tienen acceso a cada ruta
+ * se definen en el arreglo denominado 'roles'. (Estos roles son case-sensitive).
+ */
 const routes: Routes = [{
   path: '',
   component: PagesComponent,

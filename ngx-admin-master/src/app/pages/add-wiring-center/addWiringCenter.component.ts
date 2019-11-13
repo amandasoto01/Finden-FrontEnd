@@ -17,6 +17,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./addWiringCenter.component.css']
 })
 
+
+/**
+ * Componente que se encarga de la interfaz de Añadir un centro de cableado.
+ * En esta interfaz se tiene un formulario donde el usuario puede ingresar: ID del centro de cableado segun el HPeIMC, 
+ * nombre del switch, edifico, piso y se podra llenar dinamicamente el id del switch y el numero de puerto.
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de addWiringCenterService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+
+
 export class AddWiringCenterComponent implements OnInit {
 
   portModel: PortModel;

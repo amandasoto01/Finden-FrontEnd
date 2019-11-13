@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homeMesaServicios.component.css']
 })
 
+  /**
+ *Componente que contiene el menu principal para usuarios tipo Mesa de Servicios
+ */
+
 
 export class HomeMesaServiciosComponent implements OnInit {
 

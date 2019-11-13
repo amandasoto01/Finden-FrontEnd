@@ -13,6 +13,20 @@ import { Router } from '@angular/router';
   templateUrl: './addPort.component.html',
   styleUrls: ['./addPort.component.css']
 })
+
+
+/**
+ * Componente que se encarga de la interfaz de Añadir un puerto nuevo.
+ * En esta interfaz se tiene un formulario donde el usuario puede ingresar: Edifico, piso, centro de cableado, 
+ * nombre del puerto, switch, numero de puerto en el switch y el tipo. 
+ * Al cargar la vista se utiliza el servicio addPortService para saber los edificos, cargar los pisos dependiendo del
+ * edifcio seleccionado, y el centro de cableado. 
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Al realizarse el envio del formulario, utiliza el servicio de addPortService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
+
+
 export class AddPortComponent implements OnInit {
 
   portModel: PortModel;

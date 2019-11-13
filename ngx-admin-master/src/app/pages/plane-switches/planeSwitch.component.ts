@@ -17,6 +17,18 @@ import { PortTableModel } from '../../entities/request/portTableModel';
   styleUrls: ['./planeSwitch.component.css']
 })
 
+/**
+ * Componente que se encarga de mostrar los switches que tiene un plano. En este componente se tiene una tabla
+ * que se encarga con la informacion de los switches en un piso de un edificio especifico seleccionado por el usuario.
+ * Para cada uno de los switches se puede ver informacion como puerto, tipo, centro de cableado, posicion del puerto en el switch.
+ * Adicionalmente, el usuario puede modificar la informacion de cada uno de los switches o eliminarlos del sistema.
+ * En esta interfaz se tiene un fomrulario donde el usuario debe ingresar el numero de puerto.
+ * Al actualizar la informacion de estos, el usuario tiene la opcion de guardar los cambios y actualizar el sistema de informacion
+ * con los datos ingresados.
+ * Utiliza el servicio de planeSwitch.service para hacer las peticiones HTTP al servidor con cada uno de los servicios necesarios
+ * para esta vista.
+ */
+
 export class PlaneSwitchComponent  {
   buildings: BuildingBasicInformationModel[];
   addSwitchesForm: FormGroup;
@@ -133,6 +145,8 @@ export class PlaneSwitchComponent  {
   }
 
   getPorts(){
+    this.switch.ports = [];
+    this.portsToUpdate = [];
     this.planeSwitchService.getPortsFloor(this.addSwitchesForm.value.building, this.addSwitchesForm.value.floor).subscribe( data => {
         console.log(data);
         for(let i = 0; i<data.length; i++){

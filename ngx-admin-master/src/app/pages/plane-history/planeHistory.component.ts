@@ -18,7 +18,15 @@ import { TouchSequence } from 'selenium-webdriver';
   templateUrl: './planeHistory.component.html',
   styleUrls: ['./planeHistory.component.css']
 })
-
+/**
+ * Componente que se encarga de la interfaz del historial de planos.
+ * En esta interfaz se tiene un formulario donde el usuario (rol DTI) debe ingresar un edificio y un piso del cual desee 
+ * obtener el historial. 
+ * Este formulario tiene validaciones de las entradas y permite ser enviado cuando todos los datos han sido llenados.
+ * Se muestra una tabla con todos los planos seleccionados donde se puede descargar un plano dado o borrar uno.
+ * Al realizarse el envio del formulario, utiliza el servicio de planeHistoryService para enviar una solicitud
+ * http al servidor con el servicio y los datos correspondientes.
+ */
 export class PlaneHistoryComponent  {
   buildings: BuildingBasicInformationModel[];
   building: BuildingBasicInformationModel;

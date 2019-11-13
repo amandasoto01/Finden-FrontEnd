@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 
 import { MENU_ITEMS, MENU_ITEMS_DTI, MENU_ITEMS_CONTRATISTA, MENU_ITEMS_MESA_DE_SERVICIOS } from './pages-menu';
 
+/**
+ * Definicion del componente de Pages. En este componente se instancia el menu que se le muestra al usuario.
+ * El menu depende del rol del usuario dentro del sistema y es cargado del archivo pages-menu.ts
+ * 
+ */
+
 @Component({
   selector: 'ngx-pages',
   styleUrls: ['pages.component.scss'],
